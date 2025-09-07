@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  background-image: url(/imgs/labirinto.jpg); /* Define imagem de fundo */
+  background-image: url(/SiteLoja/assets/labirinto.jpg); /* Define imagem de fundo */
   width: 100%; /* Largura total */
   font-family: 'Fredoka One', sans-serif; /* Fonte alternativa */
   height: 240vh; /* Altura da página */
@@ -177,7 +177,7 @@ div.card {
   justify-content: center; /* Centraliza verticalmente */
   width: 260px; /* Largura do card */
   height: 320px; /* Altura do card */
-  background-image: url(/imgs/cad.labirinto.png);
+  background-image: url(/SiteLoja/assets/cad.labirinto.png);
   background-size: cover; /* Cobre o espaço com a imagem */
   background-position: center; /* Centraliza a imagem */  
   border-radius: 20px; /* Bordas arredondadas */
