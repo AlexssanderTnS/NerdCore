@@ -26,8 +26,8 @@ const limpar = document.getElementById("limpar")
 
 const emailPadrao = /^[\w]+(\.[\w]+)?@(gmail|hotmail|outlook|email)\.com$/;
 const senhaPadrao = /^[a-zA-Z]{8}$/;
-const nomePadrao = /^[a-z A-Z]{15,80}$/;
-const usuarioPadrao = /^[a-z A-Z]{6}/;
+const nomePadrao = /^[A-Za-zÀ-ÿ\s]{15,80}$/;
+const usuarioPadrao = /^[a-zA-Z]{6}$/;
 const cepPadrao = /^[0-9]{8}$/;
 const cpfPadrao = /^(?!^(\d)\1{10}$)\d{11}$/;
 
@@ -57,7 +57,7 @@ form.addEventListener("submit", (evento) => {
   if (erros.length === 0) {
     armazenamentoDeDados();
     alert("Usuário Cadastrado com sucesso");
-    window.location.href = "login.html";
+    window.location.href = "/siteLoja/pages/login.html";
     form.reset();
   }
 });
@@ -79,7 +79,7 @@ function checkNome() {
 //Condicional para testar se o nome atinge os requesitos ou não
   if (!nomePadrao.test(nomeValue)) {
  //Chamando a function para por a mensagem de erro
-    entradaErro(nome, "O nome deve ter no mínimo 6 caracteres alfabéticos");
+    entradaErro(nome, "O nome deve ter no mínimo 15 caracteres alfabéticos");
   }
 }
 function checkMae() {
@@ -104,7 +104,7 @@ function checkUsuario() {
   if (!usuarioPadrao.test(usuarioValue)) {
     entradaErro(
       usuario,
-      "Seu nome de usuário deve contar exatamente 15  caracteres alfabéticos"
+      "Seu nome de usuário deve contar exatamente 6 caracteres alfabéticos"
     );
   }
 }
