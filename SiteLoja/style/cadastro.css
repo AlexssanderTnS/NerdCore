@@ -273,11 +273,11 @@ option {
 
 footer{
     width: 100%;
-  border-top: #eeff00 solid 3px;
-  background-color: #302f2f; 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+    border-top: #eeff00 solid 3px;
+    background-color: #302f2f; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 footer img{
@@ -291,7 +291,7 @@ footer p{
   color: #e5e900;
   display: flex;
   align-items: center;
-  font-size: 28px;
+  font-size: 10px;
   text-decoration: underline;
   justify-content: center;
 

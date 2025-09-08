@@ -7,19 +7,21 @@ window.onload = async function () {
     const id = getIdDaURL();
 
     try {
-        const response = await fetch("produtos.json");
+        const response = await fetch("/SiteLoja/produtos/produtos.json"); // caminho absoluto
         const produtos = await response.json();
 
-        const produto = produtos[id];
+        // se JSON for array e id começar do 1
+        const produto = produtos[id - 0];  
 
         if (produto) {
             document.getElementById("nome-produto").textContent = produto.nome;
             document.getElementById("imagem-produto").src = produto.imagem;
             document.getElementById("imagem-produto").alt = produto.nome;
             document.getElementById("descricao-produto").textContent = produto.descricao;
-            document.getElementById("preco-produto").textContent = produto.preco
+            document.getElementById("preco-produto").textContent = 
+                typeof produto.preco === "number" 
                 ? `R$ ${produto.preco.toFixed(2).replace('.', ',')}`
-                : "Preço indisponível.";
+                : (produto.preco || "Preço indisponível.");
         } else {
             document.body.innerHTML = "<h1>Produto não encontrado</h1>";
         }
