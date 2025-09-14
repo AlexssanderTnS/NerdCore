@@ -10,7 +10,7 @@
 
 /*body do cadastro*/
 body {
-    background-image: url(/SiteLoja/assets/labirinto.jpg);
+    background-image: url(../assets/labirinto.jpg);
     font-family: 'Press Start 2P', monospace;
     height: 200vh;
     display: flex;

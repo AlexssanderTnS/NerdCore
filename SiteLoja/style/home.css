@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  background-image: url(/SiteLoja/assets/labirinto.jpg);
+  background-image: url("../assets/labirinto.jpg");
   /* Define imagem de fundo */
   width: 100%;
   /* Largura total */
@@ -283,7 +283,7 @@ div.card {
   /* Largura do card */
   height: 320px;
   /* Altura do card */
-  background-image: url(/SiteLoja/assets/cad.labirinto.png);
+  background-image: url(../assets/cad.labirinto.png);
   background-size: cover;
   /* Cobre o espaço com a imagem */
   background-position: center;
@@ -723,7 +723,7 @@ footer p {
   display: block;
   width: inherit;
   height: inherit;
-  background: url('/SiteLoja/produtos/CB/2\ camisa\ luffy\ branca\ sem\ fundo.png');
+  background: url('SiteLoja/produtos/CB/2\ camisa\ luffy\ branca\ sem\ fundo.png');
   position: absolute;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -738,14 +738,14 @@ footer p {
 
 .slide.x:after {
   content: '';
-  background-image: url('/SiteLoja/produtos/CB/2\ camisa\ luffy\ branca\ sem\ fundo.png');
+  background-image: url('SiteLoja/produtos/CB/2\ camisa\ luffy\ branca\ sem\ fundo.png');
   -webkit-transform: translateZ(100px) rotateZ(-90deg);
   transform: translateZ(100px) rotateZ(-90deg);
 }
 
 .slide.x:before {
   content: '';
-  background-image: url('/SiteLoja/produtos/CP/1\ camisa\ scott\ pilgrim\ preta\ sem\ fundo.png');
+  background-image: url('SiteLoja/produtos/CP/1\ camisa\ scott\ pilgrim\ preta\ sem\ fundo.png');
   -webkit-transform: translateZ(-100px) rotateZ(-90deg);
   transform: translateZ(-100px) rotateZ(-90deg);
 }
@@ -757,14 +757,14 @@ footer p {
 
 .slide.y:after {
   content: '';
-  background-image: url('/SiteLoja/produtos/CB/2\ camisa\ goku\ branca\ sem\ fundo.png');
+  background-image: url('SiteLoja/produtos/CB/2\ camisa\ goku\ branca\ sem\ fundo.png');
   -webkit-transform: translateZ(100px) scale(-1);
   transform: translateZ(100px) scale(-1);
 }
 
 .slide.y:before {
   content: '';
-  background-image: url('/SiteLoja/produtos/CB/2\ camisa\ goku\ branca\ sem\ fundo.png');
+  background-image: url('SiteLoja/produtos/CB/2\ camisa\ goku\ branca\ sem\ fundo.png');
   -webkit-transform: translateZ(-100px);
   transform: translateZ(-100px);
 }
@@ -776,14 +776,14 @@ footer p {
 
 .slide.z:after {
   content: '';
-  background-image: url('/SiteLoja/produtos/CP/1\ camisa\ far\ cry\ 3\ preta\ sem\ fundo.png');
+  background-image: url('SiteLoja/produtos/CP/1\ camisa\ far\ cry\ 3\ preta\ sem\ fundo.png');
   -webkit-transform: translateZ(100px);
   transform: translateZ(100px);
 }
 
 .slide.z:before {
   content: '';
-  background-image: url('/SiteLoja/produtos/CP/1\ camisa\ kaneki\ preta\ sem\ fundo.png');
+  background-image: url('SiteLoja/produtos/CP/1\ camisa\ kaneki\ preta\ sem\ fundo.png');
   -webkit-transform: translateZ(-100px);
   transform: translateZ(-100px);
 }
