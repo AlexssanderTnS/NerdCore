@@ -247,6 +247,7 @@ h1 {
 }
 
 main {
+
   display: flex;
   /* Layout flexível */
   justify-content: center;
@@ -263,6 +264,7 @@ main {
   /* Espaço entre itens */
   width: 100%;
   /* Largura total */
+
 }
 
 
@@ -684,18 +686,31 @@ footer p {
 
 }
 
-#mc{
+.showcase{
   position: relative;
-  left: 300px;
-  top: -100px;
+    top: -200px;
+    left: 10%;
+    padding: 6%;
+    border-radius: 45px;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    background-color: #FCBD00;
+    border:10px solid #006eff ;
+
+    width: 80%;
+
+}
+
+
+
+.showcase h1{
+  color: #FF0000;
 }
 
 .slider {
-  position: absolute;
-  top: 850px;
-  bottom: 0;
-  right: 0;
-  left: 600px;
   width: 200px;
   height: 200px;
   margin: auto;
@@ -723,7 +738,7 @@ footer p {
   display: block;
   width: inherit;
   height: inherit;
-  background: url('/SiteLoja/produtos/CB/2\ camisa\ luffy\ branca\ sem\ fundo.png');
+  background: url('/SiteLoja/assets/Bola.png');
   position: absolute;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -757,7 +772,7 @@ footer p {
 
 .slide.y:after {
   content: '';
-  background-image: url('/SiteLoja/produtos/CB/2\ camisa\ goku\ branca\ sem\ fundo.png');
+  background-image: url('/SiteLoja/produtos/CB/2\ camisa\ the\ last\ of\ us\ branca\ sem\ fundo.png');
   -webkit-transform: translateZ(100px) scale(-1);
   transform: translateZ(100px) scale(-1);
 }
