@@ -19,7 +19,7 @@
 
 
 body  { 
-    background-image: url(/SiteLoja/assets/labirinto.jpg);
+    background-image: url(../assets/labirinto.jpg);
     font-family: 'Press Start 2P', monospace;
     min-height: 100vh;
     display: flex; 

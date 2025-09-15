@@ -17,7 +17,7 @@ function validarLogin() {
     // Verifica se dados existe e se usuário e senha batem
     if (dados && usuarioValue === dados.usuario && senhaValue === dados.senha) {
         alert("Login realizado com sucesso!");
-        window.location.href = "/index.html";
+        window.location.href = "../../index.html";
     } else {
         if (!dados || usuarioValue !== dados.usuario) {
             entradaErro(usuario, "Usuário incorreto");
