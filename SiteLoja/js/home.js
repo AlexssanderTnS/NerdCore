@@ -32,3 +32,4 @@ function clickMenu() {
                 menuList.style.display = "flex";
             }
         }
+
