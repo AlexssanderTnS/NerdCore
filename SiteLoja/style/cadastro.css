@@ -136,7 +136,7 @@ h1 {
 .parte1 {
     background-color: rgb(6, 11, 108); /* Fundo azul escuro estilo noturno/geek */
     padding: 50px 50px; /* Espaçamento interno */
-    width: 50%; /* Metade da largura da tela */
+    width: 65%; /* Metade da largura da tela */
     gap: 20px; /* Espaço entre os elementos (apesar de funcionar melhor com display flex ou grid) */
     margin-top: 5%; /* Distância do topo da página */
     margin-bottom: 5%; /* Distância do rodapé */
@@ -159,6 +159,27 @@ h1 {
     color: aliceblue; /* Cor do texto digitado */
 }
 
+.bloco1{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.bloco2{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.bloco3{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
 /* Placeholder (texto de sugestão dentro dos inputs) */
 input::placeholder {
     color: rgb(255, 255, 255); /* Branco */
@@ -185,7 +206,7 @@ input:focus::placeholder {
 /* Select dos gêneros (dropdown) */
 #generos {
     background-color: yellow; /* Fundo amarelo pra chamar atenção */
-    width: 50%; /* Metade da largura */
+    width: 95%; /* Metade da largura */
     height: 40px; /* Altura do campo */
     margin: 10px; /* Espaçamento em volta */
     border-radius: 6px; /* Arredondamento */
@@ -212,7 +233,7 @@ option {
     background-color: yellow;
     color: black;
     font-family: 'Press Start 2P', monospace;
-    width: 35%;
+    width: 25%;
     height: 50px;
     cursor: pointer;
     font-size: 20px;
@@ -235,7 +256,7 @@ option {
     background-color: yellow;
     color: black;
     font-family: 'Press Start 2P', monospace;
-    width: 35%;
+    width: 25%;
     height: 50px;
     cursor: pointer;
     font-size: 20px;
