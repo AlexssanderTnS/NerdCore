@@ -1,8 +1,8 @@
 // Mapeamento das camisas por cor e design #AQUI ESTÃO AS CAMISAS E AS IMAGENS DELA
 const shirtImages = {
     anya: {
-        branca: '2anyacamisabrancasemfundo.png',
-        preta: '1anyacamisapretasemfundo.png'
+        branca: 'SiteLoja\ produtos\ CB\ 2 anya camisa branca sem fundo.png',
+        preta: '\1anyacamisapretasemfundo.png'
     },
     chloe: {
         branca: '2camisachloebrancasemfundo.png',
@@ -86,17 +86,17 @@ function changeColor(color) {
 }
 
 // Função para animar a camisa 02 em direção à camisa 01
-function animateShirt02() {
-    const position2 = document.getElementById('position-2');
+// function animateShirt02() {
+//     const position2 = document.getElementById('position-2');
 
-    // Adicionar classe de animação
-    position2.classList.add('moving');
+//     // Adicionar classe de animação
+//     position2.classList.add('moving');
 
-    // Remover a animação após 2 segundos
-    setTimeout(() => {
-        position2.classList.remove('moving');
-    }, 2000);
-}
+//     // Remover a animação após 2 segundos
+//     setTimeout(() => {
+//         position2.classList.remove('moving');
+//     }, 2000);
+// }
 
 // Função para trocar o design da camisa (para futuras expansões)
 function changeDesign(design) {
