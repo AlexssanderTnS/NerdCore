@@ -18,25 +18,30 @@
 
     <header class="nerdbar">
         <div class="logo">
-<<<<<<< HEAD
-            <a href="index.html"><img src="/SiteLoja/assets/LogoTOPO.png" alt="logo"></a>
-=======
+
             <a href="index.html"><img src="/SiteLoja/assets/logoroxa.png" alt="logo"></a>
->>>>>>> 9e5b458c3b7e5d16f4937db3edc3a8945ba2bb94
+
             <h1><a href="index.html">NerdCore</a></h1>
         </div>
 
         <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">
-                menu
+             
             </span>
             <ul id="menu-list">
                 <nav class="link">
-                    <a href="index.html">Inicio</a>
-                    <a id="jogar" href="SiteLoja/Jogo/pacman-master/index.html">Jogue</a>
-                    <a href="SiteLoja/pages/carrinho.html">Carrinho</a>
-                    <a href="SiteLoja/pages/cadastro.html">Cadastre-se</a>
-                    <a href="SiteLoja/pages/login.html">Login</a>
+                    <form class="search-form" action="/search" method="get" role="search" aria-label="Pesquisar no site">
+                        <label for="site-search" class="visually-hidden">Pesquisar</label>
+                        <input id="site-search" name="q" type="search" placeholder="Procure sua camisa" required autocomplete="off">
+                        <button type="submit">Pesquisar</button>
+                    </form>
+                    <main class="linktopo">
+                        <a href="SiteLoja/pages/cadastro.html">Cadastre-se</a>
+                        <a href="SiteLoja/pages/login.html">Login</a>
+                        <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
+                        <!-- <a href="index.html">Inicio</a> -->
+                        <a id="jogar" href="SiteLoja/Jogo/pacman-master/index.html">Jogue</a>
+                    </main>
                 </nav>
             </ul>
         </div>
@@ -89,11 +94,6 @@
 
     </section> -->
 
-    <form class="search-form" action="/search" method="get" role="search" aria-label="Pesquisar no site">
-        <label for="site-search" class="visually-hidden">Pesquisar</label>
-        <input id="site-search" name="q" type="search" placeholder="Procure sua camisa" required autocomplete="off">
-        <button type="submit">Pesquisar</button>
-    </form>
 
     <main>
         <div class="card">

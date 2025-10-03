@@ -111,7 +111,7 @@ div.navbar {
   /* Layout flexível */
   justify-content: space-around;
   /* Espaço ao redor dos links */
-  padding: 1%;
+  padding: 5%;
   /* Espaçamento interno */
   font-size: 18px;
   /* Tamanho da fonte */
@@ -387,6 +387,62 @@ div.card img {
   /* Cobre o espaço mantendo proporção */
 }
 
+main.linktopo {
+  display: flex;
+  /* Layout flexível */
+  flex-direction: row;
+  /* Direção horizontal */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+  gap: 20px;
+  /* Espaço entre itens */
+  padding: 20px;
+  /* Espaçamento interno */
+  width: 100%;
+  /* Largura total */
+}
+
+.search-form {
+  margin-top: 90px;
+  gap: 10px;
+  align-items: center;
+  margin-right:350px;
+  margin-bottom: 80px;
+  display: flex;
+}
+
+.search-form input[type="search"] {
+  flex: 1;
+  padding: 8px 1px;
+  font-size: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  
+}
+
+.search-form button {
+  padding: 10px 14px;
+  font-size: 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #007bff;
+  color: #fff;
+}
+
+.search-form input[type="search"]:focus {
+  box-shadow: 0 0 0 3px rgb(24, 110, 207);
+  border-color: #007bff;
+}
+
+.visually-hidden {
+  color: cornflowerblue;
+  font-size: 30px;
+}
 div.Btop {
   display: flex;
   /* Layout flexível */
@@ -984,18 +1040,19 @@ footer p {
   }
 }
 
-.search-form {
+/* .search-form { */
+  /* margin-top: 80px;
   gap: 10px;
   align-items: center;
-  margin-left: 180px;
-  margin-bottom: 80px;
-  display: block
+  margin-left:30px;
+  margin-bottom: 80px; */
+  /* display: block; */
 }
 
-.search-form input[type="search"] {
+/* .search-form input[type="search"] {
   flex: 1;
   padding: 8px 1px;
-  font-size: 27px;
+  font-size: 25px;
   border: 1px solid #ccc;
   border-radius: 8px;
   outline: none;
@@ -1016,7 +1073,7 @@ footer p {
 .search-form input[type="search"]:focus {
   box-shadow: 0 0 0 3px rgb(24, 110, 207);
   border-color: #007bff;
-}
+} */
 
 .visually-hidden {
   color: cornflowerblue;
