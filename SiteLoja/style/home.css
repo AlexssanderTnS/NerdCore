@@ -402,6 +402,7 @@ main.linktopo {
   /* Espaçamento interno */
   width: 100%;
   /* Largura total */
+  font-size: 100px;
 }
 
 .search-form {
