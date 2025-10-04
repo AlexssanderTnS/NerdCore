@@ -370,6 +370,16 @@ footer p{
 
 }
 
+footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    right: 200px;
+}
+
 
 
 @media  (max-width: 768px) {
@@ -458,6 +468,6 @@ footer p{
   }
 
 
-
+  foo
 
 }

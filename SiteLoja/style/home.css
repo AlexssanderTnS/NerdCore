@@ -317,7 +317,6 @@ div.card a {
   /* Letras maiúsculas */
   margin-top: 10px;
   /* Espaço acima */
-  /* animation: pisca-cor 1s infinite; Animação de piscar a cor */
 
 }
 
@@ -387,58 +386,49 @@ div.card img {
   /* Cobre o espaço mantendo proporção */
 }
 
-main.linktopo {
-  display: flex;
-  /* Layout flexível */
-  flex-direction: row;
-  /* Direção horizontal */
-  justify-content: center;
-  /* Centraliza horizontalmente */
-  align-items: center;
-  /* Centraliza verticalmente */
-  gap: 20px;
-  /* Espaço entre itens */
-  padding: 20px;
-  /* Espaçamento interno */
+section.pesquisa {
   width: 100%;
-  /* Largura total */
-  font-size: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
 }
 
 .search-form {
-  margin-top: 90px;
-  gap: 10px;
-  align-items: center;
-  margin-right:350px;
-  margin-bottom: 80px;
   display: flex;
+  justify-content: space-around;
+  width: 84%;
+  gap: 10px;
+  padding: 20px;
 }
 
 .search-form input[type="search"] {
-  flex: 1;
-  padding: 8px 1px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #e3e6e6;
+  padding: 20px;
   font-size: 25px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  background: #fff;
-  
+  border: 6px solid #eeff00;
+  border-radius: 20px;
 }
 
 .search-form button {
-  padding: 10px 14px;
+  padding: 10px;
   font-size: 25px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   cursor: pointer;
-  background: #007bff;
-  color: #fff;
+  background: #e5e900;
+  color: #2c2b2b;
 }
 
-.search-form input[type="search"]:focus {
-  box-shadow: 0 0 0 3px rgb(24, 110, 207);
-  border-color: #007bff;
+.search-form button:hover {
+   background-color: #90970a;
+    cursor: pointer;
+    color: #272727;
 }
+
 
 .visually-hidden {
   color: cornflowerblue;
@@ -655,10 +645,19 @@ footer p {
     color: #e5e900;
     align-items: center;
     position: relative;
-    top: -37px;
+    top: -50px;
   }
 
+  #menu:hover {
+    cursor: pointer;
+    animation: pisca-cor 1s infinite;
+  }
+
+
+
   ul#menu-list {
+    position: relative;
+    top: -27px;
     display: flex;
     /* Exibe os links em linha */
     flex-direction: column;
@@ -677,7 +676,7 @@ footer p {
     width: 100%;
     position: relative;
     background-color: #302f2f;
-    top: -18%;
+    top: -25%;
   }
 
   #jogar {
@@ -731,10 +730,9 @@ footer p {
   }
 
   div.card {
-    width: 90%;
+    width: 50%;
     /* Largura total do card */
-    height: auto;
-    /* Altura automática */
+    
   }
 
   div.Btop {
@@ -1041,45 +1039,6 @@ footer p {
   }
 }
 
-/* .search-form { */
-  /* margin-top: 80px;
-  gap: 10px;
-  align-items: center;
-  margin-left:30px;
-  margin-bottom: 80px; */
-  /* display: block; */
-}
-
-/* .search-form input[type="search"] {
-  flex: 1;
-  padding: 8px 1px;
-  font-size: 25px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  background: #fff;
-  
-}
-
-.search-form button {
-  padding: 10px 14px;
-  font-size: 25px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background: #007bff;
-  color: #fff;
-}
-
-.search-form input[type="search"]:focus {
-  box-shadow: 0 0 0 3px rgb(24, 110, 207);
-  border-color: #007bff;
-} */
-
-.visually-hidden {
-  color: cornflowerblue;
-  font-size: 30px;
-}
 
 @keyframes rotateShadow {
 
@@ -1145,16 +1104,3 @@ footer p {
 }
 
 
-
-user-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: yellow;
-}
-
-.user-area .avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
