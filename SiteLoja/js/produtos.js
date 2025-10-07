@@ -196,3 +196,114 @@ window.onload = async function () {
         document.body.innerHTML = "<h1>Erro ao carregar o produto.</h1>";
     }
 };
+
+
+document.querySelectorAll('.demo-shirt').forEach(shirt => {
+    shirt.addEventListener('mouseenter', function () {
+        this.style.transform = 'scale(1.1) rotate(2deg)';
+    });
+
+    shirt.addEventListener('mouseleave', function () {
+        this.style.transform = 'scale(1) rotate(0deg)';
+    });
+});
+
+
+
+
+
+function addClickEffect(element) {
+    element.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+        element.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            element.style.transform = 'scale(1)';
+        }, 100);
+    }, 100);
+}
+
+
+function createParticleEffect(element) {
+    for (let i = 0; i < 10; i++) {
+        const particle = document.createElement('div');
+        particle.style.position = 'absolute';
+        particle.style.width = '4px';
+        particle.style.height = '4px';
+        particle.style.backgroundColor = '#e9c80c';
+        particle.style.borderRadius = '50%';
+        particle.style.pointerEvents = 'none';
+        particle.style.zIndex = '1000';
+
+        const rect = element.getBoundingClientRect();
+        particle.style.left = (rect.left + rect.width / 2) + 'px';
+        particle.style.top = (rect.top + rect.height / 2) + 'px';
+
+        document.body.appendChild(particle);
+
+        // Animar a partícula
+        const angle = (Math.PI * 2 * i) / 10;
+        const distance = 50 + Math.random() * 50;
+        const duration = 1000 + Math.random() * 500;
+
+        particle.animate([
+            {
+                transform: 'translate(0, 0) scale(1)',
+                opacity: 1
+            },
+            {
+                transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
+                opacity: 0
+            }
+        ], {
+            duration: duration,
+            easing: 'ease-out'
+        }).onfinish = () => {
+            particle.remove();
+        };
+    }
+}
+
+// Adicionar efeito de partículas ao trocar cor
+const originalChangeColor = changeColor;
+changeColor = function (color) {
+    const activeOption = document.querySelector('.color-option.active');
+    if (activeOption) {
+        createParticleEffect(activeOption);
+    }
+    originalChangeColor(color);
+};
+
+// Função para adicionar sons (opcional - requer arquivos de áudio)
+function playSound(soundType) {
+    // Esta função pode ser expandida para incluir efeitos sonoros
+    // quando arquivos de áudio forem adicionados ao projeto
+    console.log(`Playing ${soundType} sound`);
+}
+
+// Função para carregar preferência do usuário
+function loadUserPreference() {
+    const savedColor = localStorage.getItem('nerdcore_color_preference');
+    const savedDesign = localStorage.getItem('nerdcore_design_preference');
+
+    if (savedColor && shirtImages[currentDesign][savedColor]) {
+        changeColor(savedColor);
+    }
+
+    if (savedDesign && shirtImages[savedDesign]) {
+        currentDesign = savedDesign;
+        updateDemoImages();
+    }
+}
+
+// Carregar preferências ao inicializar
+document.addEventListener('DOMContentLoaded', function () {
+    loadUserPreference();
+});
+
+// Salvar preferências quando a cor for alterada
+const originalChangeColorWithSave = changeColor;
+changeColor = function (color) {
+    originalChangeColorWithSave(color);
+    saveUserPreference();
+};
+

@@ -337,16 +337,73 @@ div.caixa #botaocompra {
     align-items: center;
     padding: 20px;
     border-radius: 15px;
+    background-image: url(/SiteLoja/assets/labirinto.jpg);
+    background-size: cover;
+    background-position: center;
+    
     background-color: rgba(233, 200, 12, 0.1);
     transition: all 0.5s ease;
     position: relative;
 }
 
+
+
+@keyframes pisca-cor {
+    0% {
+      color: #FF0000;
+    }
+  
+    25% {
+      color: #FFB8FF;
+    }
+  
+    50% {
+      color: #00FFFF;
+    }
+  
+    75% {
+      color: #FFB852;
+    }
+  
+    100% {
+      color: #FF0000;
+    }
+  }
+  
+  @keyframes link-bounce {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.15) rotate(-3deg);
+    }
+  
+    70% {
+      transform: scale(0.95) rotate(2deg);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+
+
+
 .shirt-position span {
-    color: #f5f5f5;
+    color: #e5e900;
+    animation: pisca-cor 1s infinite;
     font-size: 14px;
     margin-top: 15px;
     text-align: center;
+}
+
+.demo{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
 }
 
 .demo-shirt {
@@ -367,30 +424,46 @@ div.caixa #botaocompra {
     transform: rotate(10deg);
 }
 
-/* Footer */
 footer {
     border-top: #eeff00 solid 3px;
-    background-color: #302f2f; 
+    background-color: #302f2f;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-footer img {
-    width: 100%;
-    height: 90px;
-    position: relative;
-    right: 400px;
-}
-
-footer p {
-    color: #e5e900;
-    display: flex;
+    padding: 10px;
     align-items: center;
-    font-size: 10px;
-    text-decoration: underline;
+    justify-content: space-around;
+  }
+  
+  .footer-logo{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    
+    
+  }
+  
+  
+  footer img {
+    width: 20%;
+  }
+  
+  .footer-content{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
-}
+    align-items: center;
+    margin-right: 70px;
+    
+  }
+  
+  .footer-content li a{
+    color: #e5e900;
+    text-decoration: none;
+    font-size: 10px !important;
+  }
+  
+  
 
 /* Media Queries para responsividade */
 @media screen and (max-width:769px) {
