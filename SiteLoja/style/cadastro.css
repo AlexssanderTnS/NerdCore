@@ -364,7 +364,9 @@ footer p{
         flex-direction: column;
         /* Muda direção para coluna */
         align-items: center;
+        display: flex;
         /* Centraliza itens */
+        /* margin-top: ; */
     }
 
     div.navbar ul {
@@ -482,6 +484,7 @@ footer p{
         border-radius: 12px;
         box-shadow: 0 0 20px rgba(246, 255, 0, 0.8);
         text-align: auto;
+        align-items: colum;
     }
 
     /*inputs*/
@@ -499,7 +502,28 @@ footer p{
 
 
     }
-
+    main.bloco1{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    section.bloco2{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    section.bloco3{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
 
     /*coloração das fontes dos inputs*/
     input::placeholder {
