@@ -104,6 +104,10 @@ div.logo {
     /* Espaço ao redor dos itens */
 }
 
+div.logo h1{
+   font-size: 25px !important; 
+}
+
 div.navbar {
     display: flex;
     /* Layout flexível */
@@ -297,44 +301,60 @@ h1 {
     animation: pisca-cor 1s infinite;
 }
 
-
 footer {
     border-top: #eeff00 solid 3px;
     background-color: #302f2f;
     display: flex;
     padding: 10px;
-    width: 100%;
-    margin-top: 60px;
+    margin-bottom: -20px;
     align-items: center;
-    justify-content: space-around;
-}
-
-.footer-logo {
+    justify-content: space-between;
+  }
+  
+  .footer-logo{
     display: flex;
     flex-direction: column;
-    padding: 30px;
-
-
-}
-
-
-footer img {
+    padding: 30px;  
+  }
+  
+  .footer-logo h4{
+    color: #eeff00;
+  }
+  
+  
+  footer img {
     width: 20%;
-}
-
-.footer-content {
+  }
+  
+  .footer-content{
     margin-top: 15px;
     display: flex;
+    text-align: right;
     flex-direction: column;
     gap: 20px;
     justify-content: center;
     align-items: center;
-    margin-right: 70px;
-
-}
-
-.footer-content li a {
+    margin-right: 70px; 
+  }
+  
+  .footer-content h4{
+    color: #eeff00;
+  }
+  .footer-content li{
+    list-style: none;
+  }
+  
+  .footer-content li a{
     color: #e5e900;
     text-decoration: none;
     font-size: 10px !important;
-}
+  }
+  
+  .footer-content ul li a:hover{
+    animation: pisca-cor 1s infinite;
+  }
+  
+  
+  
+  
+  

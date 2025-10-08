@@ -429,16 +429,18 @@ footer {
     background-color: #302f2f;
     display: flex;
     padding: 10px;
+    margin-bottom: -20px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
   }
-  
   .footer-logo{
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    
-    
+    padding: 30px;  
+  }
+  
+  .footer-logo h4{
+    color: #eeff00;
   }
   
   
@@ -453,8 +455,15 @@ footer {
     gap: 20px;
     justify-content: center;
     align-items: center;
-    margin-right: 70px;
-    
+    text-align: right;
+    margin-right: 70px; 
+  }
+  
+  .footer-content h4{
+    color: #eeff00;
+  }
+  .footer-content li{
+    list-style: none;
   }
   
   .footer-content li a{
@@ -462,6 +471,12 @@ footer {
     text-decoration: none;
     font-size: 10px !important;
   }
+  
+  .footer-content ul li a:hover{
+    animation: pisca-cor 1s infinite;
+  }
+  
+  
   
   
 
