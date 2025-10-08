@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Importa fonte do Google Fonts */
+
+* {
+    padding: 0;
+    /* Remove o espaçamento interno padrão */
+    margin: 0;
+    /* Remove o espaçamento externo padrão */
+    box-sizing: border-box;
+    /* Inclui padding e border no tamanho total */
+    font-family: 'Press Start 2P', monospace;
+    /* Define fonte padrão */
+    font-weight: 500;
+    /* Define peso da fonte */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Suaviza o scroll */
+    overflow-x: hidden;
+    /* Esconde rolagem horizontal */
+    scroll-padding-top: 130px;
+    /* Espaço para header fixo */
+
+    /* Isso garante que o conteúdo não fique escondido atrás do header fixo */
+}
+
+body {
+    background-image: url("../assets/labirinto.jpg");
+    /* Define imagem de fundo */
+    width: 100%;
+    /* Largura total */
+    font-family: 'Fredoka One', sans-serif;
+    /* Fonte alternativa */
+}
+
+header {
+    position: sticky;
+    /* Fixa o header no topo ao rolar */
+    top: 0;
+    /* Alinha ao topo */
+    left: 0;
+    /* Alinha à esquerda */
+    width: 100%;
+    /* Largura total */
+    border-bottom: solid #e5e900;
+    /* Borda inferior amarela */
+
+}
+
+
+
+header.nerdbar {
+    display: flex;
+    /* Layout flexível */
+    align-items: center;
+    /* Centraliza verticalmente */
+    gap: 15px;
+    /* Espaço entre itens */
+    padding: 1%;
+    /* Espaçamento interno */
+    background-color: #302f2f;
+    /* Cor de fundo */
+    flex-direction: row;
+    /* Direção horizontal */
+    justify-content: space-between;
+    /* Espaço entre itens */
+    height: 130px;
+    /* Altura do header */
+    position: sticky;
+    /* Fixa ao rolar */
+    z-index: 100;
+    /* Sobrepõe outros elementos */
+}
+
+div.logo img {
+    height: 150px;
+    /* Altura da logo */
+    padding: 3%;
+    /* Espaçamento interno */
+}
+
+div.logo img:hover {
+    transform: rotate(720deg);
+    /* Gira a logo ao passar o mouse */
+    transition: transform 1s ease;
+    /* Animação suave */
+}
+
+div.logo {
+    display: flex;
+    /* Layout flexível */
+    flex-direction: row;
+    /* Direção horizontal */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    text-transform: uppercase;
+    /* Letras maiúsculas */
+    font-style: italic;
+    /* Itálico */
+    justify-content: space-around;
+    /* Espaço ao redor dos itens */
+}
+
+div.navbar {
+    display: flex;
+    /* Layout flexível */
+    justify-content: space-around;
+    /* Espaço ao redor dos links */
+    padding: 5%;
+    /* Espaçamento interno */
+    font-size: 18px;
+    /* Tamanho da fonte */
+    gap: 5%;
+    /* Espaço entre links */
+}
+
+div.navbar a {
+    text-decoration: none;
+    /* Remove sublinhado */
+    text-transform: uppercase;
+    /* Letras maiúsculas */
+    color: #e5e900;
+    /* Cor do texto */
+    transition: color 0.3s ease;
+}
+
+
+nav {
+    display: flex;
+    /* Layout flexível */
+    gap: 25px;
+    /* Espaço entre itens */
+    font-size: 10px;
+    /* Tamanho da fonte */
+}
+
+#menu {
+    display: none;
+    /* Esconde o menu por padrão */
+}
+
+nav a:hover {
+    cursor: pointer;
+    animation: pisca-cor 1s infinite;
+}
+
+h1 a {
+    text-decoration: none;
+    /* Remove sublinhado */
+    color: #f2ff03;
+    /* Cor do título */
+    transition: color
+}
+
+@keyframes pisca-cor {
+    0% {
+        color: #FF0000;
+    }
+
+    25% {
+        color: #FFB8FF;
+    }
+
+    50% {
+        color: #00FFFF;
+    }
+
+    75% {
+        color: #FFB852;
+    }
+
+    100% {
+        color: #FF0000;
+    }
+}
+
+
+h2 {
+    color: violet;
+    /* Cor do subtítulo */
+}
+
+h1 {
+    font-family: 'Press Start 2P', monospace;
+    /* Fonte do título */
+
+}
+
+#titulo {
+    margin-top: 10px;
+    text-align: center;
+    /* Centraliza o texto */
+
+}
+
+#titulo h1 {
+    padding: 20px;
+    /* Espaçamento interno */
+    font-size: 2.5rem;
+    /* Tamanho da fonte */
+    color: #eeff00;
+    /* Cor do texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Sombra para melhor legibilidade */
+}
+
+/* === SEÇÃO PRINCIPAL === */
+.nerdcore-section {
+    position: relative;
+    color: #fff;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.nerdcore-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-image: url(/SiteLoja/assets/labirinto.jpg);
+    /* Amarelo vibrante */
+    z-index: 0;
+}
+
+/* === CONTAINER DE CARTÕES === */
+.nerdcore-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: normal;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0 40px;
+}
+
+/* === CARTÕES === */
+.nerd-card {
+    background-color: #ffffff;
+    color: #0a1f44;
+    border-radius: 10px;
+    width: 220px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.nerd-card:hover {
+    transform: translateY(-10px);
+}
+
+.nerd-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* === CONTEÚDO INTERNO === */
+.nerd-info {
+    padding: 20px;
+}
+
+.nerd-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #0a1f44;
+}
+
+.nerd-info p {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* === BOTÃO "MAIS" === */
+.nerd-btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #0a1f44;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.nerd-btn:hover {
+    background-color: #181815;
+    cursor: pointer;
+
+    animation: pisca-cor 1s infinite;
+}
+
+
+footer {
+    border-top: #eeff00 solid 3px;
+    background-color: #302f2f;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    margin-top: 60px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+
+
+}
+
+
+footer img {
+    width: 20%;
+}
+
+.footer-content {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 70px;
+
+}
+
+.footer-content li a {
+    color: #e5e900;
+    text-decoration: none;
+    font-size: 10px !important;
+}
