@@ -3,7 +3,7 @@
 // ==========================
 const shirtImages = {
     anya: {
-        branca: "/SiteLoja/produtos/CB/2 camisa anya branca sem fundo.png",
+        branca: "/SiteLoja/produtos/CB/2 anya camisa branca sem fundo.png",
         preta: "/SiteLoja/produtos/CP/1 anya camisa preta sem fundo.png"
     },
     chloe: {
