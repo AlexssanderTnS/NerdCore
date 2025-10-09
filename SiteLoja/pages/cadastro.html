@@ -17,29 +17,39 @@
 
 
 
-  <header class="nerdbar">
+  
+        <header class="nerdbar">
+        <div class="logo">
 
-    <div class="logo">
-      <img src="/SiteLoja/assets/logoroxa.png" alt="logo">
-      <h1><a href="/">NerdCore</a></h1>
-    </div>
+            <a href="/index.html"><img src="/SiteLoja/assets/logoroxa.png" alt="logo"></a>
 
-    <div class="navbar">
-      <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">
-        menu
-      </span>
-      <ul id="menu-list">
-        <nav class="link">
+            <h1><a href="/index.html">NerdCore</a></h1>
+        </div>
 
-          <a href="../../index.html">Inicio</a>
-          <a href="../pages/cadastro.html">Cadastre-se</a>
-          <a href="../pages/login.html">Login</a>
-          <a href="/SiteLoja/pages/grupo.html">Quem Somos</a>
-          <!-- <a href="../pages/carrinho.html">Carrinho</a> -->
-        </nav>
-      </ul>
-    </div>
-  </header>
+      <div class="navbar">
+            <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
+            <ul id="menu-list">
+                <nav class="link">
+                        <a href="/index.html">Inicio</a>
+                        <a href="/SiteLoja/pages/grupo.html">Quem Somos</a>
+                        <div class="dropdown">
+                        <a onclick="dropdownToggle()">Produtos <img src="/SiteLoja/assets/arrow.svg" alt="arrow_drop_down" /></a>
+                        <div class="dropdown-content">
+                            <a href="/index.html#main">Camisetas</a>
+                                <a href="/SiteLoja/pages/produção.html">Canecas</a>
+                                <a href="/SiteLoja/pages/produção.html">Posters</a>
+                            </div>
+                        </div>
+                        <a href="/SiteLoja/pages/cadastro.html">Cadastre-se</a>
+                        <a href="/SiteLoja/pages/login.html">Login</a>
+                        
+                        
+                        <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
+                </nav>
+            </ul>
+        </div>
+        
+    </header>
 
 
 

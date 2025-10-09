@@ -16,22 +16,38 @@
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
     <div class="elfsight-app-47963e1a-79b6-4ecf-ac6d-35be428b39f3" data-elfsight-app-lazy></div>
 
-    <header class="nerdbar">
+  
+      <header class="nerdbar">
         <div class="logo">
+
             <a href="/index.html"><img src="/SiteLoja/assets/logoroxa.png" alt="logo"></a>
+
             <h1><a href="/index.html">NerdCore</a></h1>
         </div>
-        <div class="navbar">
+
+      <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
                 <nav class="link">
-                    <a href="/index.html">Inicio</a>
-                    <a href="/SiteLoja/pages/cadastro.html">Cadastre-se</a>
-                    <a href="/SiteLoja/pages/login.html">Login</a>
-                    <a href="/SiteLoja/pages/grupo.html">Quem Somos</a>
+                        <a href="/index.html">Inicio</a>
+                        <a href="/SiteLoja/pages/grupo.html">Quem Somos</a>
+                        <div class="dropdown">
+                        <a onclick="dropdownToggle()">Produtos <img src="/SiteLoja/assets/arrow.svg" alt="arrow_drop_down" /></a>
+                        <div class="dropdown-content">
+                            <a href="/index.html#main">Camisetas</a>
+                                <a href="/SiteLoja/pages/produção.html">Canecas</a>
+                                <a href="/SiteLoja/pages/produção.html">Posters</a>
+                            </div>
+                        </div>
+                        <a href="/SiteLoja/pages/cadastro.html">Cadastre-se</a>
+                        <a href="/SiteLoja/pages/login.html">Login</a>
+                        
+                        
+                        <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
                 </nav>
             </ul>
         </div>
+        
     </header>
         <div id="titulo">
             <h1>Os Criadores:</h1>
@@ -107,6 +123,8 @@
 
 
     <img src="/SiteLoja/assets/5d49b2d6-58fa-4251-85d1-188f7ecc950b.png" alt="">
+
+    <script src="/SiteLoja/js/home.js"></script>
 </body>
 
 </html>

@@ -139,6 +139,7 @@ nav {
     display: flex;
     gap: 25px;
     font-size: 10px;
+    align-items: flex-end;
     
 }
 
@@ -168,6 +169,57 @@ h1 {
     font-family: 'Press Start 2P', monospace;
     font-size: 15px;
     color: #f2ff03;
+}
+
+
+
+.dropdown {
+  position: relative;
+  /* Posição relativa para o dropdown */
+  display: inline-block;
+  /* Exibe como bloco inline */
+}
+
+.dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  background-color: #302f2f;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border: 2px solid #e5e900;
+  border-radius: 10px;
+  /* Bordas arredondadas */
+  text-align: left;
+
+}
+
+.dropdown-content a {
+  color: #e5e900;
+  /* Cor do link */
+  padding: 12px 16px;
+  /* Espaçamento interno */
+  text-decoration: none;
+  /* Remove sublinhado */
+  display: block;
+  /* Exibe como bloco */
+  text-align: left;
+  /* Alinha à esquerda */
+}
+
+.dropdown-content a:hover {
+  background-color: #90970a;
+  animation: pisca-cor 1s infinite;
+  transition: all 0.5s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+    opacity: 1;
+  visibility: visible
 }
 
 
