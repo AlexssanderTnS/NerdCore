@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Importa fonte do Google Fonts */
+
+
+
+* {
+  padding: 0;
+  /* Remove o espaçamento interno padrão */
+  margin: 0;
+  /* Remove o espaçamento externo padrão */
+  box-sizing: border-box;
+  /* Inclui padding e border no tamanho total */
+  font-family: 'Press Start 2P', monospace;
+  /* Define fonte padrão */
+  font-weight: 500;
+  /* Define peso da fonte */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Suaviza o scroll */
+  overflow-x: hidden;
+  /* Esconde rolagem horizontal */
+  scroll-padding-top: 130px;
+  /* Espaço para header fixo */
+  width: 100vw;
+  /* Isso garante que o conteúdo não fique escondido atrás do header fixo */
+}
+
+body {
+  background-image: url("../assets/labirinto.jpg");
+  /* Define imagem de fundo */
+  width: 100%;
+  /* Largura total */
+  font-family: 'Fredoka One', sans-serif;
+  /* Fonte alternativa */
+}
+
+header {
+  position: sticky;
+  /* Fixa o header no topo ao rolar */
+  top: 0;
+  /* Alinha ao topo */
+  left: 0;
+  /* Alinha à esquerda */
+  width: 100%;
+  /* Largura total */
+  border-bottom: solid #e5e900;
+  /* Borda inferior amarela */
+
+}
+
+
+
+header.nerdbar {
+  display: flex;
+  /* Layout flexível */
+  align-items: center;
+  /* Centraliza verticalmente */
+  gap: 15px;
+  /* Espaço entre itens */
+  padding: 1%;
+  /* Espaçamento interno */
+  background-color: #302f2f;
+  /* Cor de fundo */
+  flex-direction: row;
+  /* Direção horizontal */
+  justify-content: space-between;
+  /* Espaço entre itens */
+  height: 130px;
+  /* Altura do header */
+  position: sticky;
+  /* Fixa ao rolar */
+  z-index: 100;
+  /* Sobrepõe outros elementos */
+}
+
+div.logo img {
+  height: 150px;
+  /* Altura da logo */
+  padding: 3%;
+  /* Espaçamento interno */
+}
+
+div.logo img:hover {
+  transform: rotate(720deg);
+  /* Gira a logo ao passar o mouse */
+  transition: transform 1s ease;
+  /* Animação suave */
+}
+
+div.logo {
+  display: flex;
+  /* Layout flexível */
+  flex-direction: row;
+  /* Direção horizontal */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+  text-transform: uppercase;
+  /* Letras maiúsculas */
+  font-style: italic;
+  /* Itálico */
+  justify-content: space-around;
+  /* Espaço ao redor dos itens */
+}
+
+div.navbar {
+  display: flex;
+  /* Layout flexível */
+  justify-content: space-around;
+  /* Espaço ao redor dos links */
+  padding: 5%;
+  /* Espaçamento interno */
+  font-size: 18px;
+  /* Tamanho da fonte */
+  gap: 5%;
+  /* Espaço entre links */
+}
+
+div.navbar a {
+  text-decoration: none;
+  /* Remove sublinhado */
+  text-transform: uppercase;
+  /* Letras maiúsculas */
+  color: #e5e900;
+  /* Cor do texto */
+  transition: color 0.3s ease;
+}
+
+
+nav {
+  display: flex;
+  /* Layout flexível */
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: flex-end;
+  /* Alinha à parte inferior */
+
+  gap: 25px;
+  /* Espaço entre itens */
+  font-size: 10px;
+  /* Tamanho da fonte */
+}
+
+#menu {
+  display: none;
+  /* Esconde o menu por padrão */
+}
+
+nav a:hover {
+  cursor: pointer;
+  animation: pisca-cor 1s infinite;
+}
+
+h1 a {
+  text-decoration: none;
+  /* Remove sublinhado */
+  color: #f2ff03;
+  /* Cor do título */
+  transition: color
+}
+
+#categorias:hover {
+  cursor: pointer;
+  animation: pisca-cor 1s infinite;
+}
+
+h1 a {
+  text-decoration: none;
+  /* Remove sublinhado */
+  color: #f2ff03;
+  /* Cor do título */
+  transition: color 0.3s ease;
+}
+
+
+
+h2 {
+  color: violet;
+  /* Cor do subtítulo */
+}
+
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  /* Fonte do título */
+  font-size: 25px;
+  /* Tamanho do título */
+  padding: 5%;
+  /* Espaçamento interno */
+  color: #f2ff03;
+  /* Cor do título */
+}
+
+
+
+
+.dropdown {
+  position: relative;
+  /* Posição relativa para o dropdown */
+  display: inline-block;
+  /* Exibe como bloco inline */
+}
+
+.dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  background-color: #302f2f;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border: 2px solid #e5e900;
+  border-radius: 10px;
+  /* Bordas arredondadas */
+  text-align: left;
+
+}
+
+.dropdown-content a {
+  color: #e5e900;
+  /* Cor do link */
+  padding: 12px 16px;
+  /* Espaçamento interno */
+  text-decoration: none;
+  /* Remove sublinhado */
+  display: block;
+  /* Exibe como bloco */
+  text-align: left;
+  /* Alinha à esquerda */
+}
+
+.dropdown-content a:hover {
+  background-color: #90970a;
+  animation: pisca-cor 1s infinite;
+  transition: all 0.5s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+    opacity: 1;
+  visibility: visible
+}
+
+
+@keyframes pisca-cor {
+  0% {
+    color: #FF0000;
+  }
+
+  25% {
+    color: #FFB8FF;
+  }
+
+  50% {
+    color: #00FFFF;
+  }
+
+  75% {
+    color: #FFB852;
+  }
+
+  100% {
+    color: #FF0000;
+  }
+}
+
+#construcao{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+footer {
+  border-top: #eeff00 solid 3px;
+  background-color: #302f2f;
+  display: flex;
+  padding: 10px;
+  margin-bottom: -20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;  
+}
+
+.footer-logo h4{
+  color: #eeff00;
+}
+
+
+footer img {
+  width: 20%;
+}
+
+.footer-content{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right;
+  justify-content: center;
+  align-items: center;
+  margin-right: 70px; 
+}
+
+.footer-content h4{
+  color: #eeff00;
+}
+.footer-content li{
+  list-style: none;
+}
+
+.footer-content li a{
+  color: #e5e900;
+  text-decoration: none;
+  font-size: 10px !important;
+}
+
+.footer-content ul li a:hover{
+  animation: pisca-cor 1s infinite;
+}
+
+
+@media (max-width: 768px) {
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', monospace;
+    /* Fonte padrão */
+    font-weight: 500;
+    /* Peso da fonte */
+    text-align: center;
+    /* Centraliza o texto */
+  }
+
+  body {
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+
+  /* começem a copiar daqui   */
+
+  header {
+    width: 100%;
+    /* Largura total do header */
+  }
+
+  header.nerdbar {
+    flex-direction: column;
+    /* Muda direção para coluna */
+    align-items: center;
+    /* Centraliza itens */
+  }
+
+  div.navbar ul {
+    display: none;
+  }
+
+  div.logo img {
+    height: 100px;
+    /* Reduz altura da logo */
+  }
+
+  div.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-style: italic;
+    justify-content: flex-end;
+
+  }
+
+  div.navbar {
+    flex-direction: column;
+    /* Muda direção para coluna */
+    gap: 10px;
+    /* Espaço entre links reduzido */
+  }
+
+  div.navbar a {
+    font-size: 14px;
+    /* Reduz tamanho da fonte */
+    padding: 5px;
+    /* Adiciona espaçamento interno */
+  }
+
+  #menu {
+    display: block;
+    /* Exibe o menu */
+    color: #e5e900;
+    align-items: center;
+    position: relative;
+    top: -50px;
+  }
+
+  #menu:hover {
+    cursor: pointer;
+    animation: pisca-cor 1s infinite;
+  }
+
+
+
+  ul#menu-list {
+    position: relative;
+    top: -27px;
+    display: flex;
+    /* Exibe os links em linha */
+    flex-direction: column;
+    /* Muda direção para coluna */
+    align-items: center;
+    /* Centraliza links */
+    gap: 10px;
+    /* Espaço entre links */
+  }
+
+  nav.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 10px; */
+    width: 100%;
+    position: relative;
+    background-color: #302f2f;
+    top: -10%;
+  }
+
+  #jogar {
+    display: none;
+  }
+

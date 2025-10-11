@@ -328,8 +328,9 @@ h1 {
 }
 
 .nerd-info p {
-    font-size: 0.9rem;
+       font-size: 13px !important;
     color: #333;
+    text-align: center;
     margin-bottom: 15px;
 }
 

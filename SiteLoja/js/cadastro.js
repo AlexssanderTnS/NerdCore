@@ -57,7 +57,7 @@ form.addEventListener("submit", (evento) => {
   if (erros.length === 0) {
     armazenamentoDeDados();
     alert("Usuário Cadastrado com sucesso");
-    window.location.href = "/Projetos/NerdCore/SiteLoja/pages/login.html";
+    window.location.href = "/SiteLoja/pages/login.html";
 
     form.reset();
   }

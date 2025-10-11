@@ -783,16 +783,6 @@ footer img {
     top: -10%;
   }
 
-  #jogar {
-    display: none;
-  }
-
-  /* Copiem até aqui */
-
-
-
-
-
 
   div.Banner-Principal {
 
@@ -837,10 +827,6 @@ footer img {
     width: 50%;
     /* Largura total do card */
     
-  }
-
-  div.Btop {
-    display: none;
   }
 
 }
