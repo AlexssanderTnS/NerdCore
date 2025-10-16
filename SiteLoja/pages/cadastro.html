@@ -61,7 +61,7 @@
 
   <!--inputs iniciais-->
 
-  <form class="parte1" name="formulario" id="form" action="../php/login.php" method="POST">
+  <form class="parte1" name="formulario" id="form" action="/SiteLoja/php/cadastro.php" method="POST">
     <h1>Cadastre-se no estilo!</h1>
 
     <main class="bloco1">
@@ -99,10 +99,10 @@
       <!--Selecionar o gênero-->
       <div class="botao-campo" id="botao-container">
         <select select name="genero" id="generos">
-          <option value="">Gênero</option>
-          <option value="feminino">Feminino</option>
-          <option value="masculino">Masculino</option>
-          <option value="outro/prefironaodizer">Outro/Prefiro não dizer</option>
+          <option name="genero">Gênero</option>
+          <option name="feminino">Feminino</option>
+          <option name="masculino">Masculino</option>
+          <option name="outro/prefironaodizer">Outro/Prefiro não dizer</option>
         </select>
         <p>erro</p>
       </div>
@@ -113,7 +113,7 @@
       </div>
 
       <div class="botao-campo">
-        <input type="tel"  id="celular" placeholder="Cel. (XX) XXXXX-XXXX" name="cell">
+        <input type="tel"  id="celular" placeholder="Cel. (XX) XXXXX-XXXX" name="cll">
         <p>erro</p>
       </div>
       <div class="botao-campo">
@@ -158,10 +158,10 @@
 
     <section class="botao">
       <div class="pronto1">
-        <button type="submit" id="pronto">Pronto!</button>
+        <button type="submit" name="pronto" id="pronto">Pronto!</button>
       </div>
       <div class="limpar1">
-        <button id="limpar">Limpar tudo</button>
+        <button name="limpar" id="limpar">Limpar tudo</button>
       </div>
     </section>
 
