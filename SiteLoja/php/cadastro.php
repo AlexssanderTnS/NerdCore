@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $confsenha =$_POST['confsenha'];
-    $date = $_POST['date'];
+    $data_nascimento = $_POST['date'];
     $mae = $POST['mae'];
     $genero = $_POST['genero'];
     $cpf = $_POST['cpf'];
