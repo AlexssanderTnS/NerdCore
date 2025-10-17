@@ -57,6 +57,8 @@ form.addEventListener("submit", (evento) => {
     evento.preventDefault();
   } 
   // Se não houver erros, o form envia normalmente para o action do HTML
+   window.location.href = "/SiteLoja/pages/login.html";
+   
 });
 
 // === BOTÃO LIMPAR ===
