@@ -40,7 +40,7 @@
     //Validações dos campos
 
     if (!preg_match("/^[\w]+(\.[\w]+)?@(gmail|hotmail|outlook|email)\.com$/", $email)){
-        die("Endereço de email inválido. Por favor, tente novamente.");
+         echo ("Endereço de email inválido. Por favor, tente novamente.");
     } 
 
     if (!preg_match("/^[a-zA-Z]{8}$/", $senha)) {
