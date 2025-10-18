@@ -15,7 +15,7 @@ try {
     $con_server = new PDO ("mysql:host=".$localhost, $user, $pass);
     $con_server->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //criação do banco de dados
-    $sql_banco ="CREATE DATABASE IF NOT EXISTS '$dbname' CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci";
+    $sql_banco ="CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci";
 
     $con_server -> exec($sql_banco);
     echo "Banco de dados $dbname criado com sucesso!";
