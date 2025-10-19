@@ -16,6 +16,7 @@ const cidade = document.getElementById("cidade");
 const bairro = document.getElementById("bairro");
 const rua = document.getElementById("rua");
 const numero = document.getElementById("numero");
+const complemento = document.getElementById("complemento");
 
 // Botões
 const campos = document.querySelectorAll(".botao-campo input");
@@ -32,6 +33,7 @@ const cpfPadrao = /^(?!^(\d)\1{10}$)\d{11}$/;
 
 // === SUBMIT DO FORMULÁRIO ===
 form.addEventListener("submit", (evento) => {
+  evento.preventDefault();
   // Validações
   checkEmail();
   checkUsuario();
@@ -54,12 +56,14 @@ form.addEventListener("submit", (evento) => {
 
   if (erros.length > 0) {
     // Impede envio só se houver erros
-    evento.preventDefault();
+    
   } 
   // Se não houver erros, o form envia normalmente para o action do HTML
    window.location.href = ".../pages/login.html";
    
-});
+   
+   
+
 
 // === BOTÃO LIMPAR ===
 limpar.addEventListener("click", (evento) => {
