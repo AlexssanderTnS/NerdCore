@@ -16,6 +16,7 @@ const cidade = document.getElementById("cidade");
 const bairro = document.getElementById("bairro");
 const rua = document.getElementById("rua");
 const numero = document.getElementById("numero");
+const complemento = document.getElementById("complemento");
 
 // Botões
 const campos = document.querySelectorAll(".botao-campo input");
@@ -32,6 +33,7 @@ const cpfPadrao = /^(?!^(\d)\1{10}$)\d{11}$/;
 
 // === SUBMIT DO FORMULÁRIO ===
 form.addEventListener("submit", (evento) => {
+  evento.preventDefault();
   // Validações
   checkEmail();
   checkUsuario();
@@ -54,12 +56,53 @@ form.addEventListener("submit", (evento) => {
 
   if (erros.length > 0) {
     // Impede envio só se houver erros
-    evento.preventDefault();
+    
   } 
-  // Se não houver erros, o form envia normalmente para o action do HTML
-   window.location.href = "/SiteLoja/pages/login.html";
+  // Envio dos dados para o PHP
+   const formData = new FormData();
+    formData.append("nome", nome.value);
+    formData.append("usuario", usuario.value);
+    formData.append("senha", senha.value);
+    formData.append("confsenha", conSenha.value);
+    formData.append("genero", genero.value);
+    formData.append("cpf", cpf.value.replace(/\D/g, ''));
+    formData.append("nascimento", nascimento.value);
+    formData.append("cll", cel.value.replace(/\D/g, ''));
+    formData.append("fixo", tel.value.replace(/\D/g, ''));
+    formData.append("mae", mae.value);
+    formData.append("cep", cep.value.replace(/\D/g, ''));
+    formData.append("estado", estado.value);
+    formData.append("email", email.value);
+    formData.append("cidade", cidade.value);
+    formData.append("bairro", bairro.value);
+    formData.append("rua", rua.value);
+    formData.append("numero", numero.value);
+    formData.append("complemento",complemento ? complemento.value :"");
+    
+    fetch("../php/cadastro.php", {
+      method:"POST",
+      body: formData,
+    })
+    //Captura de erro 
+    .then(res => res.text())
+    .then(retorno => {
+      if(retorno.includes("sucesso")){
+        console.log(retorno);
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "/SiteLoja/pages/login.html";
+      }else{
+        alert("Erro no cadastro: " + retorno);
+      }
+    })
+    .catch(erro => {
+      alert("Erro na requisição: " + erro);
+    });
+   });
+      
    
-});
+   
+   
+
 
 // === BOTÃO LIMPAR ===
 limpar.addEventListener("click", (evento) => {
