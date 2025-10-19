@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/SiteLoja/style/login.css" />
-    <link rel="icon" href="/SiteLoja/assets/LogoTOPO.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../style/login.css" />
+    <link rel="icon" href="../assets/LogoTOPO.png" type="image/x-icon" />
     <script src="../js/login.js" defer></script>
     <title>Login</title>
     <link rel="stylesheet"
@@ -19,7 +19,7 @@
        <header class="nerdbar">
         <div class="logo">
 
-            <a href="/index.html"><img src="/SiteLoja/assets/logoroxa.png" alt="logo"></a>
+            <a href="/index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
 
             <h1><a href="/index.html">NerdCore</a></h1>
         </div>
@@ -29,17 +29,17 @@
             <ul id="menu-list">
                 <nav class="link">
                         <a href="/index.html">Inicio</a>
-                        <a href="/SiteLoja/pages/grupo.html">Quem Somos</a>
+                        <a href="../pages/grupo.html">Quem Somos</a>
                         <div class="dropdown">
-                        <a onclick="dropdownToggle()">Produtos <img src="/SiteLoja/assets/arrow.svg" alt="arrow_drop_down" /></a>
+                        <a onclick="dropdownToggle()">Produtos <img src="../assets/arrow.svg" alt="arrow_drop_down" /></a>
                         <div class="dropdown-content">
                             <a href="/index.html#main">Camisetas</a>
-                                <a href="/SiteLoja/pages/producao.html">Canecas</a>
-                                <a href="/SiteLoja/pages/producao.html">Posters</a>
+                                <a href="../pages/producao.html">Canecas</a>
+                                <a href="../pages/producao.html">Posters</a>
                             </div>
                         </div>
-                        <a href="/SiteLoja/pages/cadastro.html">Cadastre-se</a>
-                        <a href="/SiteLoja/pages/login.html">Login</a>
+                        <a href="../pages/cadastro.html">Cadastre-se</a>
+                        <a href="../pages/login.html">Login</a>
                         
                         
                         <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
@@ -56,15 +56,15 @@
     <section>
         <h1>Corre pra fazer seu Login!</h1>
         <img src="../assets/pacmanonld.png" alt="Pacman" />
-        <form id="formLogin">
+        <form action="../php/login.php" method="post" id="formLogin">
             <!-- Campo do usuário -->
             <div class="botao-campo">
-                <input type="text" id="usuario" placeholder="Usuário" />
+                <input type="text" name="usuario" id="usuario" placeholder="Usuário" />
                 <p></p>
             </div>
             <!-- Campo da senha -->
             <div class="botao-campo">
-                <input type="password" id="senha" placeholder="Senha" />
+                <input type="password" name="senha" id="senha" placeholder="Senha" />
                 <p></p>
             </div>
             <div class="enviar">
@@ -88,7 +88,7 @@
     <footer class="footer">
         <div class="footer-logo">
             <h4>NerdCore LTDA.</h4>
-            <img src="/SiteLoja/assets/LogoTOPO.png" alt="Logo NerdCore">
+            <img src="../assets/LogoTOPO.png" alt="Logo NerdCore">
         </div>
 
         <div class="footer-content">
