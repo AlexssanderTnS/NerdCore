@@ -1,100 +1,107 @@
-{
-  "1": {
+[
+  {
+    "id": 1,
     "nome": "Camisa Chloe",
     "imagem": "/SiteLoja/produtos/CP/1 camisa chloe preta sem fundo.png",
     "descricao": "Estilo e personalidade com Chloe!",
     "preco": 89.90
   },
-  
-  "2": {
+  {
+    "id": 2,
     "nome": "Camisa Scott Pilgrim",
     "imagem": "/SiteLoja/produtos/CP/1 camisa scott pilgrim preta sem fundo.png",
     "descricao": "O maior lutador de Ontário.",
     "preco": 86.70
   },
-
-  "3": {
+  {
+    "id": 3,
     "nome": "Camisa Anya",
     "imagem": "/SiteLoja/produtos/CP/1 anya camisa preta sem fundo.png",
     "descricao": "A fofura espiã que todos amam.",
     "preco": 84.90
   },
-
-  
-  "4": {
+  {
+    "id": 4,
     "nome": "Camisa Far cry 3",
     "imagem": "/SiteLoja/produtos/CP/1 camisa far cry 3 preta sem fundo.png",
     "descricao": "Algodão macio, estilo gamer",
     "preco": 84.90
   },
-
-  "5": {
+  {
+    "id": 5,
     "nome": "Kratos",
     "imagem": "/SiteLoja/produtos/CP/1 camisa kratos preta sem fundo.png",
     "descricao": "Força, fúria e conforto",
     "preco": 84.90
   },
-
-  "6": {
+  {
+    "id": 6,
     "nome": "Gorillaz",
     "imagem": "/SiteLoja/produtos/CP/1 camisa gorillaz preta sem fundo.png",
     "descricao": "100% algodão com atitude",
     "preco": 84.90
   },
-
-  "7": {
+  {
+    "id": 7,
     "nome": "Red dead",
     "imagem": "/SiteLoja/produtos/CP/1 john marston red dead redemption camisa preta sem fundo.png",
     "descricao": "Conforto no Velho Oeste",
     "preco": 84.90
   },
-
-  "8": {
+  {
+    "id": 8,
     "nome": "Goku",
     "imagem": "/SiteLoja/produtos/CP/1 camisa goku preta sem fundo.png",
     "descricao": "O poder do algodão superior",
     "preco": 84.90
   },
-
-  "9": {
+  {
+    "id": 9,
     "nome": "Jojo",
     "imagem": "/SiteLoja/produtos/CP/1 camisa jojo preta sem fundo.png",
     "descricao": "Estilo bizarro e confortável",
     "preco": 84.90
   },
-
-  "10": {
+  {
+    "id": 10,
     "nome": "Okarun",
     "imagem": "/SiteLoja/produtos/CP/1 camisa okarun preta sem fundo.png",
     "descricao": "Tecido leve, visual ousado",
     "preco": 84.90
   },
-
-  "11": {
+  {
+    "id": 11,
     "nome": "Vinne",
     "imagem": "/SiteLoja/produtos/CP/1 camisa vinne preta sem fundo.png",
     "descricao": "Casual com toque moderno",
     "preco": 84.90
   },
-
-  "12": {
+  {
+    "id": 12,
     "nome": "Luffy",
     "imagem": "/SiteLoja/produtos/CP/1 camisa luffy preta sem fundo.png",
     "descricao": "Liberdade em algodão puro",
     "preco": 84.90
   },
-
-  "13": {
+  {
+    "id": 13,
     "nome": "Kaneki",
     "imagem": "/SiteLoja/produtos/CP/1 camisa kaneki preta sem fundo.png",
     "descricao": "Sombria, macia e estilosa",
     "preco": 84.90
   },
-
-  "14": {
+  {
+    "id": 14,
     "nome": "Naruto",
     "imagem": "/SiteLoja/produtos/CP/1 camisa naruto preta sem fundo.png",
     "descricao": "Ninja style com conforto",
     "preco": 84.90
+  },
+  {
+  "id": 15,
+    "nome": "Naruto",
+    "imagem": "/SiteLoja/produtos/CP/1 camisa the last of us sem fundo.png",
+    "descricao": "Ninja style com conforto",
+    "preco": 84.90
   }
-}
+]

@@ -54,20 +54,18 @@
         </div>
     
        
-       
-       <section id="produtosContainer">
-
-       
-        </section>
-    <form id="searchForm" class="search-form" action="/search" method="get" role="search" aria-label="Pesquisar no site">
-           <input id="site-search" name="q" type="search" placeholder="Procure sua Camisa" required autocomplete="off">
-               <button type="submit">Pesquisar</button>
+      <form id="searchForm" class="search-form" action="/search" method="get" role="search"
+    aria-label="Pesquisar no site">
+    <input id="site-search" name="q" type="search" placeholder="Procure sua Camisa" required autocomplete="off" aria-live="polite">
+    <button type="submit">Pesquisar</button>
     </form>
-        </section>
-          <p id="errorMessage" class="erro"></p>
-            <script src="/SiteLoja/js/pesquisa.js"></script>
-            
-       
+
+    <p id="errorMessage" class="erro"></p>
+
+    <section id="produtosContainer">
+    </section>
+
+    <script src="/SiteLoja/js/pesquisa.js"></script>
 
 
     
@@ -205,9 +203,11 @@
 
 
 
+
+    
     <footer class="footer">
         <div class="footer-logo">
-                <h4>NerdCore LTDA.</h4>
+            <h4>NerdCore LTDA.</h4>
             <img src="SiteLoja/assets/LogoTOPO.png" alt="Logo NerdCore">
         </div>
 
@@ -223,9 +223,10 @@
        
     
     </footer>
-
-
-    <script src="/SiteLoja/js/home.js"></script>
+    
+    
+    <script src="../SiteLoja/js/home.js"></script>
+    <script src="../SiteLoja/js/pesquisa.js"></script>
 
 
 </body>

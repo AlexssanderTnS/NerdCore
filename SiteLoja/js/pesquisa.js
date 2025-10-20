@@ -1,156 +1,98 @@
-document.addEventListener("DOMContentLoaded", function () {
+// O nome do arquivo JS que você referenciou no HTML é 'pesquisa.js'
+document.addEventListener("DOMContentLoaded", async function () {
   const form = document.getElementById("searchForm");
   const input = document.getElementById("site-search");
   const errorMessage = document.getElementById("errorMessage");
-  const container = document.getElementById("produtosContainer"); // onde os cards serão exibidos
+  const container = document.getElementById("produtosContainer");
 
-  // === JSON dos produtos ===
-  const produtos = {
-    "1": {
-      "nome": "Camisa Chloe",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa chloe preta sem fundo.png",
-      "descricao": "Estilo e personalidade com Chloe!",
-      "preco": 89.90
-    },
-    "2": {
-      "nome": "Camisa Scott Pilgrim",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa scott pilgrim preta sem fundo.png",
-      "descricao": "O maior lutador de Ontário.",
-      "preco": 86.70
-    },
-    "3": {
-      "nome": "Camisa Anya",
-      "imagem": "/SiteLoja/produtos/CP/1 anya camisa preta sem fundo.png",
-      "descricao": "A fofura espiã que todos amam.",
-      "preco": 84.90
-    },
-    "4": {
-      "nome": "Camisa Far Cry 3",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa far cry 3 preta sem fundo.png",
-      "descricao": "Algodão macio, estilo gamer",
-      "preco": 84.90
-    },
-    "5": {
-      "nome": "Kratos",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa kratos preta sem fundo.png",
-      "descricao": "Força, fúria e conforto",
-      "preco": 84.90
-    },
-    "6": {
-      "nome": "Gorillaz",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa gorillaz preta sem fundo.png",
-      "descricao": "100% algodão com atitude",
-      "preco": 84.90
-    },
-    "7": {
-      "nome": "Red Dead",
-      "imagem": "/SiteLoja/produtos/CP/1 john marston red dead redemption camisa preta sem fundo.png",
-      "descricao": "Conforto no Velho Oeste",
-      "preco": 84.90
-    },
-    "8": {
-      "nome": "Goku",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa goku preta sem fundo.png",
-      "descricao": "O poder do algodão superior",
-      "preco": 84.90
-    },
-    "9": {
-      "nome": "Jojo",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa jojo preta sem fundo.png",
-      "descricao": "Estilo bizarro e confortável",
-      "preco": 84.90
-    },
-    "10": {
-      "nome": "Okarun",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa okarun preta sem fundo.png",
-      "descricao": "Tecido leve, visual ousado",
-      "preco": 84.90
-    },
-    "11": {
-      "nome": "Vinne",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa vinne preta sem fundo.png",
-      "descricao": "Casual com toque moderno",
-      "preco": 84.90
-    },
-    "12": {
-      "nome": "Luffy",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa luffy preta sem fundo.png",
-      "descricao": "Liberdade em algodão puro",
-      "preco": 84.90
-    },
-    "13": {
-      "nome": "Kaneki",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa kaneki preta sem fundo.png",
-      "descricao": "Sombria, macia e estilosa",
-      "preco": 84.90
-    },
-    "14": {
-      "nome": "Naruto",
-      "imagem": "/SiteLoja/produtos/CP/1 camisa naruto preta sem fundo.png",
-      "descricao": "Ninja style com conforto",
-      "preco": 84.90
+  let produtos = []; // Array de produtos do JSON
+
+  // === 1. Função para buscar e carregar os produtos do JSON ===
+  async function carregarProdutos() {
+    try {
+      // Nota: O caminho pode precisar de ajuste dependendo de onde o 'pesquisa.js' está.
+      // Se 'pesquisa.js' está em /SiteLoja/js/, o caminho para 'dados.json' deve ser ../dados.json
+      const resposta = await fetch("../SiteLoja/produtos/produtos.json"); 
+      
+      // Se o JSON estiver no formato de objeto, use:
+      // const dadosObjeto = await resposta.json();
+      // produtos = Object.values(dadosObjeto); 
+      
+      // Se o JSON estiver no formato de Array (como o modificado acima), use:
+      produtos = await resposta.json(); 
+      
+      renderizarProdutos(produtos); // Renderiza todos ao carregar
+    } catch (erro) {
+      console.error("Erro ao carregar produtos:", erro);
+      errorMessage.textContent = "Erro ao carregar os produtos. Verifique o console para detalhes.";
     }
-  };
+  }
 
-  // === Função para renderizar os produtos na tela ===
+  // === 2. Função para renderizar os produtos na tela ===
   function renderizarProdutos(lista) {
-    container.innerHTML = ""; // limpa tudo antes
+    container.innerHTML = ""; // **MUITO IMPORTANTE:** Limpa o container antes de renderizar
 
-    if (lista.length === 0) {
+    if (!lista || lista.length === 0) {
       errorMessage.textContent = "Nenhuma camisa encontrada.";
       return;
     }
 
-    lista.forEach(produto => {
+    errorMessage.textContent = "";
+
+    lista.forEach((produto) => {
       const card = document.createElement("div");
       card.classList.add("card");
+      
+      // Garantindo que 'produto.id' e 'produto.preco' existam (caso o JSON mude)
+      const id = produto.id || Math.random().toString(36).substring(2); // Usa id ou gera um temporário
+      const precoFormatado = produto.preco ? produto.preco.toFixed(2) : "—";
+      const descricao = produto.descricao || "";
 
       card.innerHTML = `
-        <a href="/SiteLoja/pages/compra.html?id=${produto.id}">
+        <a href="/SiteLoja/pages/compra.html?id=${id}">
           <img class="camisa" src="${produto.imagem}" alt="${produto.nome}">
         </a>
         <p>${produto.nome}</p>
-        <p>${produto.descricao}</p>
-        <p>R$ ${produto.preco.toFixed(2)}</p>
+        <p class="descricao-produto">${descricao}</p>
+        <p class="preco-produto">R$ ${precoFormatado}</p>
       `;
 
       container.appendChild(card);
     });
   }
 
-  // === Filtro de camisas ===
-  function filtrarCamisas(termo) {
+  // === 3. Filtro de camisas (Lógica de Pesquisa) ===
+  function filtrarCamisas() {
+    const termo = input.value; // Pega o valor atual do input
     const termoMin = termo.toLowerCase().trim();
-    const resultados = [];
 
-    for (const id in produtos) {
-      const produto = produtos[id];
-      if (produto.nome.toLowerCase().includes(termoMin)) {
-        resultados.push({ id, ...produto });
-      }
+    if (termoMin === "") {
+        // Se a busca estiver vazia, mostra todos os produtos
+        renderizarProdutos(produtos); 
+        return;
     }
+    
+    // Filtragem: usa o método .filter() no array de produtos
+    const resultados = produtos.filter(produto =>
+      // Verifica se o NOME do produto contém o texto digitado
+      produto.nome.toLowerCase().includes(termoMin) 
+    );
 
     renderizarProdutos(resultados);
   }
 
-  // === Evento do formulário ===
+  // === 4. Eventos de Pesquisa em Tempo Real e Submit ===
+  
+  // A. Evento para filtrar em tempo real (a cada tecla digitada)
+  input.addEventListener("input", filtrarCamisas);
+
+  // B. Evento de submit para evitar o recarregamento da página (comportamento padrão de formulário)
   form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const query = input.value.trim().toLowerCase();
-
-    if (query === "") {
-      errorMessage.textContent = "Digite o nome de uma camisa para pesquisar.";
-      return;
-    }
-
-    errorMessage.textContent = "";
-    filtrarCamisas(query);
+    event.preventDefault(); // Impede o envio do formulário e o recarregamento da página
+    // O filtro já foi aplicado pelo evento 'input', mas manteremos o submit para usabilidade (ex: apertar Enter)
+    filtrarCamisas(); 
   });
-
-  // === Mostrar todos os produtos ao carregar ===
-  const listaCompleta = Object.entries(produtos).map(([id, produto]) => ({
-    id,
-    ...produto
-  }));
-  renderizarProdutos(listaCompleta);
+  
+  // === 5. Inicialização ===
+  await carregarProdutos();
 });
