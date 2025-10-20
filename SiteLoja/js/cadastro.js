@@ -32,7 +32,7 @@ const cepPadrao = /^[0-9]{8}$/;
 const cpfPadrao = /^(?!^(\d)\1{10}$)\d{11}$/;
 
 // === SUBMIT DO FORMULÁRIO ===
-form.addEventListener("submit", (evento) => {
+form.addEventListener("submit"), (evento) => {
   evento.preventDefault();
   // Validações
   checkEmail();
@@ -51,6 +51,8 @@ form.addEventListener("submit", (evento) => {
   checkRua();
   checkCEP();
   checkNumero();
+
+}
 
   const erros = document.querySelectorAll(".botao-campo.error");
 
