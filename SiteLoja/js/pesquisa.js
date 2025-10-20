@@ -1,0 +1,156 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("searchForm");
+  const input = document.getElementById("site-search");
+  const errorMessage = document.getElementById("errorMessage");
+  const container = document.getElementById("produtosContainer"); // onde os cards serão exibidos
+
+  // === JSON dos produtos ===
+  const produtos = {
+    "1": {
+      "nome": "Camisa Chloe",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa chloe preta sem fundo.png",
+      "descricao": "Estilo e personalidade com Chloe!",
+      "preco": 89.90
+    },
+    "2": {
+      "nome": "Camisa Scott Pilgrim",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa scott pilgrim preta sem fundo.png",
+      "descricao": "O maior lutador de Ontário.",
+      "preco": 86.70
+    },
+    "3": {
+      "nome": "Camisa Anya",
+      "imagem": "/SiteLoja/produtos/CP/1 anya camisa preta sem fundo.png",
+      "descricao": "A fofura espiã que todos amam.",
+      "preco": 84.90
+    },
+    "4": {
+      "nome": "Camisa Far Cry 3",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa far cry 3 preta sem fundo.png",
+      "descricao": "Algodão macio, estilo gamer",
+      "preco": 84.90
+    },
+    "5": {
+      "nome": "Kratos",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa kratos preta sem fundo.png",
+      "descricao": "Força, fúria e conforto",
+      "preco": 84.90
+    },
+    "6": {
+      "nome": "Gorillaz",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa gorillaz preta sem fundo.png",
+      "descricao": "100% algodão com atitude",
+      "preco": 84.90
+    },
+    "7": {
+      "nome": "Red Dead",
+      "imagem": "/SiteLoja/produtos/CP/1 john marston red dead redemption camisa preta sem fundo.png",
+      "descricao": "Conforto no Velho Oeste",
+      "preco": 84.90
+    },
+    "8": {
+      "nome": "Goku",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa goku preta sem fundo.png",
+      "descricao": "O poder do algodão superior",
+      "preco": 84.90
+    },
+    "9": {
+      "nome": "Jojo",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa jojo preta sem fundo.png",
+      "descricao": "Estilo bizarro e confortável",
+      "preco": 84.90
+    },
+    "10": {
+      "nome": "Okarun",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa okarun preta sem fundo.png",
+      "descricao": "Tecido leve, visual ousado",
+      "preco": 84.90
+    },
+    "11": {
+      "nome": "Vinne",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa vinne preta sem fundo.png",
+      "descricao": "Casual com toque moderno",
+      "preco": 84.90
+    },
+    "12": {
+      "nome": "Luffy",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa luffy preta sem fundo.png",
+      "descricao": "Liberdade em algodão puro",
+      "preco": 84.90
+    },
+    "13": {
+      "nome": "Kaneki",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa kaneki preta sem fundo.png",
+      "descricao": "Sombria, macia e estilosa",
+      "preco": 84.90
+    },
+    "14": {
+      "nome": "Naruto",
+      "imagem": "/SiteLoja/produtos/CP/1 camisa naruto preta sem fundo.png",
+      "descricao": "Ninja style com conforto",
+      "preco": 84.90
+    }
+  };
+
+  // === Função para renderizar os produtos na tela ===
+  function renderizarProdutos(lista) {
+    container.innerHTML = ""; // limpa tudo antes
+
+    if (lista.length === 0) {
+      errorMessage.textContent = "Nenhuma camisa encontrada.";
+      return;
+    }
+
+    lista.forEach(produto => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <a href="/SiteLoja/pages/compra.html?id=${produto.id}">
+          <img class="camisa" src="${produto.imagem}" alt="${produto.nome}">
+        </a>
+        <p>${produto.nome}</p>
+        <p>${produto.descricao}</p>
+        <p>R$ ${produto.preco.toFixed(2)}</p>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  // === Filtro de camisas ===
+  function filtrarCamisas(termo) {
+    const termoMin = termo.toLowerCase().trim();
+    const resultados = [];
+
+    for (const id in produtos) {
+      const produto = produtos[id];
+      if (produto.nome.toLowerCase().includes(termoMin)) {
+        resultados.push({ id, ...produto });
+      }
+    }
+
+    renderizarProdutos(resultados);
+  }
+
+  // === Evento do formulário ===
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const query = input.value.trim().toLowerCase();
+
+    if (query === "") {
+      errorMessage.textContent = "Digite o nome de uma camisa para pesquisar.";
+      return;
+    }
+
+    errorMessage.textContent = "";
+    filtrarCamisas(query);
+  });
+
+  // === Mostrar todos os produtos ao carregar ===
+  const listaCompleta = Object.entries(produtos).map(([id, produto]) => ({
+    id,
+    ...produto
+  }));
+  renderizarProdutos(listaCompleta);
+});

@@ -117,6 +117,8 @@ div.navbar {
   /* Tamanho da fonte */
   gap: 5%;
   /* Espaço entre links */
+  margin-top: -10px;
+  /* Ajusta a posição vertical */
 }
 
 div.navbar a {
@@ -381,7 +383,7 @@ div.card a {
   /* Remove sublinhado */
   color: #00FFFF;
   /* Cor do link */
-  font-size: 25px;
+  font-size: 21px;
   /* Tamanho da fonte */
   text-align: center;
   /* Centraliza texto */
@@ -389,7 +391,7 @@ div.card a {
   /* Negrito */
   text-transform: uppercase;
   /* Letras maiúsculas */
-  margin-top: 10px;
+  margin-top: 1px;
   /* Espaço acima */
 
 }
@@ -485,6 +487,18 @@ section.pesquisa {
   font-size: 25px;
   border: 6px solid #eeff00;
   border-radius: 20px;
+}
+
+#site-search:focus {
+  border-color: #ff9100;
+
+}
+
+.erro {
+  color: red;
+  margin-left: 210px;
+  margin-top: -20px;
+  font-weight: bold;
 }
 
 .search-form button {
@@ -824,7 +838,7 @@ footer img {
   }
 
   div.card {
-    width: 50%;
+    width: 100%;
     /* Largura total do card */
     
   }
