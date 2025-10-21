@@ -96,15 +96,13 @@
     "imagem": "/SiteLoja/produtos/CP/1 camisa naruto preta sem fundo.png",
     "descricao": "Ninja style com conforto",
     "preco": 84.90
-<<<<<<< HEAD
-=======
+
+
   },
-  {
-  "id": 15,
-    "nome": "the last of us",
+  "15": {
+    "nome": "The last of us",
     "imagem": "SiteLoja/produtos/CP/1 camisa the last of us preta sem fundo.png",
     "descricao": "Aventura e conforto unidos",
     "preco": 84.90
->>>>>>> f58e99dbe3c6a4a504a63e072e82c679508a137f
   }
 }
