@@ -14,7 +14,7 @@
   /* Define peso da fonte */
   color: #00FFFF;
   /* Define cor do texto */
-  text-align: center;
+  
 }
 
 
@@ -500,6 +500,7 @@ section.pesquisa {
   font-size: 25px;
   border: 6px solid #eeff00;
   border-radius: 20px;
+  color: #000000;
 }
 
 #site-search:focus {
@@ -547,7 +548,7 @@ section.pesquisa {
     justify-content: center; /* Centraliza os produtos na linha */
     padding: 20px;
     min-height: 300px; /* Garante uma altura mínima para evitar que o fundo suba */
-    margin-up: 200px;
+    margin-top: 200px;
   }
 
 /* Estilo do CARD individual (a 'div' que o JS cria) */
