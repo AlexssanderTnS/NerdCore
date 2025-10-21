@@ -32,7 +32,7 @@ try {
         nome VARCHAR(50) NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
         usuario VARCHAR(6) UNIQUE NOT NULL,
-        senha CHAR(8) NOT NULL,
+        senha VARCHAR(60) NOT NULL,
         data_nascimento DATE NOT NULL,
         mae CHAR(50) NOT NULL,
         genero VARCHAR(15) NOT NULL,
@@ -43,7 +43,8 @@ try {
         estado CHAR(20) NOT NULL,
         cidade VARCHAR(50) NOT NULL,
         bairro VARCHAR(50) NOT NULL,
-        numero INT(6) NOT NULL);";
+        numero INT(6) NOT NULL),
+        complemento VARCHAR(50) DEFAULT NULL";
     //executa o para criar a tabela
     $pdo->exec($usuTable);
     echo "Tabela criada com sucesso!";

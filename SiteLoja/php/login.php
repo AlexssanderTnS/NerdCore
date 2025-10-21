@@ -1,33 +1,35 @@
 <?php
-session_start();
+if($_SERVER['REQUEST_METHOD'] === "POST"){
 include 'conexao.php';
 
+$usuario = $_POST['usuario']; ?? '';
+$senha = $_POST['senha']; ?? '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+try{
+    //Prepara o query para buscar o usuário pelo login
+    $stmt = $pdo -> prepare("SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1");
+    $stmt -> execute(['usuario' => $usuario]);
 
-    $sql_banco = "SELECT * FROM usuarios WHERE usuario = :usuario AND senha = :senha AND ativo =1";
-    $stmt = $pdo->prepare($sql_banco);
-    $stmt->bindParam(':usuario', $usuario);
-    $stmt->bindParam(':senha', $senha);
-    $stmt->execute();
+    $user = $stmt -> fetch (PDO::FETCH_ASSOC);
 
-    if ($stmt->rowCount() > 0) {
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        //salvar os dados na sessão
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['nome'] = $user['nome'];
-        $_SESSION['nivel_acesso'] = $user['nivel_acesso'];
-        //redirecionar com o nivel de acesso
-        if ($user['nivel_acesso'] === 'admin') {
-            header('Location: ../pages/adm.html');
-            exit;
-        } else {
-            header('Location: ../index.html');
-            exit;
+    if ($user){
+        if(password_verify($senha, $user['senha'])){
+            session_start();
+            $_SESSION['usuario'] = $user['usuario'];
+        }else{
+            echo "Senha incorreta.";
+        }else{
+            echo "Usuário não encontrado.";
         }
-    } else {
-        echo "<script>alert('Usuário ou senha incorretos!');window.location.href='../pages/login.html';</script>";
+        }
+    }catch(PDOException $e){
+        echo "Erro no login: " . $e->getMessage();
     }
 }
+
+
+
+
+
+?>
+
