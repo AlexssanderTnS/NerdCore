@@ -523,7 +523,8 @@ section.pesquisa {
     align-items: center;
     margin-bottom: 40px; /* Espaço após a barra de pesquisa */
     padding: 20px;
-}
+    margin-left: 160px;
+  }
 
 /* O contêiner principal dos produtos - ESSA É A PARTE MAIS IMPORTANTE PARA O LAYOUT */
 #produtosContainer {
@@ -531,9 +532,10 @@ section.pesquisa {
     flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
     gap: 30px; /* Espaço entre os cards */
     justify-content: center; /* Centraliza os produtos na linha */
-    padding: 20px;
+    padding: 200px;
     min-height: 300px; /* Garante uma altura mínima para evitar que o fundo suba */
-}
+    margin-up: 200px;
+  }
 
 /* Estilo do CARD individual (a 'div' que o JS cria) */
 .card {

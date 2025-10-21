@@ -99,9 +99,9 @@
   },
   {
   "id": 15,
-    "nome": "Naruto",
-    "imagem": "/SiteLoja/produtos/CP/1 camisa the last of us sem fundo.png",
-    "descricao": "Ninja style com conforto",
+    "nome": "the last of us",
+    "imagem": "SiteLoja/produtos/CP/1 camisa the last of us preta sem fundo.png",
+    "descricao": "Aventura e conforto unidos",
     "preco": 84.90
   }
 ]
