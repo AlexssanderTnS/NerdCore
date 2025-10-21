@@ -12,7 +12,12 @@
   /* Define fonte padrão */
   font-weight: 500;
   /* Define peso da fonte */
+  color: #00FFFF;
+  /* Define cor do texto */
+  
 }
+
+
 
 html {
   scroll-behavior: smooth;
@@ -378,7 +383,7 @@ div.card {
 div.card a {
   text-decoration: none;
   /* Remove sublinhado */
-  color: #00FFFF;
+  color: #10aaaa;
   /* Cor do link */
   font-size: 25px;
   /* Tamanho da fonte */
@@ -439,6 +444,14 @@ div.card a:hover {
   }
 }
 
+p.descricao produto {
+  cursor: pointer;
+  animation: pisca-cor 1s infinite;
+  color: #FF0000;
+
+}
+
+
 div.card:hover {
   animation: link-bounce 0.5s;
   /* Animação ao passar o mouse */
@@ -484,6 +497,7 @@ section.pesquisa {
   font-size: 25px;
   border: 6px solid #eeff00;
   border-radius: 20px;
+  color: #000000;
 }
 
 .search-form button {
@@ -501,7 +515,53 @@ section.pesquisa {
     cursor: pointer;
     color: #272727;
 }
+<<<<<<< HEAD
 
+=======
+/* Estilo para o formulário de pesquisa (ajustando a barra de busca e botão) */
+.search-form {
+    display: flex; /* Alinha o input e o botão lado a lado */
+    justify-content: center; /* Centraliza a barra de pesquisa na tela */
+    align-items: center;
+    margin-bottom: 40px; /* Espaço após a barra de pesquisa */
+    padding: 20px;
+    margin-left: 160px;
+  }
+
+/* O contêiner principal dos produtos - ESSA É A PARTE MAIS IMPORTANTE PARA O LAYOUT */
+#produtosContainer {
+    display: flex; /* Habilita o layout flexível */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    gap: 50px; /* Espaço entre os cards */
+    justify-content: center; /* Centraliza os produtos na linha */
+    padding: 20px;
+    min-height: 300px; /* Garante uma altura mínima para evitar que o fundo suba */
+    margin-top: 200px;
+  }
+
+/* Estilo do CARD individual (a 'div' que o JS cria) */
+.card {
+    width: 200px; /* Largura fixa para cada card */
+    text-align: center;
+    /* Seu CSS para o fundo preto/amarelo deve ser aplicado aqui */
+    /* Exemplo: border: 1px solid yellow; */
+    padding: 10px;
+}
+
+.card img.camisa {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Estilo da mensagem de erro/instrução */
+#errorMessage {
+    text-align: center;
+    color: #ffcc00; /* Cor que combine com seu tema Pac-Man */
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+>>>>>>> f58e99dbe3c6a4a504a63e072e82c679508a137f
 
 .visually-hidden {
   color: cornflowerblue;
