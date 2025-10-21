@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
+    require 'conexao.php';
     // Elementos do formulário
     $nome = $_POST['nome'] ?? '';
     $usuario = $_POST['usuario'] ?? '';
@@ -60,9 +60,36 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         die("CEP inválido. Por favor, tente novamente.");
     }
 
-    // --- Criptografia da senha ---
+    //Criptografia da senha 
     $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
-
+    //Puxa os dados para o banco de dados
+    try{
+        $stmt = $pdo->prepare("INSERT INTO
+        usuarios(
+        nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, complemento)
+        VALUES
+        (:nome, :email, :usuario, :senha, :nascimento, :mae, :genero, :cpf, :cll, :fixo, :cep, :estado, :cidade, :bairro, :numero, :complemento)");
+        $stmt->execute([
+            ':nome' => $nome,
+            ':email' => $email,
+            ':usuario' => $usuario,
+            ':senha' => $senhacriptografada,
+            ':nascimento' => $nascimento,
+            ':mae' => $mae,
+            ':genero' => $genero,
+            ':cpf' => $cpf,
+            ':cll' => $cll,
+            ':fixo' => $fixo,
+            ':cep' => $cep,
+            ':estado' => $estado,
+            ':cidade' => $cidade,
+            ':bairro' => $bairro,
+            ':numero' => $numero,
+            ':complemento' => $complemento
+        ]);    
+}catch (PDOException $e){
+    die ("Erro ao cadastrar usuário: " . $e->getMessage());
+}
     echo "<p>Usuário cadastrado com sucesso!</p>";
 }
 ?>
