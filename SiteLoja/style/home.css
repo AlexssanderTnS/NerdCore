@@ -12,7 +12,12 @@
   /* Define fonte padrão */
   font-weight: 500;
   /* Define peso da fonte */
+  color: #00FFFF;
+  /* Define cor do texto */
+  text-align: center;
 }
+
+
 
 html {
   scroll-behavior: smooth;
@@ -381,7 +386,7 @@ div.card {
 div.card a {
   text-decoration: none;
   /* Remove sublinhado */
-  color: #00FFFF;
+  color: #10aaaa;
   /* Cor do link */
   font-size: 21px;
   /* Tamanho da fonte */
@@ -441,6 +446,14 @@ div.card a:hover {
     transform: scale(1);
   }
 }
+
+p.descricao produto {
+  cursor: pointer;
+  animation: pisca-cor 1s infinite;
+  color: #FF0000;
+
+}
+
 
 div.card:hover {
   animation: link-bounce 0.5s;
@@ -530,9 +543,9 @@ section.pesquisa {
 #produtosContainer {
     display: flex; /* Habilita o layout flexível */
     flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    gap: 30px; /* Espaço entre os cards */
+    gap: 50px; /* Espaço entre os cards */
     justify-content: center; /* Centraliza os produtos na linha */
-    padding: 200px;
+    padding: 20px;
     min-height: 300px; /* Garante uma altura mínima para evitar que o fundo suba */
     margin-up: 200px;
   }
