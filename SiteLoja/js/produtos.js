@@ -2,7 +2,92 @@
 //  MAPEAMENTO DAS CAMISAS
 // ==========================
 
-//.;
+const shirtImages = {
+    anya: {
+        branca: "/SiteLoja/produtos/CB/2 anya camisa branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 anya camisa preta sem fundo.png"
+    },
+    chloe: {
+        branca: "/SiteLoja/produtos/CB/2 camisa chloe branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa chloe preta sem fundo.png"
+    },
+    gorillaz: {
+        branca: "/SiteLoja/produtos/CB/2 camisa gorillaz branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa gorillaz preta sem fundo.png"
+    },
+    kratos: {
+        branca: "/SiteLoja/produtos/CB/2 camisa kratos branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa kratos preta sem fundo.png"
+    },
+    vinne: {
+        branca: "/SiteLoja/produtos/CB/2 camisa vinne branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa vinne preta sem fundo.png"
+    },
+    okarun: {
+        branca: "/SiteLoja/produtos/CB/2 camisa okarun branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa okarun preta sem fundo.png"
+    },
+    johnmarston: {
+        branca: "/SiteLoja/produtos/CB/2 john marston red dead redemption camisa branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 john marston red dead redemption camisa preta sem fundo.png"
+    },
+    luffy: {
+        branca: "/SiteLoja/produtos/CB/2 camisa luffy branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa luffy preta sem fundo.png"
+    },
+    kaneki: {
+        branca: "/SiteLoja/produtos/CB/2 camisa kaneki branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa kaneki preta sem fundo.png"
+    },
+    jojo: {
+        branca: "/SiteLoja/produtos/CB/2 camisa jojo branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa jojo preta sem fundo.png"
+    },
+    goku: {
+        branca: "/SiteLoja/produtos/CB/2 camisa goku branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa goku preta sem fundo.png"
+    },
+    farcry3: {
+        branca: "/SiteLoja/produtos/CB/2 camisa far cry 3 branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa far cry 3 preta sem fundo.png"
+    },
+    scottpilgrim: {
+        branca: "/SiteLoja/produtos/CB/2 camisa scott pilgrim branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa scott pilgrim preta sem fundo.png"
+    },
+    naruto: {
+        branca: "/SiteLoja/produtos/CB/2 camisa naruto branca sem fundo.png",
+        preta: "/SiteLoja/produtos/CP/1 camisa naruto preta sem fundo.png"
+    }
+};
+
+
+// ==========================
+//  MAPEAMENTO DE NOMES (ALIAS)
+// ==========================
+const designMap = {
+    "camisachloe": "chloe",
+    "camisascottpilgrim": "scottpilgrim",
+    "camisaanya": "anya",
+    "camisafarcry3": "farcry3",
+    "kratos": "kratos",
+    "gorillaz": "gorillaz",
+    "reddead": "johnmarston",
+    "goku": "goku",
+    "jojo": "jojo",
+    "okarun": "okarun",
+    "vinne": "vinne",
+    "luffy": "luffy",
+    "kaneki": "kaneki",
+    "naruto": "naruto"
+};
+
+// ==========================
+//  ESTADO INICIAL
+// ==========================
+let currentDesign = "anya";
+let currentColor = "branca";
+
 // ==========================
 //  FUNÇÕES PRINCIPAIS
 // ==========================
