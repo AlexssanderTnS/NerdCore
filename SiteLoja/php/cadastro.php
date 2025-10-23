@@ -1,36 +1,33 @@
 <?php
+
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    
     require 'conexao.php';
-    // Elementos do formulário
+    
+    
     $nome = $_POST['nome'] ?? '';
     $usuario = $_POST['usuario'] ?? '';
     $email = $_POST['email'] ?? '';
     $senha = $_POST['senha'] ?? '';
     $confsenha = $_POST['confsenha'] ?? '';
-    $nascimento = $_POST['nascimento'] ?? '';
+    $data_nascimento = $_POST['data_nascimento'] ?? ''; // Valor recebido: YYYY-MM-DD
     $mae = $_POST['mae'] ?? '';
     $genero = $_POST['genero'] ?? '';
+    
+   
     $cpf = preg_replace('/\D/', '', $_POST['cpf'] ?? '');
     $cll = preg_replace('/\D/', '', $_POST['cll'] ?? '');
     $fixo = preg_replace('/\D/', '', $_POST['fixo'] ?? '');
     $cep = preg_replace('/\D/', '', $_POST['cep'] ?? '');
+    
+    
     $estado = $_POST['estado'] ?? '';
     $cidade = $_POST['cidade'] ?? '';
     $bairro = $_POST['bairro'] ?? '';
     $numero = $_POST['numero'] ?? '';
     $complemento = $_POST['complemento'] ?? '';
-
-    // --- Teste: exibe valores recebidos ---
-    echo "<pre>POST original:\n";
-    var_dump($_POST);
-    echo "\n--- Campos processados ---\n";
-    echo "CPF: $cpf\n";
-    echo "Celular: $cll\n";
-    echo "Fixo: $fixo\n";
-    echo "CEP: $cep\n";
-    echo "Complemento: '$complemento'\n";
-    echo "</pre>";
-
+    
     // --- Validações ---
     if (!preg_match("/^[\w]+(\.[\w]+)?@(gmail|hotmail|outlook|email)\.com$/", $email)) {
         die("Endereço de email inválido. Por favor, tente novamente.");
@@ -59,22 +56,54 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (!preg_match("/^[0-9]{8}$/", $cep)) {
         die("CEP inválido. Por favor, tente novamente.");
     }
-
     //Criptografia da senha 
     $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
-    //Puxa os dados para o banco de dados
-    try{
-        $stmt = $pdo->prepare("INSERT INTO
-        usuarios(
-        nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, complemento)
-        VALUES
-        (:nome, :email, :usuario, :senha, :nascimento, :mae, :genero, :cpf, :cll, :fixo, :cep, :estado, :cidade, :bairro, :numero, :complemento)");
-        $stmt->execute([
+    
+    $sql = "INSERT INTO usuarios (
+    nome, 
+    usuario, 
+    email, 
+    senha, 
+    data_nascimento, 
+    mae, 
+    genero,
+    cpf,
+    cll,
+    fixo,
+    cep,
+    estado,
+    cidade,
+    bairro,
+    numero,
+    complemento) VALUES 
+    (:nome,
+    :usuario,
+    :email,
+    :senha,
+    :data_nascimento,  
+    :mae,
+    :genero,
+    :cpf,
+    :cll,
+    :fixo,
+    :cep,
+    :estado,
+    :cidade,
+    :bairro,
+    :numero,
+    :complemento)"; 
+    
+  //Envia os dados das variáveis para o banco de dados
+    try {
+        $stmt = $pdo->prepare($sql);
+        
+        
+        $params = array(
             ':nome' => $nome,
-            ':email' => $email,
             ':usuario' => $usuario,
+            ':email' => $email,
             ':senha' => $senhacriptografada,
-            ':nascimento' => $nascimento,
+            ':data_nascimento' => $data_nascimento,
             ':mae' => $mae,
             ':genero' => $genero,
             ':cpf' => $cpf,
@@ -86,10 +115,21 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             ':bairro' => $bairro,
             ':numero' => $numero,
             ':complemento' => $complemento
-        ]);    
-}catch (PDOException $e){
-    die ("Erro ao cadastrar usuário: " . $e->getMessage());
-}
-    echo "<p>Usuário cadastrado com sucesso!</p>";
+        );
+        
+        $stmt->execute($params);
+        header("Location: ../pages/login.php");
+       exit();
+        
+        
+    } catch (PDOException $e) {
+        
+       
+        if ($e->getCode() == '23000') {
+            die("ERRO_DB: 23000 - Dados já registrados (Email/CPF/Usuário Duplicado).");
+        } else {
+            die("ERRO_DB: " . $e->getCode() . " - " . $e->getMessage());
+        }
+    }
 }
 ?>

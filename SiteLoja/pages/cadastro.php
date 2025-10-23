@@ -60,7 +60,7 @@
 
   <!--inputs iniciais-->
 
-  <form class="parte1" name="formulario" id="form" >
+  <form class="parte1" name="formulario" id="form" action="../php/cadastro.php" method="POST" >
     <h1>Cadastre-se no estilo!</h1>
 
     <main class="bloco1">
@@ -81,11 +81,11 @@
         <p>erro</p>
       </div>
       <div class="botao-campo">
-        <input type="password" id="confirmar"  placeholder="Confirme sua senha" name="confSenha">
+        <input type="password" id="confirmar"  placeholder="Confirme sua senha" name="confsenha">
         <p>erro</p>
       </div>
       <div class="botao-campo">
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="data_nascimento">
         <p>erro</p>
       </div>
     </main>
