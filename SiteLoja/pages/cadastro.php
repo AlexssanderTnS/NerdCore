@@ -21,7 +21,7 @@
     <header class="nerdbar">
         <div class="logo">
 
-            <a href="/index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
+            <a href="../../index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
 
             <h1><a href="../index.html">NerdCore</a></h1>
         </div>
@@ -30,7 +30,7 @@
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
                 <nav class="link">
-                        <a href="../index.html">Inicio</a>
+                        <a href="../../index.html">Inicio</a>
                         <a href="../pages/grupo.html">Quem Somos</a>
                         <div class="dropdown">
                         <a onclick="dropdownToggle()">Produtos <img src="../assets/arrow.svg" alt="arrow_drop_down" /></a>
