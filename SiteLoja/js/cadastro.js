@@ -32,7 +32,7 @@ const cepPadrao = /^[0-9]{8}$/;
 const cpfPadrao = /^(?!^(\d)\1{10}$)\d{11}$/;
 
 // === SUBMIT DO FORMULÁRIO ===
-form.addEventListener("submit"), (evento) => {
+form.addEventListener("submit", (evento) => {
   evento.preventDefault();
   // Validações
   checkEmail();
@@ -52,19 +52,19 @@ form.addEventListener("submit"), (evento) => {
   checkCEP();
   checkNumero();
 
-}
+
 
   const erros = document.querySelectorAll(".botao-campo.error");
 
   if (erros.length > 0) {
     // Impede envio só se houver erros
-    
+    return;
   } 
   // Se não houver erros, o form envia normalmente para o action do HTML
-   window.location.href = ".../pages/login.html";
+   window.location.href = "../pages/login.html";
    
    
-   
+});
 
 
 // === BOTÃO LIMPAR ===
@@ -108,13 +108,13 @@ function checkBairro() { if (bairro.value === "") entradaErro(bairro, "Digite se
 function checkRua() { if (rua.value === "") entradaErro(rua, "Digite sua rua"); }
 function checkNumero() { if (numero.value === "") entradaErro(numero, "Digite o número da sua casa"); }
 
-// === EVENTO MUDANÇA GÊNERO ===
+//GÊNERO
 genero.addEventListener("change", () => {
   limparErro(genero);
   genero.style.backgroundColor = "#ffff00";
 });
 
-// === FUNÇÕES DE ERRO ===
+//FUNÇÕES DE ERRO
 function entradaErro(entrada, mensagem) {
   const formItem = entrada.parentElement;
   const mensagemTexto = formItem.querySelector("p");
@@ -132,7 +132,7 @@ campos.forEach((campo) => {
   campo.addEventListener("input", () => limparErro(campo));
 });
 
-// === CEP AUTOMÁTICO ===
+//
 cep.addEventListener("blur", buscaCep);
 function buscaCep() {
   const cepValue = cep.value.replace(/\D/g, "");
@@ -149,7 +149,7 @@ function buscaCep() {
     .catch(() => entradaErro(cep, "Erro ao buscar CEP"));
 }
 
-// === VALIDAÇÃO CPF ===
+//VALIDAÇÃO CPF
 function cpfVerificador() {
   const cpfNum = cpf.value.replace(/\D/g, '');
   if (!cpfPadrao.test(cpfNum)) { entradaErro(cpf, "CPF inválido"); return; }

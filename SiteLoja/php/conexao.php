@@ -43,8 +43,8 @@ try {
         estado CHAR(20) NOT NULL,
         cidade VARCHAR(50) NOT NULL,
         bairro VARCHAR(50) NOT NULL,
-        numero INT(6) NOT NULL),
-        complemento VARCHAR(50) DEFAULT NULL";
+        numero INT(6) NOT NULL,
+        complemento VARCHAR(50) DEFAULT NULL);";
     //executa o para criar a tabela
     $pdo->exec($usuTable);
     echo "Tabela criada com sucesso!";
