@@ -32,9 +32,9 @@
                         <div class="dropdown">
                             <a onclick="dropdownToggle()">Produtos <img src="SiteLoja/assets/arrow.svg" alt="arrow_drop_down" /></a>
                             <div class="dropdown-content">
-                                <a href="/index.php#main">Camisetas</a>
-                                <a href="/SiteLoja/pages/producao.php">Canecas</a>
-                                <a href="/SiteLoja/pages/producao.php">Posters</a>
+                                <a href="index.php#main">Camisetas</a>
+                                <a href="SiteLoja/pages/producao.php">Canecas</a>
+                                
                             </div>
                         </div>
                         <a href="SiteLoja/pages/cadastro.php">Cadastre-se</a>
@@ -68,80 +68,80 @@
 
     <main id="main">
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=1"><img class="camisa"
+            <a href="SiteLoja/pages/compphp?id=1"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa chloe preta sem fundo.png" data-id="1" alt="1"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=1">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=1">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=2"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=2"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa scott pilgrim preta sem fundo.png" data-id="2" alt="2"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=2">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=2">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=3"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=3"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 anya camisa preta sem fundo.png" data-id="3" alt="3"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=3">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=3">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=4"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=4"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa far cry 3 preta sem fundo.png" data-id="4" alt="4"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=4">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=4">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=5"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=5"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa kratos preta sem fundo.png" data-id="5" alt="5"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=5">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=5">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=6"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=6"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa gorillaz preta sem fundo.png" data-id="6" alt="6"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=6">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=6">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=7"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=7"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 john marston red dead redemption camisa preta sem fundo.png" data-id="7"
                     alt="7"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=7">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=7">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=8"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=8"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa goku preta sem fundo.png" data-id="8" alt="8"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=8">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=8">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=9"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=9"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa jojo preta sem fundo.png" data-id="9" alt="9"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=9">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=9">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=10"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=10"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa okarun preta sem fundo.png" data-id="10" alt="10"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=10">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=10">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=11"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=11"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa vinne preta sem fundo.png" data-id="11" alt="11"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=11">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=11">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=12"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=12"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa luffy preta sem fundo.png" data-id="12" alt="12"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=12">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=12">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=13"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=13"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa kaneki preta sem fundo.png" data-id="13" alt="13"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=13">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=13">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=14"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=14"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa naruto preta sem fundo.png" data-id="14" alt="14"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=14">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=14">Ver produto</a></p>
         </div>
         <div class="card">
-            <a href="SiteLoja/pages/compra.html?id=15"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=15"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa the last of us preta sem fundo.png" data-id="15" alt="15"></a>
-            <p><a href="SiteLoja/pages/compra.html?id=15">Ver produto</a></p>
+            <p><a href="SiteLoja/pages/compra.php?id=15">Ver produto</a></p>
         </div>
     </main>
 
@@ -160,7 +160,7 @@
             <ul>
                 <li><a href="#">Política de Privacidade</a></li>
                 <li><a href="#">Termos de Uso</a></li>
-                <li><a href="/SiteLoja/pages/grupo.html">Sobre Nós</a></li>
+                <li><a href="SiteLoja/pages/grupo.php">Sobre Nós</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
         </div>

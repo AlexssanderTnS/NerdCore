@@ -19,26 +19,26 @@
        <header class="nerdbar">
         <div class="logo">
 
-            <a href="/index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
+            <a href="../../index.php"><img src="../assets/logoroxa.png" alt="logo"></a>
 
-            <h1><a href="/index.html">NerdCore</a></h1>
+            <h1><a href="../../index.php">NerdCore</a></h1>
         </div>
 
       <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
                 <nav class="link">
-                        <a href="/index.html">Inicio</a>
-                        <a href="../pages/grupo.html">Quem Somos</a>
+                        <a href="../../index.php">Inicio</a>
+                        <a href="../pages/grupo.php">Quem Somos</a>
                         <div class="dropdown">
                         <a onclick="dropdownToggle()">Produtos <img src="../assets/arrow.svg" alt="arrow_drop_down" /></a>
                         <div class="dropdown-content">
-                            <a href="/index.html#main">Camisetas</a>
-                            <a href="../pages/producao.html">Canecas</a>
+                            <a href="/index.php#main">Camisetas</a>
+                            <a href="../pages/producao.php">Canecas</a>
                             </div>
                         </div>
-                        <a href="../pages/cadastro.html">Cadastre-se</a>
-                        <a href="../pages/login.html">Login</a>
+                        <a href="../pages/cadastro.php">Cadastre-se</a>
+                        <a href="../pages/login.php">Login</a>
                         
                         
                         <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
