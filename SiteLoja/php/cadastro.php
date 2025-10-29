@@ -29,6 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $complemento = $_POST['complemento'] ?? '';
     
     // --- Validações ---
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        erro("E-mail inválido. Por favor, verifique o endereço e tente novamente.");
+    }
+    
     if (!preg_match("/^[\w]+(\.[\w]+)?@(gmail|hotmail|outlook|email)\.com$/", $email)) {
         die("Endereço de email inválido. Por favor, tente novamente.");
     }
