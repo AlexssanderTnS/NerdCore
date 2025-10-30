@@ -51,14 +51,6 @@
         <img id="banner" src="SiteLoja/assets/banner.png" alt="">
     </div>
     
-    <section class="pesquisa">
-        <form class="search-form" action="/search" method="get" role="search" aria-label="Pesquisar no site">
-            <input id="site-search" name="q" type="search" placeholder="Procure sua camisa" required autocomplete="off">
-            <button type="submit">Pesquisar</button>
-        </form>
-    </section>
-    <p id="errorMessage" class="erro"></p>
-
     <section id="produtosContainer">
     </section>
 
