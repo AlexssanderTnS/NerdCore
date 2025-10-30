@@ -54,10 +54,6 @@
     <section id="produtosContainer">
     </section>
 
-    <script src="/SiteLoja/js/pesquisa.js"></script>
-
-
-
     <main id="main">
         <div class="card">
             <a href="SiteLoja/pages/compphp?id=1"><img class="camisa"
