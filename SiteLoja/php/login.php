@@ -1,48 +1,41 @@
 <?php
 session_start();
-include 'conexao.php';
+require 'conexao.php';
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $usuario = $_POST['usuario'] ?? '';
-    $senha = $_POST['senha'] ?? '';
 
-    try {
-        // Buscar usuário ativo
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = :usuario AND ativo = 1 LIMIT 1");
-        $stmt->execute(['usuario' => $usuario]);
 
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+//Verifica se está enviando pelo método POST
+if ($_SERVER['REQUEST_METHOD'] === "POST"){
+$usuario = $_POST['usuario'] ?? '';
+$senha = $_POST['senha'] ?? '';
 
-        if ($user) {
-            // Verifica senha hash
-            if (password_verify($senha, $user['senha'])) {
-                // Salvar dados na sessão
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['nome'] = $user['nome'];
-                $_SESSION['nivel_acesso'] = $user['nivel_acesso'];
 
-                // Redirecionar conforme nível de acesso
-                if ($user['nivel_acesso'] === 'admin') {
-                    header('Location: ../pages/adm.html');
-                    exit;
-                } else {
-                    header('Location: ../index.html');
-                    exit;
-                }
-            } else {
-                // Senha incorreta
-                echo "<script>alert('Senha incorreta!');window.location.href='../pages/login.html';</script>";
-                exit;
-            }
-        } else {
-            // Usuário não encontrado ou inativo
-            echo "<script>alert('Usuário não encontrado ou inativo!');window.location.href='../pages/login.html';</script>";
-            exit;
-        }
+if (!empty($usuario) && !empty($senha)){
+    $sql = "SELECT * FROM usuarios WHERE usuario = :usuario";
+    $stmt = $pdo->prepare($sql);
+    $stmt-> bindValue(':usuario', $usuario);
+    $stmt-> execute();
+    $dados_usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+#compara se existe 1 usuario com o nome inserido
 
-    } catch (PDOException $e) {
-        echo "Erro no login: " . $e->getMessage();
+ if ($dados_usuario){
+
+    if(password_verify($senha,$dados_usuario["senha"])){
+        $_SESSION['usuario_id'] = $dados_usuario['id'];
+        $_SESSION['usuario_nome'] = $dados_usuario['usuario'];
+        $_SESSION['usuario_acesso'] = $dados_usuario['acesso'];
+
+        header("Location: ../../index.php");
         exit;
-    }
 }
+else{
+    header("Location: ../pages/login.php");
+}}else{
+    header("Location: ../pages/login.php");
+}}else{
+    header("Location: ../pages/login.php");
+}}
+
+
+
 ?>

@@ -29,6 +29,7 @@ try {
     //tabela do banco de dados
     $usuTable = "CREATE TABLE IF NOT EXISTS usuarios(
         id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        acesso int(1) UNSIGNED NOT NULL DEFAULT 1,
         nome VARCHAR(50) NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
         usuario VARCHAR(6) UNIQUE NOT NULL,
