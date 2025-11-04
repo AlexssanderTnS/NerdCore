@@ -57,6 +57,37 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         die("CPF inválido. Por favor, tente novamente.");
     }
 
+
+// --- Validação do cpf ---
+function validarCPF($cpf) {
+    // verifica se tem 11 dígitos
+    if (strlen($cpf) != 11) return false;
+
+    // Elimina CPFs com todos os dígitos iguais
+    if (preg_match('/^(\d)\1{10}$/', $cpf)) return false;
+
+    // Calcula os dois dígitos verificadores
+    for ($t = 9; $t < 11; $t++) {
+        $soma = 0;
+        for ($i = 0; $i < $t; $i++) {
+            $soma += $cpf[$i] * (($t + 1) - $i);
+        }
+        $digito = ((10 * $soma) % 11) % 10;
+        if ($cpf[$i] != $digito) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// --- Aplica a validação ---
+if (!validarCPF($cpf)) {
+    die("CPF inválido. Por favor, tente novamente.");
+}
+
+echo "CPF válido!";
+
     if ($data_nascimento) {
     // Converte para objeto de data
     $nascimento = DateTime::createFromFormat('Y-m-d', $data_nascimento);
