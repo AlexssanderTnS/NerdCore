@@ -51,6 +51,7 @@ form.addEventListener("submit", (evento) => {
   checkRua();
   checkCEP();
   checkNumero();
+  dataNascimento();
   const erros = document.querySelectorAll(".botao-campo.error");
   //condicional que impede do programa funcionar se tiver algum campo com erro
   if (erros.length === 0) {
@@ -289,7 +290,53 @@ function cpfVerificador() {
     entradaErro(cpf, "CPF inválido");
     return;
   }
+};
 
- 
- 
-}
+function dataNascimento() {
+    const nascimentoValue = nascimento.value;
+
+  if (nascimentoValue ===""){
+    entradaErro(nascimento, "Data de nascimento inválida");  
+    return;
+  }
+
+  let partes;
+
+// Detecta automaticamente se é "dd/mm/yyyy" ou "yyyy-mm-dd"
+  if (nascimentoValue.includes("/")) {
+  partes = nascimentoValue.split("/");
+  var dia = parseInt(partes[0], 10);
+  var mes = parseInt(partes[1], 10) - 1;
+  var ano = parseInt(partes[2], 10);
+  } else if (nascimentoValue.includes("-")) {
+  partes = nascimentoValue.split("-");
+  var ano = parseInt(partes[0], 10);
+  var mes = parseInt(partes[1], 10) - 1;
+  var dia = parseInt(partes[2], 10);
+  }
+
+  const dataNascimento = new Date(ano, mes, dia);
+
+    if (isNaN(dataNascimento.getTime())){ 
+      entradaErro(nascimento, "Data de nascimento inválida"); //
+      return;
+    }
+
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+    const diferencaMes = hoje.getMonth() - dataNascimento.getMonth();
+
+    if(diferencaMes < 0 || (diferencaMes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+      idade--;
+    }
+
+    const idadeMinima = 15;
+    const idadeMaxima = 95;
+
+    if(idade < idadeMinima){
+      entradaErro(nascimento, `Você deve ter no mínimo ${idadeMinima} anos para se cadastrar`);
+    } else if (idade > idadeMaxima){
+      entradaErro(nascimento, `Você deve ter no máximo ${idadeMaxima} anos para se cadastrar`);
+  
+  } 
+};

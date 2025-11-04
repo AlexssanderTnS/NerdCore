@@ -57,6 +57,30 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         die("CPF inválido. Por favor, tente novamente.");
     }
 
+    if ($data_nascimento) {
+    // Converte para objeto de data
+    $nascimento = DateTime::createFromFormat('Y-m-d', $data_nascimento);
+    $hoje = new DateTime();
+
+    if (!$nascimento) {
+        die("Data de nascimento inválida.");
+    }
+
+    // Calcula a diferença entre as datas
+    $idade = $hoje->diff($nascimento)->y;
+
+    // Define os limites de idade
+    $idade_minima = 18;
+    $idade_maxima = 60;
+
+    if ($idade < $idade_minima || $idade > $idade_maxima) {
+        die("A idade deve estar entre $idade_minima e $idade_maxima anos.");
+    }
+
+    echo "Idade válida: $idade anos.";
+    
+    }
+
     if (!preg_match("/^[0-9]{8}$/", $cep)) {
         die("CEP inválido. Por favor, tente novamente.");
     }
