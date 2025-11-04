@@ -37,6 +37,10 @@
                                 
                             </div>
                         </div>
+                        <a href="SiteLoja/php/logout.php">Logout</a>
+                         
+
+                        
                         <a href="SiteLoja/pages/cadastro.php">Cadastre-se</a>
                         <a href="SiteLoja/pages/login.php">Login</a>
                         <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
