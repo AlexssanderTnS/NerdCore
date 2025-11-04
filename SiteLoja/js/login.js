@@ -1,11 +1,11 @@
-const form = document.getElementById("formLogin");
-const usuario = document.getElementById("usuario");
-const senha = document.getElementById("senha");
-const limpar = document.getElementById("limpar");
+//const form = document.getElementById("formLogin");
+//const usuario = document.getElementById("usuario");
+//const senha = document.getElementById("senha");
+//const limpar = document.getElementById("limpar");
 
-form.addEventListener("submit", (evento) => {
-  evento.preventDefault(); // impede reload
-  validarLogin();
+//form.addEventListener("submit", (evento) => {
+  //evento.preventDefault(); // impede reload
+  //validarLogin();
 });
 
 function validarLogin() {

@@ -55,7 +55,7 @@
     <section>
         <h1>Corre pra fazer seu Login!</h1>
         <img src="../assets/pacmanonld.png" alt="Pacman" />
-        <form id="formLogin">
+        <form id="formLogin" method="POST" action="../php/login.php">
             <!-- Campo do usuário -->
             <div class="botao-campo">
                 <input type="text" name="usuario" id="usuario" placeholder="Usuário" />
@@ -69,7 +69,7 @@
             <div class="enviar">
                 <!-- Botão de enviar o login -->
                 <button type="submit" class="botao-funcao" id="enviar">Enviar</button>
-                <button id="limpar">Limpar</button>
+                <button type="button" id="limpar">Limpar</button>
 
             </div>
             <!-- Link para cadastro -->
