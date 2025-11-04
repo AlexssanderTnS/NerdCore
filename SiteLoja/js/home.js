@@ -19,7 +19,7 @@ jQuery(document).ready(function () {
 document.querySelectorAll('.camisa').forEach(img => {
   img.addEventListener('click', () => {
     const id = img.getAttribute('data-id');
-    window.location.href = `/SiteLoja/pages/compra.html?id=${id}`;
+    window.location.href = `/SiteLoja/pages/compra.php?id=${id}`;
   });
 });
 
