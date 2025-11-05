@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../style/compra.css">
-  <link rel="icon" href="../SiteLoja/assets/LogoTOPO.png" type="image/x-icon"> 
+  <link rel="icon" href="../assets/LogoTOPO.png" type="image/x-icon"> 
   <title>NerdCore</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
 
@@ -18,28 +18,28 @@
     <header class="nerdbar">
         <div class="logo">
 
-            <a href="/index.html"><img src="/SiteLoja/assets/logoroxa.png" alt="logo"></a>
+            <a href="NerdCore/index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
 
-            <h1><a href="/index.html">NerdCore</a></h1>
+            <h1><a href="../../index.php">NerdCore</a></h1>
         </div>
 
       <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
                 <nav class="link">
-                        <a href="/ndex.html">Inicio</a>
-                        <a href="/SiteLoja/pages/grupo.html">Quem Somos</a>
-                        <a href="/SiteLoja/pages/cadastro.html">Cadastre-se</a>
+                        <a href="../../index.php">Inicio</a>
+                        <a href="../pages/grupo.php">Quem Somos</a>
+                        <a href="../pages/cadastro.php">Cadastre-se</a>
 
                         
                         <div class="dropdown">
-                            <a onclick="dropdownToggle()">Produtos <img src="/SiteLoja/assets/arrow.svg" alt="arrow_drop_down" /></a>
+                            <a onclick="dropdownToggle()">Produtos <img src="../assets/arrow.svg" alt="arrow_drop_down" /></a>
                             <div class="dropdown-content">
-                                <a href="/index.html#main">Camisetas</a>
-                                <a href="/SiteLoja/pages/producao.html">Canecas</a> 
+                                <a href="../../index.php#main">Camisetas</a>
+                                <a href="../pages/producao.html">Canecas</a>
                             </div>
                         </div>
-                        <a href="/SiteLoja/pages/login.html">Login</a>
+                        <a href="../pages/login.html">Login</a>
                         <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
                 </nav>
             </ul>
@@ -83,7 +83,7 @@
        </div>
 
 
-       <button id="botaocompra" href="">Comprar</button>
+       <a href="../pages/carrinho.php" id="botaocompra">Comprar</a>
     </div>
   </section>
     
@@ -126,7 +126,7 @@
 
   <!--Link com JS-->
 
-    <script src="/SiteLoja/js/produtos.js"></script>
+    <script src="../js/produtos.js"></script>
 
 
   <script>

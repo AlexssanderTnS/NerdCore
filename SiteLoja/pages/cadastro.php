@@ -23,7 +23,7 @@
 
             <a href="../../index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
 
-            <h1><a href="../index.html">NerdCore</a></h1>
+            <h1><a href="../../index.html">NerdCore</a></h1>
         </div>
 
       <div class="navbar">
