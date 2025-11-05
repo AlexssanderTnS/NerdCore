@@ -21,9 +21,9 @@
     <header class="nerdbar">
         <div class="logo">
 
-            <a href="../../index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
+            <a href="../../index.php"><img src="../assets/logoroxa.png" alt="logo"></a>
 
-            <h1><a href="../../index.html">NerdCore</a></h1>
+            <h1><a href="../../index.php">NerdCore</a></h1>
         </div>
 
       <div class="navbar">

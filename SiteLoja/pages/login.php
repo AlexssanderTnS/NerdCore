@@ -1,3 +1,6 @@
+<?php
+require"../php/login.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -29,6 +32,7 @@
             <ul id="menu-list">
                 <nav class="link">
                         <a href="../../index.php">Inicio</a>
+                        <?=$usuario;?>
                         <a href="../pages/grupo.php">Quem Somos</a>
                         <div class="dropdown">
                         <a onclick="dropdownToggle()">Produtos <img src="../assets/arrow.svg" alt="arrow_drop_down" /></a>

@@ -1,3 +1,5 @@
+<?php
+require("")
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,7 +24,7 @@
 
 
          <a href="/index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
-         <h1><a href=".../SiteLoja/index.html">NerdCore</a></h1>  
+         <h1><a href="../../index.php">NerdCore</a></h1>  
         </div>
       <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
@@ -33,8 +35,8 @@
                         <div class="dropdown">
                         <a onclick="dropdownToggle()">Produtos <img src="../assets/arrow.svg" alt="arrow_drop_down" /></a>
                         <div class="dropdown-content">
-                            <a href="./index.php#main">Camisetas</a>
-                            <a href="./producao.php">Canecas</a>
+                            <a href="../../index.php#main">Camisetas</a>
+                            <a href="../producao.php">Canecas</a>
                         </div>
                         <a href="../pages/cadastro.php">Cadastre-se</a>
                         <a href="../pages/login.php">Login</a>
@@ -87,7 +89,7 @@
             <div class="nerd-card">
                 <img src="../assets/Lice.jpeg" alt="Pessoa 5 Nerd">
                 <div class="nerd-info">
-                    <h3>Analice Sant'ana</h3>
+                    <h3>Analice Sant'ana'</h3>
                     <p>Desenvolvimento da troca de cores das camisas na página de exibição de produto único.</p>
                     <a target="_blank" href="https://github.com/Lice25" class="nerd-btn">MAIS</a>
                 </div>
@@ -122,3 +124,5 @@
 </body>
 
 </html>
+
+?>
