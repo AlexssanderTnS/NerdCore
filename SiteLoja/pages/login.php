@@ -1,7 +1,8 @@
 <?php
-//responsável por puxar a sessão e excluir a mensagem do BD
+ob_start();
 session_start();
-
+require '../php/protecao.php'; 
+ob_end_clean();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,12 +36,19 @@ session_start();
                 <nav class="link">
                         <a href="../../index.php">Inicio</a>
                         <?php
-                        if (isset($_SESSION['usuario_nome'])){
-                            echo'<a href="#"> Perfil </a>';
+                        if (isset($_SESSION['usuario_nome']) && nivelAcesso() === "2"){
+                                // usuário admin logado
+                            echo "<a href='adm.php'>Painel Admin</a>";
                             echo "<a>{$_SESSION['usuario_nome']}</a>";
                             echo '<a href="../php/logout.php">Logout</a>';
-                            
-                        }else{
+                        } 
+                            else if (isset($_SESSION['usuario_nome'])) {
+                                // usuário normal logado
+                                echo'<a href="#"> Perfil </a>';
+                                echo "<a>{$_SESSION['usuario_nome']}</a>";
+                                echo '<a href="../php/logout.php">Logout</a>';
+                        }  
+                        else{
                             echo'<a href="../pages/login.php">Login</a>';
                             echo '<a href="../pages/cadastro.php">Cadastre-se</a>';
                         }

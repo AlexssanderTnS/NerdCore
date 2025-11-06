@@ -58,13 +58,7 @@ try {
     $pdo->exec($team);
     
 
-    // Inserir um usuário padrão apenas se ainda não existe
-    $check = $pdo->query("SELECT COUNT(*) FROM usuarios")->fetchColumn();
-    if ($check == 0) {
-    $senha = password_hash("123456", PASSWORD_DEFAULT);
-    $pdo->exec("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero)
-                VALUES ('Admin', 'admin@nerdcore.com', 'admin1', '$senha', '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100)");
-}
+    
 
 $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -78,9 +72,18 @@ $produtos = "CREATE TABLE IF NOT EXISTS produtos (
 );";
 $pdo->exec($produtos);
 
-
-
+//Cria o perfil do ADM
+$check = $pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario = ?");
+$check->execute(['admin1']);
+if ($check->fetchColumn() == 0) {
+    $senha = password_hash("nerdcore", PASSWORD_DEFAULT);
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, acesso)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100, 2]);
+}
 
 } catch (PDOException $e) {
     die("ERRO na criação da tabela: " . $e->getMessage());
 }
+
+?>

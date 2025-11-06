@@ -1,3 +1,10 @@
+<?php
+
+require '../php/protecao.php'; 
+
+exigeAcesso(2);  
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
