@@ -1,7 +1,8 @@
 <?php
+ob_start();
 session_start();
 require 'conexao.php';
-
+ob_end_clean();
 
 
 //Verifica se está enviando pelo método POST
@@ -25,16 +26,18 @@ if (!empty($usuario) && !empty($senha)){
         $_SESSION['usuario_nome'] = $dados_usuario['usuario'];
         $_SESSION['usuario_acesso'] = $dados_usuario['acesso'];
 
-        header("Location: ../../index.php");
-        exit;
+        echo "sucesso";
+        
 }
 else{
-    header("Location: ../pages/login.php");
+    echo"erroSenha";
 }}else{
-    header("Location: ../pages/login.php");
+    echo"erroUsuario";
 }}else{
-    header("Location: ../pages/login.php");
-}}
+    echo"campos_vazios";
+}
+exit;
+}
 
 
 

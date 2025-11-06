@@ -121,7 +121,7 @@ div.navbar {
     /* Espaço entre links */
 }
 
-div.navbar a {
+div.navbar a, div.navbar p {
     text-decoration: none;
     /* Remove sublinhado */
     text-transform: uppercase;
@@ -496,7 +496,7 @@ footer img {
     gap: 10px; /* Espaço entre links reduzido */
   }
 
-  div.navbar a {
+  div.navbar a, div.navbar p{
     font-size: 14px; /* Reduz tamanho da fonte */
     padding: 5px; /* Adiciona espaçamento interno */
   }
