@@ -82,7 +82,7 @@
          </div>
        </div>
 
-
+      <button id="btn-adicionar" class="btn-adicionar">Adicionar ao Carrinho</button>
        <a href="../pages/carrinho.php" id="botaocompra">Comprar</a>
     </div>
   </section>
