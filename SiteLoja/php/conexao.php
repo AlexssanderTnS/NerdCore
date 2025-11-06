@@ -69,13 +69,15 @@ try {
 $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    descricao TEXT NOT NULL,
+    descricao TEXT,
     preco DECIMAL(10,2) NOT NULL,
     imagem VARCHAR(255),
     categoria ENUM('camisa', 'caneca') NOT NULL,
-    estoque INT DEFAULT 0
+    estoque INT DEFAULT 0,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );";
 $pdo->exec($produtos);
+
 
 
 
