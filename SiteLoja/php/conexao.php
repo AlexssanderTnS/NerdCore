@@ -48,8 +48,7 @@ try {
         complemento VARCHAR(50) DEFAULT NULL);";
     //executa o para criar a tabela
     $pdo->exec($usuTable);
-    echo "Tabela criada com sucesso!";
-
+    
     $team = "CREATE TABLE IF NOT EXISTS equipe(
         id_func INT(11) AUTO_INCREMENT PRIMARY KEY,
         nome VARCHAR(100) NOT NULL,
@@ -57,8 +56,29 @@ try {
         data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );";
     $pdo->exec($team);
-    echo "Tabela 'equipe' criada/verificada com sucesso!<br>";
+    
+
+    // Inserir um usuário padrão apenas se ainda não existe
+    $check = $pdo->query("SELECT COUNT(*) FROM usuarios")->fetchColumn();
+    if ($check == 0) {
+    $senha = password_hash("123456", PASSWORD_DEFAULT);
+    $pdo->exec("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero)
+                VALUES ('Admin', 'admin@nerdcore.com', 'admin1', '$senha', '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100)");
+}
+
+$produtos = "CREATE TABLE IF NOT EXISTS produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    imagem VARCHAR(255),
+    categoria ENUM('camisa', 'caneca') NOT NULL,
+    estoque INT DEFAULT 0
+);";
+$pdo->exec($produtos);
+
+
+
 } catch (PDOException $e) {
     die("ERRO na criação da tabela: " . $e->getMessage());
 }
-echo "Conexão com o banco de dados realizada com sucesso!";
