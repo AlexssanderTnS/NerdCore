@@ -1,5 +1,4 @@
-<?php
-require("")
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
