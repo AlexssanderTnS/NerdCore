@@ -45,7 +45,7 @@ ob_end_clean();
                         </div>
                         <?php
                         if (isset($_SESSION['usuario_nome']) && nivelAcesso() === "2"){
-                                // usuário admin logado
+
                             echo "<div class = 'dropdown'>
                             '<a>{$_SESSION['usuario_nome']}</a>'
                             <div class='dropdown-content'>
@@ -55,7 +55,7 @@ ob_end_clean();
                             </div>";
                         } 
                             else if (isset($_SESSION['usuario_nome'])) {
-                                // usuário normal logado
+                                
                                 echo "<div class ='dropdown'>
                                 <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
                                 <div class='dropdown-content'>

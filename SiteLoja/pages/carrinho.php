@@ -1,3 +1,9 @@
+<?php
+ob_start();
+session_start();
+require '../php/protecao.php'; 
+ob_end_clean();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

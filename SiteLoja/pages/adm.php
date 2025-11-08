@@ -1,7 +1,8 @@
 <?php
-
+ob_start();
+session_start();
 require '../php/protecao.php'; 
-
+ob_end_clean();
 exigeAcesso(2);  
 
 ?>
