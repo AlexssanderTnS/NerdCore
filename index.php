@@ -1,3 +1,9 @@
+<?php
+ob_start();
+session_start();
+require 'SiteLoja/php/protecao.php'; 
+ob_end_clean();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,23 +32,42 @@
       <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
-                <nav class="link">
+                 <nav class="link">
                         <a href="index.php">Inicio</a>
-                        <a href="SiteLoja/pages/grupo.php">Quem Somos</a>
-                        <div class="dropdown">
-                            <a onclick="dropdownToggle()">Produtos <img src="SiteLoja/assets/arrow.svg" alt="arrow_drop_down" /></a>
-                            <div class="dropdown-content">
-                                <a href="index.php#main">Camisetas</a>
-                                <a href="SiteLoja/pages/producao.php">Canecas</a>
-                                
+                        <a href='SiteLoja/pages/grupo.php'>Quem Somos</a>
+                        <div class='dropdown'>
+                            <a onclick='dropdownToggle()'>Produtos <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
+                        <div class='dropdown-content'>
+                            <a href='index.php#main'>Camisetas</a>
+                            <a href='SiteLoja/pages/producao.php'>Canecas</a>
                             </div>
                         </div>
-                        <a href="SiteLoja/php/logout.php">Logout</a>
-                         
-
-                        
-                        <a href="SiteLoja/pages/cadastro.php">Cadastre-se</a>
-                        <a href="SiteLoja/pages/login.php">Login</a>
+                        <?php
+                        if (isset($_SESSION['usuario_nome']) && nivelAcesso() === "2"){
+                                // usuário admin logado
+                            echo "<div class = 'dropdown'>
+                            '<a>{$_SESSION['usuario_nome']}</a>'
+                            <div class='dropdown-content'>
+                            <a href='SiteLoja/pages/adm.php'>Painel Admin</a>
+                            <a href='SiteLoja/php/logout.php'>Logout</a>
+                            </div>
+                            </div>";
+                        } 
+                            else if (isset($_SESSION['usuario_nome'])) {
+                                // usuário normal logado
+                                echo "<div class ='dropdown'>
+                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
+                                <div class='dropdown-content'>
+                                <a href='#'> Perfil </a>
+                                <a href='SiteLoja/php/logout.php'>Logout</a>
+                                </div>
+                                </div>"; 
+                        }  
+                        else{
+                            echo '<a href="SiteLoja/pages/cadastro.php">Cadastre-se</a>';
+                            echo'<a href="SiteLoja/pages/login.php">Login</a>';
+                        }
+                        ?>
                         <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
                 </nav>
             </ul>

@@ -62,24 +62,13 @@ ob_end_clean();
                                 <a href='#'> Perfil </a>
                                 <a href='../php/logout.php'>Logout</a>
                                 </div>
-                                </div>";
-                                
-                                
-                                
+                                </div>"; 
                         }  
                         else{
-
                             echo '<a href="../pages/cadastro.php">Cadastre-se</a>';
                             echo'<a href="../pages/login.php">Login</a>';
                         }
-                        
                         ?>
-                        
-                        
-                        
-                        
-                        
-                        
                         <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
                 </nav>
             </ul>
