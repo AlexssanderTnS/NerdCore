@@ -36,7 +36,7 @@ ob_end_clean();
                         <a href="index.php">Inicio</a>
                         <a href='SiteLoja/pages/grupo.php'>Quem Somos</a>
                         <div class='dropdown'>
-                            <a onclick='dropdownToggle()'>Produtos <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
+                            <a onclick='dropdownToggle()'>Produtos <img src='SiteLoja/assets/arrow.svg' alt='arrow_drop_down' /></a>
                         <div class='dropdown-content'>
                             <a href='index.php#main'>Camisetas</a>
                             <a href='SiteLoja/pages/producao.php'>Canecas</a>
