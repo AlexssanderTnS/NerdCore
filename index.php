@@ -60,7 +60,7 @@
 
     <main id="main">
         <div class="card">
-            <a href="SiteLoja/pages/compphp?id=1"><img class="camisa"
+            <a href="SiteLoja/pages/compra.php?id=1"><img class="camisa"
                     src="SiteLoja/produtos/CP/1 camisa chloe preta sem fundo.png" data-id="1" alt="1"></a>
             <p><a href="SiteLoja/pages/compra.php?id=1">Ver produto</a></p>
         </div>
