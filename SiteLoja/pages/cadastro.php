@@ -3,6 +3,17 @@ ob_start();
 session_start();
 require '../php/login.php'; 
 ob_end_clean();
+
+if (logado() && nivelAcesso() != 0) {
+  echo '<script>
+          window.location.href = "../../index.php";
+        </script>';
+  exit;
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

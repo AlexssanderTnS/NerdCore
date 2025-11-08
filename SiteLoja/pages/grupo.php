@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-require '../php/login'; 
+require '../php/login.php'; 
 ob_end_clean();
 ?>
 <!DOCTYPE html>
