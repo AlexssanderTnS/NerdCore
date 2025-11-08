@@ -2,13 +2,13 @@
 const navLinks = document.querySelectorAll(".nav-links li");
 const conteudo = document.getElementById("conteudo");
 
-//function para mostrar a imagem 
-function inicializarPreviewImagem() {
+// Função ajustada para configurar um par específico de input/preview
+function configurarPreviewImagem(idInput, idPreview) {
     // 1. Obter os elementos HTML, que agora já estão no DOM
-    const inputImagem = document.getElementById('upload-imagem');
-    const imagemPreview = document.getElementById('preview-imagem');
+    const inputImagem = document.getElementById(idInput);
+    const imagemPreview = document.getElementById(idPreview);
 
-    // Verifica se os elementos foram encontrados (se estamos na seção 'products')
+    // Verifica se os elementos foram encontrados
     if (inputImagem && imagemPreview) {
         // 2. Adicionar o "ouvinte de eventos" (event listener)
         inputImagem.addEventListener('change', function(event) {
@@ -38,8 +38,6 @@ function carregarSecao(secao) {
     let html = "";
 
     switch (secao) {
-        // ... (Cases para 'dashboard', 'team', 'stock', 'sells' permanecem inalterados) ...
-
         case "products":
             html = `
                 <div id="products" class="fade">
@@ -48,10 +46,10 @@ function carregarSecao(secao) {
                         <input type="text" placeholder="Nome do produto">
                         <input type ="text" placeholder="Descrição do produto">
                         <input type="number" placeholder="Preço">
-                        <img id="preview-imagem" src="" alt="Pré-visualização da imagem" style="max-width: 300px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
-                        <input type="file" id="upload-imagem" name="imagem" accept="image/*">
-                        <img id="preview-imagem" src="" alt="Pré-visualização da imagem" style="max-width: 300px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
-                        <input type="file" id="upload-imagem" name="imagem" accept="image/*">
+                        <img id="preview-imagem1" src="" alt="Pré-visualização da imagem 1" style="max-width: 100px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
+                        <input type="file" id="upload-imagem1" name="imagem1" accept="image/*">
+                        <img id="preview-imagem2" src="" alt="Pré-visualização da imagem 2" style="max-width: 100px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
+                        <input type="file" id="upload-imagem2" name="imagem2" accept="image/*">
                         
                         <select name="categoria" required>
                             <option value="camiseta">Camiseta</option>
@@ -66,51 +64,53 @@ function carregarSecao(secao) {
         case "dashboard":
              html = `
                  <div id="dashboard" class="fade">
-                     <h2>Bem-vindo, Administrador</h2>
-                     <p>Movimentações recentes:</p>
-                     <div class="cards-container">
-                         <div class="card"><h4>Camisas Vendidas</h4><h2>12</h2></div>
-                         <div class="card"><h4>Funcionários Ativos</h4><h2>22</h2></div>
-                         <div class="card"><h4>Última Alteração</h4><h2>14/10/2025</h2></div>
-                     </div>
-                 </div>
-                 <div class="foto"><img src="/SiteLoja/assets/LogoADM.png" /></div>
-             `;
-             break;
+                    <h2>Bem-vindo, Administrador</h2>
+                    <p>Movimentações recentes:</p>
+                    <div class="cards-container">
+                        <div class="card"><h4>Camisas Vendidas</h4><h2>12</h2></div>
+                        <div class="card"><h4>Funcionários Ativos</h4><h2>22</h2></div>
+                        <div class="card"><h4>Última Alteração</h4><h2>14/10/2025</h2></div>
+                    </div>
+                </div>
+                <div class="foto"><img src="/SiteLoja/assets/LogoADM.png" /></div>
+            `;
+            break;
  
-         case "team":
-             html = `
-                 <div id="team" class="fade">
-                     <h2>Equipe da Loja</h2>
-                     <p>Lista de funcionários e funções.</p>
-                 </div>
-             `;
-             break;
+          case "team":
+              html = `
+                  <div id="team" class="fade">
+                      <h2>Equipe da Loja</h2>
+                      <p>Lista de funcionários e funções.</p>
+                  </div>
+              `;
+              break;
  
-         case "stock":
-             html = `
-                 <div id="stock" class="fade">
-                     <h2>Controle de Estoque</h2>
-                     <p>Visualize e atualize os produtos disponíveis.</p>
-                 </div>
-             `;
-             break;
+          case "stock":
+              html = `
+                  <div id="stock" class="fade">
+                      <h2>Controle de Estoque</h2>
+                      <p>Visualize e atualize os produtos disponíveis.</p>
+                  </div>
+              `;
+              break;
  
-         case "sells":
-             html = `
-                 <div id="sells" class="fade">
-                     <h2>Registro de Vendas</h2>
-                     <p>Relatórios e histórico de vendas.</p>
-                 </div>
-             `;
-             break;
+          case "sells":
+              html = `
+                  <div id="sells" class="fade">
+                      <h2>Registro de Vendas</h2>
+                      <p>Relatórios e histórico de vendas.</p>
+                  </div>
+              `;
+              break;
     }
 
+    // Insere o novo HTML no DOM
     conteudo.innerHTML = html; 
 
-    
+    // Chama a função de configuração para CADA PAR de input/preview
     if (secao === "products") {
-        inicializarPreviewImagem();
+        configurarPreviewImagem("upload-imagem1", "preview-imagem1");
+        configurarPreviewImagem("upload-imagem2", "preview-imagem2");
     }
 }
 
