@@ -194,6 +194,8 @@ h1 {
   border-radius: 10px;
   /* Bordas arredondadas */
   text-align: left;
+  right: 0;
+  left: auto;
 
 }
 
