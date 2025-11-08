@@ -49,7 +49,7 @@ ob_end_clean();
                             echo "<div class = 'dropdown'>
                             '<a>{$_SESSION['usuario_nome']}</a>'
                             <div class='dropdown-content'>
-                            <a href='adm.php'>Painel Admin</a>
+                            <a href='../pages/adm.php'>Painel Admin</a>
                             <a href='../php/logout.php'>Logout</a>
                             </div>
                             </div>";

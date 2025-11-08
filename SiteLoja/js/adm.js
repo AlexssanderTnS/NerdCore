@@ -47,6 +47,10 @@ function carregarSecao(secao) {
                     <form>
                         <input type="text" placeholder="Nome do produto">
                         <input type="number" placeholder="Preço">
+                        <select name="categoria" required>
+                            <option value="camiseta">Camiseta</option>
+                            <option value="caneca">Caneca</option>
+                        </select>
                         <button type="submit">Cadastrar</button>
                     </form>
                 </div>
