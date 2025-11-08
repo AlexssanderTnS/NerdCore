@@ -1,8 +1,7 @@
-
 <?php
 ob_start();
 session_start();
-require '../php/protecao.php'; 
+require '../php/login'; 
 ob_end_clean();
 ?>
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-require 'SiteLoja/php/protecao.php'; 
+require 'SiteLoja/php/login.php'; 
 ob_end_clean();
 ?>
 <!DOCTYPE html>
