@@ -25,7 +25,7 @@ exigeAcesso(1);
     <header class="nerdbar">
         <div class="logo">
 
-            <a href="NerdCore/index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
+            <a href="../../index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
 
             <h1><a href="../../index.php">NerdCore</a></h1>
         </div>
@@ -69,7 +69,7 @@ exigeAcesso(1);
                             echo'<a href="../pages/login.php">Login</a>';
                         }
                         ?>
-                        <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
+                        
                 </nav>
             </ul>
         </div>
@@ -81,7 +81,7 @@ exigeAcesso(1);
   <section>
 
     <div class="minaazul">
-      <img id="imagem-produto" src="" alt="Imagem do Produto">
+      <img id="imagem-produto"   src="" alt="Imagem do Produto">
     </div>
      <div class="caixa">
        <h2 id="nome-produto">Nome do Produto</h2>
@@ -137,7 +137,7 @@ exigeAcesso(1);
   <footer class="footer">
     <div class="footer-logo">
         <h4>NerdCore LTDA.</h4>
-        <img src="/SiteLoja/assets/LogoTOPO.png" alt="Logo NerdCore">
+        <img src="../assets/LogoTOPO.png" alt="Logo NerdCore">
     </div>
 
     <div class="footer-content">
