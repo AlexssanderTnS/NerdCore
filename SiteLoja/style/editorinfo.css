@@ -1,0 +1,714 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* === ESTILO GERAL === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', monospace;
+    margin-top: vmvfm;
+}
+
+body {
+    background-image: url("../assets/labirinto.jpg"); 
+    background-size: cover;
+    background-position: center;
+    min-height: 100px;
+    color: #ff0000;
+    display: flex;
+    padding-bottom: 80px;
+
+}
+
+/* === CONTAINER PRINCIPAL === */
+.registro-container {
+    background-color: rgba(48, 47, 47, 0.9);
+    border: 3px solid #e5e900;
+    border-radius: 15px;
+    padding: 40px;
+    width: 1200px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 25px #e5e900;
+    animation: brilho 2s infinite alternate;
+    margin-bottom: 90px;
+}
+
+/* Animação de brilho leve */
+@keyframes brilho {
+    0% { box-shadow: 0 0 10px #e5e900; }
+    100% { box-shadow: 0 0 30px #f9ff59; }
+}
+
+/* === TÍTULO === */
+.registro-container h2 {
+    color: #eeff00;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+/* === FORMULÁRIO === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+    
+}
+
+label {
+    font-size: 0.6rem;
+    color: #f9ff59;
+    margin-bottom: 5px;
+}
+
+input {
+    background-color: #1b1b1b;
+    border: 2px solid #e5e900;
+    border-radius: 8px;
+    padding: 10px;
+    color: #f2ff03;
+    font-size: 0.7rem;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px #ff00ff;
+    transition: 0.3s;
+}
+
+/* === BOTÃO === */
+button {
+    background-color: #e5e900;
+    color: #1b1b1b;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #181815;
+    color: #e5e900;
+    animation: pisca-cor 1s infinite;
+}
+
+/* === LINK "VOLTAR" === */
+.registro-container p {
+    margin-top: 25px;
+}
+
+.registro-container a {
+    text-decoration: none;
+    color: #e5e900;
+    font-size: 0.6rem;
+}
+
+.registro-container a:hover {
+    animation: pisca-cor 1s infinite;
+}
+
+/* === ANIMAÇÃO DE PISCAR COLORIDO === */
+@keyframes pisca-cor {
+    0% { color: #FF0000; }
+    25% { color: #FFB8FF; }
+    50% { color: #00FFFF; }
+    75% { color: #FFB852; }
+    100% { color: #FF0000; }
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 500px) {
+    .registro-container {
+        padding: 25px;
+    }
+
+    input, button {
+        font-size: 0.6rem;
+    }
+
+    h2 {
+        font-size: 0.8rem;
+    }
+}   
+
+footer {
+    border-top: #e8f804 solid 3px;
+    background-color: #302f2f;
+    display: flex;
+    padding: 100px;
+    width: 100%;
+    margin-bottom: 2px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;  
+  }
+  
+  .footer-logo h4{
+    color: #eeff00;
+  }
+  
+  
+  footer img {
+    width: 20%;
+  }
+  
+  .footer-content{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    margin-right: 70px; 
+  }
+  
+  .footer-content h4{
+    color: #eeff00;
+  }
+  .footer-content li{
+    list-style: none;
+  }
+  
+  .footer-content li a{
+    color: #e5e900;
+    text-decoration: none;
+    font-size: 10px !important;
+  }
+  
+  .footer-content ul li a:hover{
+    animation: pisca-cor 1s infinite;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*body do cadastro*/
+body {
+    background-image: url(../assets/labirinto.jpg);
+    font-family: 'Press Start 2P', monospace;
+    height: 0vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2%;
+    /* justify-content: center; esse comando alem de alinhar ao centro pode causar problemas com a visualização da tela, pois ira centralizar tudo e nao ficará nada colado ao topo */
+    /* margin: 10%;  O margin na body pode causar problemas de layout, especialmente com o header fixo. 
+    se tirarmos o margin será melhor para o layout geral. Alem disso, o height foi ajustado para 300vh para evitar problemas de rolagem.*/
+
+}
+
+
+/*header*/
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: solid #e5e900;
+
+}
+
+header.nerdbar {
+    display: flex; /* Utilizo o Flexbox para organizar os elementos do header em linha */
+    align-items: center; /* Alinho todos os itens verticalmente ao centro */
+    gap: 20px; /* Espaço de 15px entre os itens (logo, nav etc) */
+    padding: 1%; /* Espaçamento interno do header */
+    background-color: #302f2f; /* Cor de fundo escura, para combinar com o estilo geek */
+    flex-direction: row; /* Organiza os elementos na horizontal */
+    justify-content: space-between; /* Espaça os elementos nas extremidades (logo de um lado, nav do outro) */
+    height: 130px; /* Altura definida para manter o header consistente */
+    position: sticky; /* Mantém o header fixo no topo durante a rolagem */
+    z-index: 100; /* Garante que o header fique por cima de outros elementos da página */
+    margin-bottom: 80px;
+}
+
+
+/*logo no header*/
+div.logo img {
+    height: 150px;
+    padding: 3%;
+}
+
+
+/*animação da rotação da logo*/
+div.logo img:hover {
+    transform: rotate(720deg);
+    transition: transform 1s ease;
+
+}
+
+/* Estilizando a área da logo no header */
+div.logo {
+    display: flex; /* Uso o Flexbox pra organizar os elementos lado a lado */
+    flex-direction: row; /* Os elementos vão ficar na horizontal */
+    justify-content: center; /* Centralizo os itens, mas esse foi sobrescrito abaixo */
+    align-items: center; /* Alinho verticalmente no centro */
+    text-transform: uppercase; /* Deixo o texto da logo todo em maiúsculas */
+    font-style: italic; /* Estilo itálico pra dar um toque retrô */
+    justify-content: space-around; /* Substitui o "center": agora os itens ficam bem distribuídos com espaços entre eles */
+}
+
+/* Navbar (links do menu) com espaçamento e fonte visível */
+div.navbar {
+    display: flex; /* Uso Flexbox pra organizar os links na horizontal */
+    justify-content: space-around; /* Espaço igual entre os links */
+    padding: 1%; /* Espaçamento interno */
+    font-size: 18px; /* Deixo a fonte maior pra destacar os links */
+    gap: 5%; /* Espaçamento entre os elementos */
+}
+
+/* Links da navbar com estilo geek */
+div.navbar a {
+    text-decoration: none; /* Tiro o sublinhado dos links */
+    text-transform: uppercase; /* Deixo tudo em caixa alta */
+    color: #e5e900; /* Amarelo neon pro destaque */
+}
+
+/* Estilizo o <nav> como container flexível horizontal */
+nav {
+    display: flex; /* Flexbox horizontal por padrão */
+    gap: 25px; /* Espaçamento entre os links */
+    font-size: 10px; /* Tamanho pequeno para manter o estilo retro/gamer */
+    align-items: flex-end;
+}
+
+/* Links dentro de um h1 (título principal) */
+h1 a {
+    text-decoration: none; /* Tiro o sublinhado */
+    color: #f2ff03; /* Cor amarela neon pro título */
+    transition: color; /* Habilito transição suave quando mudar a cor */
+}
+
+/* Escondo o botão/menu hamburguer (ele aparece só no mobile via @media) */
+#menu {
+    display: none;
+}
+
+/* Animação piscando colorida ao passar o mouse nos links da nav */
+nav a:hover {
+    cursor: pointer; /* Cursor vira uma mãozinha */
+    animation: pisca-cor 1s infinite; /* Ativo a animação que pisca as cores */
+}
+
+/* Crio a animação que muda de cor várias vezes em loop */
+@keyframes pisca-cor {
+    0%   { color: #FF0000; }
+    25%  { color: #FFB8FF; }
+    50%  { color: #00FFFF; }
+    75%  { color: #FFB852; }
+    100% { color: #FF0000; }
+}
+
+/* Título principal da página */
+h1 {
+    font-family: 'Press Start 2P', monospace; /* Fonte retrô estilo fliperama */
+    font-size: 25px; /* Tamanho grande pra destacar */
+    padding: 5%; /* Espaçamento interno */
+    color: #f2ff03; /* Cor amarela neon */
+}
+
+/*box do cadastro*/
+/* Caixa principal do formulário de cadastro */
+.parte1 {
+    background-color: rgb(6, 11, 108); /* Fundo azul escuro estilo noturno/geek */
+    padding: 50px 50px; /* Espaçamento interno */
+    width: 65%; /* Metade da largura da tela */
+    gap: 20px; /* Espaço entre os elementos (apesar de funcionar melhor com display flex ou grid) */
+    margin-top: 5%; /* Distância do topo da página */
+    margin-bottom: 5%; /* Distância do rodapé */
+    height: auto; /* Altura ajustável de acordo com o conteúdo */
+    border-radius: 12px; /* Cantos arredondados */
+    box-shadow: 0 0 20px rgba(246, 255, 0, 0.8); /* Sombra amarela neon ao redor */
+    text-align: center; /* Centraliza os textos internos */
+}
+
+/* Inputs da caixa de cadastro */
+.parte1 input {
+    width: 100%; /* Ocupa toda a largura da caixa */
+    padding: 20px; /* Espaço interno */
+    margin: 10px 0; /* Espaço vertical entre os campos */
+    margin-top: 15px; /* Ajuste extra pra separar melhor */
+    border: 3px solid #f2ff03; /* Borda amarela neon */
+    border-radius: 6px; /* Cantos arredondados */
+    font-size: 14px; /* Tamanho da fonte interna */
+    background-color: rgb(7, 24, 99); /* Fundo azul escuro */
+    color: aliceblue; /* Cor do texto digitado */
+}
+
+.bloco1{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+
+}
+
+.bloco2{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.bloco3{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+/* Placeholder (texto de sugestão dentro dos inputs) */
+input::placeholder {
+    color: rgb(255, 255, 255); /* Branco */
+    opacity: 10px; /* Isso aqui na verdade deveria ser entre 0 e 1 (ex: 1 = 100%) */
+    font-size: small; /* Tamanho menor */
+}
+
+/* Quando o input está em foco (clicado) */
+input:focus {
+    outline: none; /* Tira a borda automática do navegador */
+    border-color: #f2ff03; /* Realça a borda com a cor neon */
+    box-shadow: 0 0 20px rgba(246, 255, 0, 0.8); /* Brilho externo neon */
+}
+
+/* Efeito visual no placeholder quando o campo é selecionado */
+input:focus::placeholder {
+    color: #f2ff03; /* Muda a cor pra amarelo */
+    font-size: 12px; /* Reduz tamanho */
+    transform: translateY(-20px); /* Sobe o texto */
+    transition: all 0.2s ease; /* Suaviza a transição */
+    opacity: 1; /* Garante que fique visível */
+}
+
+/* Select dos gêneros (dropdown) */
+#generos {
+    background-color: yellow; /* Fundo amarelo pra chamar atenção */
+    width: 95%; /* Metade da largura */
+    height: 40px; /* Altura do campo */
+    margin: 10px; /* Espaçamento em volta */
+    border-radius: 6px; /* Arredondamento */
+    font-size: medium; /* Tamanho da fonte padrão */
+    align-items: center; /* Alinhamento vertical (só funcionaria com display flex) */
+}
+
+/* Opções do dropdown */
+option {
+    background-color: yellow; /* Fundo amarelo */
+    color: black; /* Texto preto pra contraste */
+    display: block; /* Cada item em linha própria */
+    text-align: center; /* Centralizado horizontalmente */
+}
+
+/* Campo de data de nascimento */
+#date {
+    background-color: yellow;
+    color: black;
+}
+
+/* Botão para enviar o cadastro (estilo pacman) */
+#pronto {
+    background-color: yellow;
+    color: black;
+    font-family: 'Press Start 2P', monospace;
+    width: 25%;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 5px;
+    margin-top: 5%;
+    border: 0px solid; /* Sem borda */
+    border-radius: 5%; /* Cantos arredondados */
+    float: left; /* Fica na esquerda da tela */
+    box-shadow: 0 0 15px #ffff00; /* Efeito neon amarelo */
+}
+
+/* Efeito ao passar o mouse no botão (expande e brilha mais) */
+.pacman-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px #ffff00;
+}
+
+/* Botão para limpar os campos */
+#limpar {
+    background-color: yellow;
+    color: black;
+    font-family: 'Press Start 2P', monospace;
+    width: 25%;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 5px;
+    margin-top: 5%;
+    border: 0px solid;
+    border-radius: 5%;
+    float: right; /* Vai para a direita */
+    box-shadow: 0 0 15px #ffff00;
+}
+
+/* Hover no botão da form (usado possivelmente pra validação) */
+.form button:hover {
+    background-color: red; /* Mostra erro ou atenção */
+}
+
+/* Mensagem de erro (ainda invisível) */
+.botao-campo p {
+    color: red; /* Cor vermelha padrão de erro */
+    font-size: 1em;
+    visibility: hidden; /* Só aparece se houver erro */
+}
+
+/* Campo com erro: borda vermelha */
+.botao-campo.error input {
+    border-color: red;
+}
+
+/* Exibe a mensagem de erro */
+.botao-campo.error p {
+    visibility: visible;
+}
+
+
+
+.dropdown {
+  position: relative;
+  /* Posição relativa para o dropdown */
+  display: inline-block;
+  /* Exibe como bloco inline */
+}
+
+.dropdown-content {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 30px;
+  background-color: #302f2f;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border: 2px solid #e5e900;
+  border-radius: 10px;
+  /* Bordas arredondadas */
+  text-align: left;
+
+}
+
+.dropdown-content a {
+  color: #e5e900;
+  /* Cor do link */
+  padding: 12px 16px;
+  /* Espaçamento interno */
+  text-decoration: none;
+  /* Remove sublinhado */
+  display: block;
+  /* Exibe como bloco */
+  text-align: left;
+  /* Alinha à esquerda */
+}
+
+.dropdown-content a:hover {
+  background-color: #90970a;
+  animation: pisca-cor 1s infinite;
+  transition: all 0.5s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+    opacity: 1;
+  visibility: visible
+}
+
+
+
+footer {
+    border-top: #eeff00 solid 3px;
+    background-color: #302f2f;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: -172px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;  
+  }
+  
+  .footer-logo h4{
+    color: #eeff00;
+  }
+  
+  
+  footer img {
+    width: 20%;
+  }
+  
+  .footer-content{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    margin-right: 70px; 
+  }
+  
+  .footer-content h4{
+    color: #eeff00;
+  }
+  .footer-content li{
+    list-style: none;
+  }
+  
+  .footer-content li a{
+    color: #e5e900;
+    text-decoration: none;
+    font-size: 10px !important;
+  }
+  
+  .footer-content ul li a:hover{
+    animation: pisca-cor 1s infinite;
+  }
+  
+  
+  
+  
+
+
+
+
+
+/*versão mobile*/
+@media screen and (max-width:1084px) {
+    /*body do cadastro*/
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Press Start 2P', monospace;
+        /* Fonte padrão /
+    font-weight: 500; / Peso da fonte /
+    text-align: center; / Centraliza o texto */
+    }
+
+    body {
+        background-image: url(/SiteLoja/assets/labirinto.jpg);
+        background-size: contain;
+        
+        font-family: 'Press Start 2P', monospace;
+        height: 240vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        /* justify-content: center; esse comando alem de alinhar ao centro pode causar problemas com a visualização da tela, pois ira centralizar tudo e nao ficará nada colado ao topo */
+        /* margin: 10%;  O margin na body pode causar problemas de layout, especialmente com o header fixo. 
+    se tirarmos o margin será melhor para o layout geral. Alem disso, o height foi ajustado para 300vh para evitar problemas de rolagem.*/
+
+    }
+
+
+    /*header*/
+    header {
+        width: 100%;
+        /* Largura total do header */
+    }
+
+    header.nerdbar {
+        flex-direction: column;
+        /* Muda direção para coluna */
+        align-items: center;
+        display: flex;
+        /* Centraliza itens */
+        /* margin-top: ; */
+    }
+
+    div.navbar ul {
+        display: none;
+    }
+
+    div.logo img {
+        height: 100px;
+        /* Reduz altura da logo */
+    }
+
+    div.logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-style: italic;
+        justify-content: flex-end;
+
+    }
+
+    div.navbar {
+        flex-direction: column;
+        /* Muda direção para coluna */
+        gap: 10px;
+        /* Espaço entre links reduzido */
+    }
+
+    div.navbar a {
+        font-size: 14px;
+        /* Reduz tamanho da fonte */
+        padding: 5px;
+        /* Adiciona espaçamento interno */
+    }
+
+    #menu {
+        display: block;
+        /* Exibe o menu */
+        color: #e5e900;
+        margin: 0 auto;
+        align-items: center;
+        position: relative;
+        position: center;
+        top: -37px;
+    }
+
+    ul#menu-list {
+        display: none;
+        /* Exibe os links em linha */
+        flex-direction: column;
+        /* Muda direção para coluna */
+        align-items: center;
+        /* Centraliza links */
+        gap: 10px;
+        /* Espaço entre links */
+    }
+
+    nav.link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* gap: 10px; */
+        width: 100%;
+        position: relative;
+        background-color: #302f2f;
+        top: -18%;
+    }
