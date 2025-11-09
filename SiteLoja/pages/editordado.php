@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/editorinfo.css"/>
+    <link rel="stylesheet" href="../style/editordado.css"/>
     <title>Dados do Cliente | NerdCore</title>
     <link rel="icon" href="../assets/LogoTOPO.png" type="image/x-icon" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
@@ -20,8 +20,8 @@
       </span>
       <ul id="menu-list">
         <nav class="link">
-          <a href="../../index.php">Inici00</a>
-          <a href="/SiteLoja/pages/cadastro.php">Cadastre-se00</a>
+          <a href="../../index.php">Inicio</a>
+          <a href="/SiteLoja/pages/cadastro.php">Cadastre-se</a>
           <a href="/SiteLoja/pages/login.php">Login</a>
           <a href="/SiteLoja/pages/grupo.php">Quem Somos</a>
           <a href="/SiteLoja/pages/registro.html">registro</a>  
