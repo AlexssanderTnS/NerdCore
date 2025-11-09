@@ -43,12 +43,12 @@ ob_end_clean();
                             </div>
                         </div>
                         <?php
-                        if (isset($_SESSION['usuario_nome']) && nivelAcesso() === "2"){
+                        if (isset($_SESSION['usuario_nome']) && nivelAcesso() == "2"){
                                 // usuário admin logado
                             echo "<div class = 'dropdown'>
-                            '<a>{$_SESSION['usuario_nome']}</a>'
+                            <a>{$_SESSION['usuario_nome']}</a>
                             <div class='dropdown-content'>
-                            <a href='../pages/adm.php'>Painel Admin</a>
+                            <a href='SiteLoja/pages/adm.php'>Painel Admin</a>
                             <a href='../php/logout.php'>Logout</a>
                             </div>
                             </div>";
