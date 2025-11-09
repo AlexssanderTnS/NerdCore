@@ -1,159 +1,209 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Press Start 2P', monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Press Start 2P", monospace;
 }
 
 body {
-    background: linear-gradient(#04032B, #060B6C, #060B6C, #0F4499);
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
+  background-image: url(../assets/FundoAdm.png);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
 }
 
 .sidebar {
-    width: 240px;
-    color: #000;
-    background-color: #f5f5f5 ;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: width 0.3s;
+  width: 240px;
+  color: #000;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 0.3s;
 }
 
 .sidebar-header {
-    text-align: center;
-    padding: 2rem;
-    border-bottom: 3px solid rgb(255, 0, 0);
-    background-color: #302F2F;
+  text-align: center;
+  padding: 2rem;
+  border-bottom: 3px solid rgb(255, 0, 0);
+  background-color: #302f2f;
 }
 
 .sidebar-header h4 {
-    color: #EAF205;
-    font-size: 15px;
-    font-weight: 900;
-    margin-top: 0.5rem;
+  color: #eaf205;
+  font-size: 15px;
+  font-weight: 900;
+  margin-top: 0.5rem;
 }
 
 .nav-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-weight: 700;
-    line-height: 40px;
-    font-size: 12px;
-    text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  line-height: 40px;
+  font-size: 12px;
+  text-align: center;
 }
 
 .nav-links li {
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background 0.2s;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #867305;
+  text-shadow: 1px 1px 1px #e4e4c7;
 }
 
 .nav-links li:hover,
 .nav-links li.active {
-    background-color: #002244;
-    color: floralwhite;
+  background-color: #002244;
+  color: floralwhite;
 }
 
 .logout {
-    padding: 15px;
-    background: #023e83;
-    color: #f4f6f9;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background 0.3s;
-    text-decoration: none;
+  padding: 15px;
+  background: #023e83;
+  color: #f4f6f9;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background 0.3s;
 }
 
 .logout:hover {
-    background: #000f2a;
-    color: floralwhite;
+  background: #000f2a;
+  color: floralwhite;
 }
 
-main h2,
+/* main h2,
 p {
     color: #EAF205;
-}
+} */
 
 .content {
-    flex: 1;
-    padding: 2rem;
-    overflow-y: auto;
-    transition: opacity 0.3s;
-    line-height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  transition: opacity 0.3s;
+  line-height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .cards-container {
-    padding: 10px;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+  padding: 10px;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .card {
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
 }
 
 .card h4 {
-    color: #003366;
-    margin-bottom: 0.5rem;
+  color: #003366;
+  margin-bottom: 0.5rem;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th,
 td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 
 thead {
-    background-color: #003366;
-    color: white;
+  background-color: #003366;
+  color: white;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade {
-    margin-top: 1.2rem;
-    animation: fadeIn 0.4s ease;
+  margin-top: 1.2rem;
+  animation: fadeIn 0.4s ease;
 }
 
-div.foto{
-    width: 20%;
+div.foto {
+  width: 20%;
 }
 
-div.foto img{
-    width: 140%;
+div.foto img {
+  width: 140%;
+}
+/* === ESTOQUE / LISTA DE PRODUTOS === */
+.lista-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.produto-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.produto-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.produto-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.produto-card p {
+  font-size: 14px;
+  color: #777;
 }

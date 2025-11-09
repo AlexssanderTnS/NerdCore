@@ -32,7 +32,7 @@ ob_end_clean();
       <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
-                 <nav class="link">
+                <nav class="link">
                         <a href="index.php">Inicio</a>
                         <a href='SiteLoja/pages/grupo.php'>Quem Somos</a>
                         <div class='dropdown'>
@@ -46,7 +46,7 @@ ob_end_clean();
                         if (isset($_SESSION['usuario_nome']) && nivelAcesso() == "2"){
                                 // usuário admin logado
                             echo "<div class = 'dropdown'>
-                            <a>{$_SESSION['usuario_nome']}</a>
+                            <a>{$_SESSION['usuario_nome']}<img src='SiteLoja/assets/arrow.svg' alt='arrow_drop_down' /></a>
                             <div class='dropdown-content'>
                             <a href='SiteLoja/pages/adm.php'>Painel Admin</a>
                             <a href='SiteLoja/php/logout.php'>Logout</a>
@@ -56,7 +56,7 @@ ob_end_clean();
                             else if (isset($_SESSION['usuario_nome'])) {
                                 // usuário normal logado
                                 echo "<div class ='dropdown'>
-                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
+                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}<img src='SiteLoja/assets/arrow.svg' alt='arrow_drop_down' /></a>
                                 <div class='dropdown-content'>
                                 <a href='SiteLoja/pages/editordado.php'> Perfil </a>
                                 <a href='SiteLoja/php/logout.php'>Logout</a>

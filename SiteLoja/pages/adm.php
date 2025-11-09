@@ -55,7 +55,7 @@ exigeAcesso(2);
             </div>
         </div>
         <div class="foto">
-            <img src="../assets/LogoADM.png"/>
+            <img src="../LogoADM.png"/>
         </div>
     </main>
 
