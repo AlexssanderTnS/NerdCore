@@ -61,5 +61,4 @@ function exigeAcesso($nivelMinimo) {
         exit;
     }
 }
-
 ?>
