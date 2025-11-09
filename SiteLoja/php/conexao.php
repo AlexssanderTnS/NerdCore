@@ -29,7 +29,7 @@ try {
     //tabela do banco de dados
     $usuTable = "CREATE TABLE IF NOT EXISTS usuarios(
         id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        acesso int(1) UNSIGNED NOT NULL DEFAULT 1,
+        acesso VARCHAR(1) NOT NULL DEFAULT '1',
         nome VARCHAR(50) NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
         usuario VARCHAR(6) UNIQUE NOT NULL,
@@ -79,7 +79,7 @@ if ($check->fetchColumn() == 0) {
     $senha = password_hash("nerdcore", PASSWORD_DEFAULT);
     $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, acesso)
                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100, 2]);
+    $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100, '2']);
 }
 
 } catch (PDOException $e) {
