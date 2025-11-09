@@ -169,10 +169,16 @@ div.foto img {
 }
 /* === ESTOQUE / LISTA DE PRODUTOS === */
 .lista-produtos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  display: flex;
+  width: 100%;
+    gap: 20px;
+    padding: 39px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2000px;
+    /* align-content: center; */
+    justify-content: center;
+    align-items: baseline;
 }
 
 .produto-card {
