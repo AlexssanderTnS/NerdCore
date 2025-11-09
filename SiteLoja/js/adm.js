@@ -42,14 +42,16 @@ function carregarSecao(secao) {
             html = `
                 <div id="products" class="fade">
                     <h2>Cadastrar Novo Produto</h2>
-                    <form>
-                        <input type="text" placeholder="Nome do produto">
-                        <input type ="text" placeholder="Descrição do produto">
-                        <input type="number" placeholder="Preço">
+                    <form action="../php/upload.php" method="POST" enctype="multipart/form-data">
+                        <input type="text" placeholder="Nome do produto" class="np" name="nomeProduto" required>
+                        <input type ="text" placeholder="Descrição do produto" class="np" name="descricao"required>
+                        <input type="number" placeholder="Preço" class="np" name="preco" name="preco"required>
+
                         <img id="preview-imagem1" src="" alt="Pré-visualização da imagem 1" style="max-width: 100px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
-                        <input type="file" id="upload-imagem1" name="imagem1" accept="image/*">
+                        <input type="file" id="upload-imagem1" name="imagem1" accept="image/*" name="imagem1"required>
+                        
                         <img id="preview-imagem2" src="" alt="Pré-visualização da imagem 2" style="max-width: 100px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
-                        <input type="file" id="upload-imagem2" name="imagem2" accept="image/*">
+                        <input type="file" id="upload-imagem2" name="imagem2" accept="image/*" name="imagem2"required>
                         
                         <select name="categoria" required>
                             <option value="camiseta">Camiseta</option>
