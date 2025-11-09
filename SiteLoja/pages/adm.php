@@ -31,7 +31,7 @@ exigeAcesso(2);
                 <li data-section="sells">Registro de vendas</li>
             </ul>
         </div>
-        <div class="logout">Sair</div>
+        <a class="logout" href="../../index.php">Sair</a>
     </aside>
 
     <main class="content" id="conteudo">

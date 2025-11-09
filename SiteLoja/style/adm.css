@@ -68,6 +68,7 @@ body {
     cursor: pointer;
     font-weight: 700;
     transition: background 0.3s;
+    text-decoration: none;
 }
 
 .logout:hover {

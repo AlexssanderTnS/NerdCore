@@ -59,7 +59,7 @@ ob_end_clean();
                                 <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
                                 <div class='dropdown-content'>
                                 <a href='SiteLoja/pages/editorinfo.php'> Perfil </a>
-                                <a href='../php/logout.php'>Logout</a>
+                                <a href='SiteLoja/php/logout.php'>Logout</a>
                                 </div>
                                 </div>"; 
                         }  
