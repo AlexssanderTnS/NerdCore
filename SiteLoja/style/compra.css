@@ -69,7 +69,7 @@ div.minaazul img {
     justify-content: center;
     width: 160px;
     height: 120px;
-    background-image: url(/SiteLoja/assets/cad.labirinto.png);
+    background-image: url(../assets/cad.labirinto.png);
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -338,7 +338,7 @@ div.caixa #botaocompra {
     align-items: center;
     padding: 20px;
     border-radius: 15px;
-    background-image: url(/SiteLoja/assets/labirinto.jpg);
+    background-image: url(../assets/labirinto.jpg);
     background-size: cover;
     background-position: center;
     
