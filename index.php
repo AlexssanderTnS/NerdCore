@@ -49,7 +49,7 @@ ob_end_clean();
                             <a>{$_SESSION['usuario_nome']}<img src='SiteLoja/assets/arrow.svg' alt='arrow_drop_down' /></a>
                             <div class='dropdown-content'>
                             <a href='SiteLoja/pages/adm.php'>Painel Admin</a>
-                            <a href='../php/logout.php'>Logout</a>
+                            <a href='SiteLoja/php/logout.php'>Logout</a>
                             </div>
                             </div>";
                         } 
@@ -58,8 +58,8 @@ ob_end_clean();
                                 echo "<div class ='dropdown'>
                                 <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}<img src='SiteLoja/assets/arrow.svg' alt='arrow_drop_down' /></a>
                                 <div class='dropdown-content'>
-                                <a href='#'> Perfil </a>
-                                <a href='../php/logout.php'>Logout</a>
+                                <a href='SiteLoja/pages/editordado.php'> Perfil </a>
+                                <a href='SiteLoja/php/logout.php'>Logout</a>
                                 </div>
                                 </div>"; 
                         }  
