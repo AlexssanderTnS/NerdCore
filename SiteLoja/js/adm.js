@@ -4,42 +4,42 @@ const conteudo = document.getElementById("conteudo");
 
 // Função ajustada para configurar um par específico de input/preview
 function configurarPreviewImagem(idInput, idPreview) {
-    // 1. Obter os elementos HTML, que agora já estão no DOM
-    const inputImagem = document.getElementById(idInput);
-    const imagemPreview = document.getElementById(idPreview);
+  // 1. Obter os elementos HTML, que agora já estão no DOM
+  const inputImagem = document.getElementById(idInput);
+  const imagemPreview = document.getElementById(idPreview);
 
-    // Verifica se os elementos foram encontrados
-    if (inputImagem && imagemPreview) {
-        // 2. Adicionar o "ouvinte de eventos" (event listener)
-        inputImagem.addEventListener('change', function(event) {
-            if (event.target.files && event.target.files[0]) {
-                const arquivo = event.target.files[0];
-                const leitor = new FileReader();
+  // Verifica se os elementos foram encontrados
+  if (inputImagem && imagemPreview) {
+    // 2. Adicionar o "ouvinte de eventos" (event listener)
+    inputImagem.addEventListener("change", function (event) {
+      if (event.target.files && event.target.files[0]) {
+        const arquivo = event.target.files[0];
+        const leitor = new FileReader();
 
-                leitor.onload = function(e) {
-                    // Define o 'src' e torna visível
-                    imagemPreview.src = e.target.result;
-                    imagemPreview.style.display = 'block';
-                }
+        leitor.onload = function (e) {
+          // Define o 'src' e torna visível
+          imagemPreview.src = e.target.result;
+          imagemPreview.style.display = "block";
+        };
 
-                // Inicia a leitura do arquivo como uma URL de dados
-                leitor.readAsDataURL(arquivo);
-            } else {
-                // Se o usuário cancelar a seleção, esconde a imagem
-                imagemPreview.src = '';
-                imagemPreview.style.display = 'none';
-            }
-        });
-    }
+        // Inicia a leitura do arquivo como uma URL de dados
+        leitor.readAsDataURL(arquivo);
+      } else {
+        // Se o usuário cancelar a seleção, esconde a imagem
+        imagemPreview.src = "";
+        imagemPreview.style.display = "none";
+      }
+    });
+  }
 }
 
 // Função para trocar o conteúdo
 function carregarSecao(secao) {
-    let html = "";
+  let html = "";
 
-    switch (secao) {
-        case "products":
-            html = `
+  switch (secao) {
+    case "products":
+      html = `
                 <div id="products" class="fade">
                     <h2>Cadastrar Novo Produto</h2>
                     <form>
@@ -59,10 +59,10 @@ function carregarSecao(secao) {
                     </form>
                 </div>
             `;
-            break;
-            
-        case "dashboard":
-             html = `
+      break;
+
+    case "dashboard":
+      html = `
                  <div id="dashboard" class="fade">
                     <h2>Bem-vindo, Administrador</h2>
                     <p>Movimentações recentes:</p>
@@ -74,58 +74,86 @@ function carregarSecao(secao) {
                 </div>
                 <div class="foto"><img src="/SiteLoja/assets/LogoADM.png" /></div>
             `;
-            break;
- 
-          case "team":
-              html = `
+      break;
+
+    case "team":
+      html = `
                   <div id="team" class="fade">
                       <h2>Equipe da Loja</h2>
                       <p>Lista de funcionários e funções.</p>
                   </div>
               `;
-              break;
- 
-          case "stock":
-              html = `
-                  <div id="stock" class="fade">
-                      <h2>Controle de Estoque</h2>
-                      <p>Visualize e atualize os produtos disponíveis.</p>
-                  </div>
-              `;
-              break;
- 
-          case "sells":
-              html = `
+      break;
+
+    case "stock":
+      html = `
+                <div id="stock" class="fade">
+                </div>
+                <div id="lista-produtos" class="lista-produtos">
+                    <p>Carregando produtos...</p>
+                </div>
+            </div>
+        </div>
+    `;
+      break;
+
+    case "sells":
+      html = `
                   <div id="sells" class="fade">
                       <h2>Registro de Vendas</h2>
                       <p>Relatórios e histórico de vendas.</p>
                   </div>
               `;
-              break;
-    }
+      break;
+  }
 
-    // Insere o novo HTML no DOM
-    conteudo.innerHTML = html; 
+  // Insere o novo HTML no DOM
+  conteudo.innerHTML = html;
 
-    // Chama a função de configuração para CADA PAR de input/preview
-    if (secao === "products") {
-        configurarPreviewImagem("upload-imagem1", "preview-imagem1");
-        configurarPreviewImagem("upload-imagem2", "preview-imagem2");
-    }
+  // Chama a função de configuração para CADA PAR de input/preview
+  if (secao === "products") {
+    configurarPreviewImagem("upload-imagem1", "preview-imagem1");
+    configurarPreviewImagem("upload-imagem2", "preview-imagem2");
+  }
+
+  if (secao === "stock") {
+    const lista = document.getElementById("lista-produtos");
+
+   fetch("../php/listarP.php")
+  .then((res) => res.json())
+  .then((dados) => {
+    const container = document.getElementById("lista-produtos");
+    container.innerHTML = "";
+
+    dados.forEach((produto) => {
+      container.innerHTML += `
+        <div class="produto-card">
+          <img src="${produto.imagem}" alt="${produto.nome}">
+          <h3>${produto.nome}</h3>
+          <p>R$ ${Number(produto.preco).toFixed(2)}</p>
+        </div>
+      `;
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+  }
 }
 
 // Adiciona evento de clique nos links
-navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        // Remove classe 'active' de todos
-        navLinks.forEach(l => l.classList.remove("active"));
-        // Adiciona no item clicado
-        link.classList.add("active");
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    // Remove classe 'active' de todos
+    navLinks.forEach((l) => l.classList.remove("active"));
+    // Adiciona no item clicado
+    link.classList.add("active");
 
-        // Carrega a seção correspondente
-        const secao = link.getAttribute("data-section");
-        carregarSecao(secao);
-    });
+    // Carrega a seção correspondente
+    const secao = link.getAttribute("data-section");
+    carregarSecao(secao);
+  });
 });
 
 // Inicializa com o dashboard
