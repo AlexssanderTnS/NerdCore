@@ -4,10 +4,10 @@ session_start();
 require 'SiteLoja/php/login.php';
 ob_end_clean();
 
-require 'SiteLoja/php/conexao.php';
+
 
 //conectar com o banco para buscar os produtos
-$stmt = $pdo->query("SELECT id, nome, imagem FROM produtos WHERE categoria = 'camisa'");
+$stmt = $pdo->query("SELECT id, nomeProduto, camisaPreta, camisaBranca FROM produtos WHERE categoria = 'camisa'");
 $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
