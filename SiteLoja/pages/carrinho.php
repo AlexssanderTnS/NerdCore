@@ -1,9 +1,57 @@
 <?php
 ob_start();
 session_start();
-require '../php/login.php'; 
+require '../php/login.php';
 ob_end_clean();
+require '../php/produtos.php';
+
+// carrinho existente
+if (!isset($_SESSION['carrinho'])) {
+  $_SESSION['carrinho'] = [];
+}
+
+if (isset($_GET['action'])) {
+  $action = $_GET['action'];
+  $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+  switch ($action) {
+    case 'add':
+      // Adiciona  produto
+      if (isset($produtos[$id])) {
+        if (!isset($_SESSION['carrinho'][$id])) {
+          $_SESSION['carrinho'][$id] = 1;
+        } else {
+          $_SESSION['carrinho'][$id]++;
+        }
+      }
+      break;
+
+    case 'remove':
+      // Remove e apaga o item se bater zero
+      if (isset($_SESSION['carrinho'][$id])) {
+        $_SESSION['carrinho'][$id]--;
+        if ($_SESSION['carrinho'][$id] <= 0) {
+          unset($_SESSION['carrinho'][$id]);
+        }
+      }
+      break;
+
+    case 'delete':
+      // Remove completamente o produto
+      unset($_SESSION['carrinho'][$id]);
+      break;
+
+    case 'clear':
+      // Esvazia o carrinho
+      $_SESSION['carrinho'] = [];
+      break;
+  }
+  header("Location: carrinho.php");
+  exit;
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,26 +88,59 @@ ob_end_clean();
 
   <main class="container-carrinho">
     <section class="secao-itens">
-      <h2>Seu Carrinho</h2>
-      <div id="itens-carrinho" class="grid-itens">
-        <!-- Itens serão inseridos aqui via JavaScript -->
-      </div>
+    
+        <h2>Seu Carrinho</h2>
+
+        <?php
+        if (empty($_SESSION['carrinho'])) {
+          echo "<p>Seu carrinho está vazio.</p>";
+        } else {
+          $total = 0;
+          echo "<table class='tabela-carrinho'>";
+          echo "<tr><th>Produto</th><th>Qtd</th><th>Preço</th><th>Subtotal</th><th>Ações</th></tr>";
+
+          foreach ($_SESSION['carrinho'] as $id => $qtd) {
+            if (isset($produtos[$id])) {
+              $p = $produtos[$id];
+              $subtotal = $p['preco'] * $qtd;
+              $total += $subtotal;
+
+              echo "<tr>
+            <td>{$p['nome']}</td>
+            <td>{$qtd}</td>
+            <td>R$ " . number_format($p['preco'], 2, ',', '.') . "</td>
+            <td>R$ " . number_format($subtotal, 2, ',', '.') . "</td>
+            <td>
+              <a href='?action=add&id={$id}' class='btn-acao'>+</a>
+              <a href='?action=remove&id={$id}' class='btn-acao'>-</a>
+              <a href='?action=delete&id={$id}' class='btn-acao'>Excluir</a>
+            </td>
+          </tr>";
+            }
+          }
+          echo "<tr>
+      <td colspan='5' style='text-align:right'>
+        <a href='?action=clear' class='btn-limpar'>Esvaziar Carrinho</a>
+      </td>
+    </tr>";
+        }
+        ?>
     </section>
 
     <aside class="secao-resumo">
       <div class="resumo-compra">
         <h2>Resumo da Compra</h2>
-        
+
         <div class="linha-resumo">
           <span>Subtotal:</span>
           <span id="subtotal-carrinho">R$ 0,00</span>
         </div>
-        
+
         <div class="linha-resumo">
           <span>Frete:</span>
           <span>Grátis</span>
         </div>
-        
+
         <div class="linha-resumo total">
           <span>Total:</span>
           <span id="total-carrinho">R$ 0,00</span>
@@ -67,13 +148,13 @@ ob_end_clean();
 
         <div class="opcoes-pagamento">
           <h3>Forma de Pagamento</h3>
-          
+
           <div class="opcao-pix">
             <div class="pix-header">
               <span class="pix-icon">💳</span>
               <span class="pix-titulo">PIX</span>
             </div>
-            
+
             <div class="pix-info">
               <p>Chave PIX (CPF):</p>
               <div class="pix-chave">000.000.000-00</div>
@@ -119,7 +200,7 @@ ob_end_clean();
 
   <!-- Scripts -->
   <script src="../js/carrinho.js"></script>
-  
+
 </body>
 
 </html>
