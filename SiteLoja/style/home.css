@@ -32,7 +32,7 @@ body {
   /* Largura total */
   font-family: 'Fredoka One', sans-serif;
   /* Fonte alternativa */
-  height: 240vh;
+  height: 50vh;
   /* Altura da página */
 }
 
@@ -631,7 +631,7 @@ footer {
   border-top: #eeff00 solid 3px;
   background-color: #302f2f;
   display: flex;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: -20px;
   align-items: center;
   justify-content: space-between;

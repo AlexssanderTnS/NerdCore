@@ -1,152 +1,227 @@
+<?php
+session_start();
+require '../php/conexao.php'; // usa o mesmo conexao.php que cria o banco e o objeto $pdo
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$id_usuario = $_SESSION['usuario_id'];
+
+// Busca os dados do usuário logado
+$sql = "SELECT * FROM usuarios WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':id', $id_usuario, PDO::PARAM_INT);
+$stmt->execute();
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$usuario) {
+    echo "Usuário não encontrado.";
+    exit();
+}
+
+// Atualiza os dados caso o formulário seja enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $campos = [
+        'nome' => $_POST['nome'],
+        'email' => $_POST['email'],
+        'usuario' => $_POST['usuario'],
+        'cll' => $_POST['cll'],
+        'fixo' => $_POST['fixo'],
+        'cep' => $_POST['cep'],
+        'estado' => $_POST['estado'],
+        'cidade' => $_POST['cidade'],
+        'bairro' => $_POST['bairro'],
+        'numero' => $_POST['numero'],
+        'complemento' => $_POST['complemento']
+    ];
+
+    $sql = "UPDATE usuarios SET 
+                nome = :nome, 
+                email = :email, 
+                usuario = :usuario, 
+                cll = :cll, 
+                fixo = :fixo, 
+                cep = :cep, 
+                estado = :estado, 
+                cidade = :cidade, 
+                bairro = :bairro, 
+                numero = :numero, 
+                complemento = :complemento
+            WHERE id = :id";
+
+    $stmt = $pdo->prepare($sql);
+    $campos['id'] = $id_usuario;
+
+    if ($stmt->execute($campos)) {
+        $mensagem = "Dados atualizados com sucesso!";
+        $_SESSION['usuario_nome'] = $_POST['usuario'];
+        $usuario = array_merge($usuario, $campos);
+    } else {
+        $mensagem = "Erro ao atualizar os dados.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/editordado.css"/>
-    <title>Dados do Cliente | NerdCore</title>
+    <title>Editar Perfil | NerdCore</title>
     <link rel="icon" href="../assets/LogoTOPO.png" type="image/x-icon" />
     <link rel="stylesheet"  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
+</head>
 
-  <header class="nerdbar">
-    <div class="logo">
-      <img src="../assets/logoroxa.png" alt="logo">
-      <h1><a href="../../index.php">NerdCore</a></h1>
-    </div>
+<body>
+    
+    <header class="nerdbar">
+        <div class="logo">
+            <img src="../assets/logoroxa.png" alt="logo">
+            <h1><a href="../../index.php">NerdCore</a></h1>
+        </div>
 
-    <div class="navbar">
+        <div class="navbar">
             <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
             <ul id="menu-list">
                 <nav class="link">
-                        <a href="../../index.php">Inicio</a>
-                        <a href='../pages/grupo.php'>Quem Somos</a>
-                        <div class='dropdown'>
-                            <a onclick='dropdownToggle()'>Produtos <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
+                    <a href="../../index.php">Início</a>
+                    <a href="../pages/grupo.php">Quem Somos</a>
+
+                    <div class='dropdown'>
+                        <a onclick='dropdownToggle()'>Produtos <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
                         <div class='dropdown-content'>
                             <a href='../../index.php#main'>Camisetas</a>
                             <a href='../pages/producao.php'>Canecas</a>
-                            </div>
                         </div>
-                        <?php
-                        if (isset($_SESSION['usuario_nome']) && nivelAcesso() == "2"){
-                                // usuário admin logado
-                            echo "<div class = 'dropdown'>
-                            '<a>{$_SESSION['usuario_nome']}</a>'
+                    </div>
+
+                    <?php
+                    // Exibe opções diferentes dependendo do login
+                    if (isset($_SESSION['usuario_nome']) && $_SESSION['usuario_acesso'] == 2) {
+                        echo "
+                        <div class='dropdown'>
+                            <a>{$_SESSION['usuario_nome']}</a>
                             <div class='dropdown-content'>
-                            <a href='../pages/adm.php'>Painel Admin</a>
-                            <a href='../php/logout.php'>Logout</a>
-                            </div>
-                            </div>";
-                        } 
-                            else if (isset($_SESSION['usuario_nome'])) {
-                                // usuário normal logado
-                                echo "<div class ='dropdown'>
-                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
-                                <div class='dropdown-content'>
-                                <a href='editorinfo.php'> Perfil </a>
+                                <a href='../pages/adm.php'>Painel Admin</a>
                                 <a href='../php/logout.php'>Logout</a>
-                                </div>
-                                </div>"; 
-                        }  
-                        else{
-                            echo '<a href="../pages/cadastro.php">Cadastre-se</a>';
-                            echo'<a href="../pages/login.php">Login</a>';
-                        }
-                        ?>
-                        <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
+                            </div>
+                        </div>";
+                    } elseif (isset($_SESSION['usuario_nome'])) {
+                        echo "
+                        <div class='dropdown'>
+                            <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
+                            <div class='dropdown-content'>
+                                <a href='editorinfo.php'>Perfil</a>
+                                <a href='../php/logout.php'>Logout</a>
+                            </div>
+                        </div>";
+                    } else {
+                        echo '<a href="../pages/cadastro.php">Cadastre-se</a>';
+                        echo '<a href="../pages/login.php">Login</a>';
+                    }
+                    ?>
                 </nav>
             </ul>
         </div>
-        
     </header>
 
-
-
-  <script src="https://static.elfsight.com/platform/platform.js" async></script>
-  <!-- Script de acessibilidade Elfsight -->
-  <div class="elfsight-app-47963e1a-79b6-4ecf-ac6d-35be428b39f3" data-elfsight-app-lazy></div> <!-- Widget Elfsight -->
-
-
-
-
-</head>
-
     
-
-<body>
     <main>
         <div class="registro-container">
-            <h2>Dados do Cliente</h2>
+            <h2>Suas Informações</h2>
+            <?php if (isset($mensagem)) echo "<p class='mensagem'>$mensagem</p>"; ?>
 
-            <form>
-                <label for="nome">Nome de usuário</label>
-                <input type="text" id="nome" name="nome" value=""  readonly>
-                <button type="button" >✏️</button>
+            <form method="POST">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>" readonly>
+                <button type="button" onclick="habilitar('nome')">///</button>
 
                 <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" value=""  readonly>
-                 <button type="button" >✏️</button>
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" readonly>
+                <button type="button" onclick="habilitar('email')">Editar</button>
 
-                <label for="telefone">Telefone</label>
-                <input type="text" id="telefone" name="telefone" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" value="<?= htmlspecialchars($usuario['usuario']) ?>" readonly>
+                <button type="button" onclick="habilitar('usuario')">Editar</button>
 
-                <label for="endereco">Telefone fixo</label>
-                <input type="text" id="endereco" name="endereco" value="" readonly>
-                 <button type="button" >✏️</button>
+                <label for="cll">Celular</label>
+                <input type="text" id="cll" name="cll" value="<?= htmlspecialchars($usuario['cll']) ?>" readonly>
+                <button type="button" onclick="habilitar('cll')">Editar</button>
 
-                <label for="cadastro">Celular</label>
-                <input type="text" id="cadastro" name="cadastro" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="fixo">Telefone Fixo</label>
+                <input type="text" id="fixo" name="fixo" value="<?= htmlspecialchars($usuario['fixo']) ?>" readonly>
+                <button type="button" onclick="habilitar('fixo')">Editar</button>
 
-                <label for="telefone">Cidade</label>
-                <input type="text" id="telefone" name="telefone" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" value="<?= htmlspecialchars($usuario['cep']) ?>" readonly>
+                <button type="button" onclick="habilitar('cep')">///</button>
 
-                <label for="telefone">Bairro</label>
-                <input type="text" id="telefone" name="telefone" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="estado">Estado</label>
+                <input type="text" id="estado" name="estado" value="<?= htmlspecialchars($usuario['estado']) ?>" readonly>
+                <button type="button" onclick="habilitar('estado')">///</button>
 
-                <label for="telefone">Endereço</label>
-                <input type="text" id="telefone" name="telefone" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" value="<?= htmlspecialchars($usuario['cidade']) ?>" readonly>
+                <button type="button" onclick="habilitar('cidade')">///</button>
 
-                <label for="telefone">Rua</label>
-                <input type="text" id="telefone" name="telefone" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="bairro">Bairro</label>
+                <input type="text" id="bairro" name="bairro" value="<?= htmlspecialchars($usuario['bairro']) ?>" readonly>
+                <button type="button" onclick="habilitar('bairro')">///</button>
 
-                <label for="telefone">N°</label>
-                <input type="text" id="telefone" name="telefone" value="" readonly>
-                <button type="button" >✏️</button>
+                <label for="numero">Número</label>
+                <input type="text" id="numero" name="numero" value="<?= htmlspecialchars($usuario['numero']) ?>" readonly>
+                <button type="button" onclick="habilitar('numero')">Editar</button>
 
+                <label for="complemento">Complemento</label>
+                <input type="text" id="complemento" name="complemento" value="<?= htmlspecialchars($usuario['complemento']) ?>" readonly>
+                <button type="button" onclick="habilitar('complemento')">Editar</button>
 
-                <button type="button">Editar dados</button>
+                <br><br>
+                <button type="submit">Salvar Alterações</button>
             </form>
 
-            <p><a href="/index.php">Voltar ao Início</a></p>
+            <p><a href="../../index.php">Voltar ao Início</a></p>
         </div>
     </main>
 
+    
+    <footer class="footer">
+        <div class="footer-logo">
+            <h4>NerdCore LTDA.</h4>
+            <img src="../assets/LogoTOPO.png" alt="Logo NerdCore">
+        </div>
+
+        <div class="footer-content">
+            <h4>Nossos Links</h4>
+            <ul>
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+                <li><a href="./grupo.php">Sobre Nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    
+    <script>
+        function habilitar(id) {
+            const campo = document.getElementById(id);
+            campo.removeAttribute('readonly');
+            campo.focus();
+        }
+
+        function clickMenu() {
+            const menu = document.getElementById('menu-list');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function dropdownToggle() {
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(d => d.classList.toggle('show'));
+        }
+    </script>
 </body>
-
-<footer class="footer">
-    <div class="footer-logo">
-      <h4>NerdCore LTDA.</h4>
-      <img src="../assets/LogoTOPO.png" alt="Logo NerdCore">
-    </div>
-
-    <div class="footer-content">
-      <h4>Nossos Links</h4>
-      <ul>
-        <li><a href="#">Política de Privacidade</a></li>
-        <li><a href="#">Termos de Uso</a></li>
-        <li><a href="./grupo.php">Sobre Nós</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </div>
-
-
-  </footer>
-
- 
 </html>

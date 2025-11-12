@@ -184,11 +184,9 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div> -->
     </main>
 
+</body>
 
-
-
-
-    <footer class="footer">
+<footer class="footer">
         <div class="footer-logo">
             <h4>NerdCore LTDA.</h4>
             <img src="SiteLoja/assets/LogoTOPO.png" alt="Logo NerdCore">
@@ -207,10 +205,6 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     </footer>
 
-
     <script src="/SiteLoja/js/home.js"></script>
-
-
-</body>
 
 </html>
