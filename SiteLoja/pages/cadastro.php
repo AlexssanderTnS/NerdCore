@@ -96,12 +96,12 @@ if (logado() && nivelAcesso() != 0) {
   <div class="elfsight-app-47963e1a-79b6-4ecf-ac6d-35be428b39f3" data-elfsight-app-lazy></div> <!-- Widget Elfsight -->
 
 
-
+            
   <!--inputs iniciais-->
 
   <form class="parte1" name="formulario" id="form" action="../php/cadastro.php" method="POST" >
     <h1>Cadastre-se no estilo!</h1>
-
+                        
     <main class="bloco1">
       <div class="botao-campo">
         <input type="text" id="nomeCadastro" placeholder="Nome completo" name="nome">
