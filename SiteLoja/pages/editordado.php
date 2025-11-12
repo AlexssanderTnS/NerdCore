@@ -15,20 +15,58 @@
     </div>
 
     <div class="navbar">
-      <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">
-        menu
-      </span>
-      <ul id="menu-list">
-        <nav class="link">
-          <a href="../../index.php">Inicio</a>
-          <a href="/SiteLoja/pages/cadastro.php">Cadastre-se</a>
-          <a href="/SiteLoja/pages/login.php">Login</a>
-          <a href="/SiteLoja/pages/grupo.php">Quem Somos</a>
-          <a href="/SiteLoja/pages/registro.html">registro</a>  
-        </nav>
-      </ul>
-    </div>
-  </header>
+            <span id="menu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
+            <ul id="menu-list">
+                <nav class="link">
+                        <a href="../../index.php">Inicio</a>
+                        <a href='../pages/grupo.php'>Quem Somos</a>
+                        <div class='dropdown'>
+                            <a onclick='dropdownToggle()'>Produtos <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
+                        <div class='dropdown-content'>
+                            <a href='../../index.php#main'>Camisetas</a>
+                            <a href='../pages/producao.php'>Canecas</a>
+                            </div>
+                        </div>
+                        <?php
+                        if (isset($_SESSION['usuario_nome']) && nivelAcesso() == "2"){
+                                // usuário admin logado
+                            echo "<div class = 'dropdown'>
+                            '<a>{$_SESSION['usuario_nome']}</a>'
+                            <div class='dropdown-content'>
+                            <a href='../pages/adm.php'>Painel Admin</a>
+                            <a href='../php/logout.php'>Logout</a>
+                            </div>
+                            </div>";
+                        } 
+                            else if (isset($_SESSION['usuario_nome'])) {
+                                // usuário normal logado
+                                echo "<div class ='dropdown'>
+                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
+                                <div class='dropdown-content'>
+                                <a href='editorinfo.php'> Perfil </a>
+                                <a href='../php/logout.php'>Logout</a>
+                                </div>
+                                </div>"; 
+                        }  
+                        else{
+                            echo '<a href="../pages/cadastro.php">Cadastre-se</a>';
+                            echo'<a href="../pages/login.php">Login</a>';
+                        }
+                        ?>
+                        <!-- <a href="SiteLoja/pages/carrinho.html">Carrinho</a> -->
+                </nav>
+            </ul>
+        </div>
+        
+    </header>
+
+
+
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <!-- Script de acessibilidade Elfsight -->
+  <div class="elfsight-app-47963e1a-79b6-4ecf-ac6d-35be428b39f3" data-elfsight-app-lazy></div> <!-- Widget Elfsight -->
+
+
 
 
 </head>
@@ -41,20 +79,46 @@
             <h2>Dados do Cliente</h2>
 
             <form>
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome" value="" readonly>
+                <label for="nome">Nome de usuário</label>
+                <input type="text" id="nome" name="nome" value=""  readonly>
+                <button type="button" >✏️</button>
 
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" value="" readonly>
+                <input type="text" id="email" name="email" value=""  readonly>
+                 <button type="button" >✏️</button>
 
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value="" readonly>
+                <input type="text" id="telefone" name="telefone" value="" readonly>
+                <button type="button" >✏️</button>
 
-                <label for="endereco">Endereço</label>
+                <label for="endereco">Telefone fixo</label>
                 <input type="text" id="endereco" name="endereco" value="" readonly>
+                 <button type="button" >✏️</button>
 
-                <label for="cadastro">Data de Cadastro</label>
+                <label for="cadastro">Celular</label>
                 <input type="text" id="cadastro" name="cadastro" value="" readonly>
+                <button type="button" >✏️</button>
+
+                <label for="telefone">Cidade</label>
+                <input type="text" id="telefone" name="telefone" value="" readonly>
+                <button type="button" >✏️</button>
+
+                <label for="telefone">Bairro</label>
+                <input type="text" id="telefone" name="telefone" value="" readonly>
+                <button type="button" >✏️</button>
+
+                <label for="telefone">Endereço</label>
+                <input type="text" id="telefone" name="telefone" value="" readonly>
+                <button type="button" >✏️</button>
+
+                <label for="telefone">Rua</label>
+                <input type="text" id="telefone" name="telefone" value="" readonly>
+                <button type="button" >✏️</button>
+
+                <label for="telefone">N°</label>
+                <input type="text" id="telefone" name="telefone" value="" readonly>
+                <button type="button" >✏️</button>
+
 
                 <button type="button">Editar Dados</button>
             </form>
@@ -65,21 +129,24 @@
 
 </body>
 
- <footer class="footer">
-        <div class="footer-logo">
-            <h4>NerdCore LTDA.</h4>
-            <img src="../assets/LogoTOPO.png" alt="Logo NerdCore">
-        </div>
+<footer class="footer">
+    <div class="footer-logo">
+      <h4>NerdCore LTDA.</h4>
+      <img src="../assets/LogoTOPO.png" alt="Logo NerdCore">
+    </div>
 
-        <div class="footer-content">
-            <h4>Nossos Links</h4>
-            <ul>
-                <li><a href="#">Política de Privacidade</a></li>
-                <li><a href="#">Termos de Uso</a></li>
-                <li><a href="./grupo.html">Sobre Nós</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </div>
+    <div class="footer-content">
+      <h4>Nossos Links</h4>
+      <ul>
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="./grupo.php">Sobre Nós</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
 
 
+  </footer>
+
+ 
 </html>
