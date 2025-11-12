@@ -120,7 +120,7 @@
                 <button type="button" >✏️</button>
 
 
-                <button type="button">Editar Dados</button>
+                <button type="button">Editar dados</button>
             </form>
 
             <p><a href="/index.php">Voltar ao Início</a></p>
