@@ -79,13 +79,31 @@ function carregarSecao(secao) {
       break;
 
     case "team":
-      html = `
-                  <div id="team" class="fade">
-                      <h2>Equipe da Loja</h2>
-                      <p>Lista de funcionários e funções.</p>
-                  </div>
-              `;
-      break;
+  html = `
+    <div id="team" class="fade">
+      <h2>Usuários Cadastrados</h2>
+      <table border="1" cellpadding="10">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Usuário</th>
+            <th>Acesso</th>
+            <th>Data do cadastro</th>
+            
+          </tr>
+        </thead>
+        <tbody id="tabelaUsuarios">
+          <tr><td colspan="6">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  break;
+      
+      
 
     case "stock":
       html = `
@@ -111,6 +129,30 @@ function carregarSecao(secao) {
 
   // Insere o novo HTML no DOM
   conteudo.innerHTML = html;
+  if (secao === "team") {
+  fetch("../php/adm.php")
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.getElementById("tabelaUsuarios");
+      tbody.innerHTML = "";
+      data.forEach(usuario => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${usuario.id}</td>
+            <td>${usuario.nome}</td>
+            <td>${usuario.email}</td>
+            <td>${usuario.usuario}</td>
+            <td>${usuario.acesso}</td>
+            <td>${usuario.data_cadastro}</td>
+            <td><button onclick="excluirUsuario(${usuario.id})">Excluir</button></td>
+          </tr>
+        `;
+      });
+    })
+    .catch(err => {
+      console.error("Erro ao carregar usuários:", err);
+    });
+}
 
   // Chama a função de configuração para CADA PAR de input/preview
   if (secao === "products") {
@@ -158,5 +200,23 @@ navLinks.forEach((link) => {
   });
 });
 
-// Inicializa com o dashboard
-carregarSecao("dashboard");
+
+
+function excluirUsuario(id) {
+  if (confirm("Tem certeza que deseja excluir este usuário?")) {
+    fetch("../php/excluirUsuario.php", {
+      method: "POST",
+      body: new URLSearchParams({ id })
+    })
+    .then(res => res.json())
+    .then(retorno => {
+      if (retorno.sucesso) {
+        alert("Usuário excluído com sucesso!");
+        // Recarrega a lista automaticamente
+        document.querySelector('button[onclick*="team"]').click();
+      } else {
+        alert("Erro ao excluir: " + retorno.erro);
+      }
+    });
+  }
+}

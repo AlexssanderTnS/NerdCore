@@ -45,17 +45,14 @@ try {
         cidade VARCHAR(50) NOT NULL,
         bairro VARCHAR(50) NOT NULL,
         numero INT(6) NOT NULL,
-        complemento VARCHAR(50) DEFAULT NULL);";
+        complemento VARCHAR(50) DEFAULT NULL,
+        data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
+
+        
     //executa o para criar a tabela
     $pdo->exec($usuTable);
     
-    $team = "CREATE TABLE IF NOT EXISTS equipe(
-        id_func INT(11) AUTO_INCREMENT PRIMARY KEY,
-        nome VARCHAR(100) NOT NULL,
-        cargo VARCHAR(100) NOT NULL,
-        data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );";
-    $pdo->exec($team);
+    
     
 
     
