@@ -3,7 +3,7 @@ ob_start();
 session_start();
 require '../php/login.php';
 ob_end_clean();
-require '../php/produtos.php';
+
 
 // carrinho existente
 if (!isset($_SESSION['carrinho'])) {
