@@ -1,12 +1,12 @@
 <?php
 ob_start();
 session_start();
-require '../php/login.php';
+  require '../php/login.php';
 ob_end_clean();
 exigeAcesso(1);
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-require '../php/produtos.php';
+
 $produto = $produtos[$id] ?? null;
 if (!$produto) {
   echo "<p>Produto não encontrado.</p>";
@@ -89,10 +89,10 @@ if (!$produto) {
   <section>
 
     <div class="minaazul">
-      <img id="imagem-produto" src="<?php echo $produto['imagem']; ?>" alt="<?php echo $produto['nome']; ?>">
+      <img id="imagem-produto" src="<?php echo $produto['nomeProduto']; ?>" alt="<?php echo $produto['nomeProduto']; ?>">
     </div>
     <div class="caixa">
-      <h2 id="nome-produto"><?php echo $produto['nome']; ?></h2>
+      <h2 id="nome-produto"><?php echo $produto['nomeProduto']; ?></h2>
       <p id="descricao-produto"><?php echo $produto['descricao']; ?></p>
       <div class="preco" id="preco-produto">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></div>
       <div class="parcelamento">em 12x R$16,99 "Sem Juros"</div>

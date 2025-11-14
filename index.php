@@ -7,7 +7,7 @@ ob_end_clean();
 
 
 //conectar com o banco para buscar os produtos
-$stmt = $pdo->query("SELECT id, nomeProduto, camisaPreta, camisaBranca FROM produtos WHERE categoria = 'camisa'");
+$stmt = $pdo->query("SELECT id, nomeProduto, camisaPreta FROM produtos WHERE categoria = 'camisa'");
 $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -92,9 +92,9 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
                 <a href="SiteLoja/pages/compra.php?id=<?= $p['id'] ?>">
                     <img class="camisa"
-                        src="<?= htmlspecialchars($p['imagem']) ?>"
+                        src="<?= htmlspecialchars($p['camisaPreta']) ?>"
                         data-id="<?= $p['id'] ?>"
-                        alt="<?= htmlspecialchars($p['nome']) ?>">
+                        alt="<?= htmlspecialchars($p['nomeProduto']) ?>">
                 </a>
                 <p><a href="SiteLoja/pages/compra.php?id=<?= $p['id'] ?>">Ver produto</a></p>
             </div>
