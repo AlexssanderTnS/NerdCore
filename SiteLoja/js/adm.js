@@ -74,12 +74,12 @@ function carregarSecao(secao) {
                         <div class="card"><h4>Última Alteração</h4><h2>14/10/2025</h2></div>
                     </div>
                 </div>
-                <div class="foto"><img src="/SiteLoja/assets/LogoADM.png" /></div>
+                <div class="foto"><img src="../assets/LogoADM.png" /></div>
             `;
       break;
 
     case "team":
-  html = `
+      html = `
     <div id="team" class="fade">
       <h2>Usuários Cadastrados</h2>
       <table border="1" cellpadding="10">
@@ -101,9 +101,7 @@ function carregarSecao(secao) {
     </div>
   `;
 
-  break;
-      
-      
+      break;
 
     case "stock":
       html = `
@@ -127,16 +125,15 @@ function carregarSecao(secao) {
       break;
   }
 
-  // Insere o novo HTML no DOM
   conteudo.innerHTML = html;
   if (secao === "team") {
-  fetch("../php/adm.php")
-    .then(res => res.json())
-    .then(data => {
-      const tbody = document.getElementById("tabelaUsuarios");
-      tbody.innerHTML = "";
-      data.forEach(usuario => {
-        tbody.innerHTML += `
+    fetch("../php/adm.php")
+      .then((res) => res.json())
+      .then((data) => {
+        const tbody = document.getElementById("tabelaUsuarios");
+        tbody.innerHTML = "";
+        data.forEach((usuario) => {
+          tbody.innerHTML += `
           <tr>
             <td>${usuario.id}</td>
             <td>${usuario.nome}</td>
@@ -147,12 +144,12 @@ function carregarSecao(secao) {
             <td><button onclick="excluirUsuario(${usuario.id})">Excluir</button></td>
           </tr>
         `;
+        });
+      })
+      .catch((err) => {
+        console.error("Erro ao carregar usuários:", err);
       });
-    })
-    .catch(err => {
-      console.error("Erro ao carregar usuários:", err);
-    });
-}
+  }
 
   // Chama a função de configuração para CADA PAR de input/preview
   if (secao === "products") {
@@ -163,30 +160,40 @@ function carregarSecao(secao) {
   if (secao === "stock") {
     const lista = document.getElementById("lista-produtos");
 
-   fetch("../php/listarP.php")
-  .then((res) => res.json())
-  .then((dados) => {
-    const container = document.getElementById("lista-produtos");
-    container.innerHTML = "";
+    fetch("../php/listarP.php")
+      .then((res) => res.json())
+      .then((dados) => {
+        const container = document.getElementById("lista-produtos");
+        container.innerHTML = "";
 
-    dados.forEach((produto) => {
-      container.innerHTML += `
-        <div class="produto-card">
-          <img src="${produto.imagem}" alt="${produto.nome}">
-          <h3>${produto.nome}</h3>
-          <p>R$ ${Number(produto.preco).toFixed(2)}</p>
-        </div>
-      `;
-    });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+        dados.forEach((produto) => {
+          const classeIndisponivel =
+            produto.disponivel == 0 ? "indisponivel" : "";
 
+          container.innerHTML += `
+    <div class="produto-card ${classeIndisponivel}">
+      <img src="${produto.camisaPreta}" alt="${produto.nomeProduto}">
+      <h3>${produto.nomeProduto}</h3>
+      <p>R$ ${Number(produto.preco).toFixed(2)}</p>
+
+      <button onclick="alterarDisponibilidade(${produto.id}, ${
+            produto.disponivel
+          })">
+        ${produto.disponivel == 1 ? "Indisponibilizar" : "Disponibilizar"}
+      </button>
+
+      <button class="excluir" onclick="excluirProduto('${produto.id}')">Excluir</button>
+    </div>
+  `;
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 }
 
-// Adiciona evento de clique nos links
+
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     // Remove classe 'active' de todos
@@ -194,29 +201,45 @@ navLinks.forEach((link) => {
     // Adiciona no item clicado
     link.classList.add("active");
 
-    // Carrega a seção correspondente
+    
     const secao = link.getAttribute("data-section");
     carregarSecao(secao);
   });
 });
 
-
-
 function excluirUsuario(id) {
   if (confirm("Tem certeza que deseja excluir este usuário?")) {
     fetch("../php/excluirUsuario.php", {
       method: "POST",
+      body: new URLSearchParams({ id }),
+    })
+      .then((res) => res.json())
+      .then((retorno) => {
+        if (retorno.sucesso) {
+          alert("Usuário excluído com sucesso!");
+          document.querySelector('button[onclick*="team"]').click();
+        } else {
+          alert("Erro ao excluir: " + retorno.erro);
+        }
+      });
+  }
+}
+
+function excluirProduto(id) {
+  if (confirm("Tem certeza que deseja excluir este produto?")) {
+    fetch("../php/excluirProduto.php", {
+      method: "POST",
       body: new URLSearchParams({ id })
     })
     .then(res => res.json())
-    .then(retorno => {
-      if (retorno.sucesso) {
-        alert("Usuário excluído com sucesso!");
-        // Recarrega a lista automaticamente
-        document.querySelector('button[onclick*="team"]').click();
+    .then(ret => {
+      if (ret.sucesso) {
+        alert("Produto removido");
+        document.querySelector('[data-section="stock"]').click();
       } else {
-        alert("Erro ao excluir: " + retorno.erro);
+        alert("Erro ao excluir:" + ret.erro);
       }
     });
   }
 }
+
