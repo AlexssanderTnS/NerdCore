@@ -162,6 +162,7 @@ div.minaazul {
 
 /* Caixa de compra */
 .caixa {
+    display: flex;
     background-color: #0a0a2a;
     padding: 2%;
     border-radius: 15px;
@@ -171,6 +172,9 @@ div.minaazul {
     position: relative;
     top: 51px;
     width: 450px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 /* Seletor de cores */
@@ -288,7 +292,7 @@ select {
     cursor: default;
 }
 
-div.caixa #botaocompra {
+#botaocompra {
     font-size: 30px;
     padding: 17px;
     border-radius: 40px;
@@ -300,6 +304,21 @@ div.caixa #botaocompra {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+}
+.botao{
+   text-align: center;
+    display: inline-block;
+    width: 400px;
+    text-decoration: none;
+    background-color: #e9c80c;
+    color: #0a0a2a;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+
 }
 
 #botaocompra:hover {

@@ -1,4 +1,7 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,13 +72,7 @@
     </header>
 
 
-    <div id="construcao">
-        <h1>Estamos estudando!</h1>
-        <img src="../assets/Producao.png" alt="Em construção">
-        <h1>Essa página está em construção, mas em breve teremos muitas canecas legais para você!</h1>
-       
-    </div>
-
+    
     
     
     <footer class="footer">
@@ -101,3 +98,4 @@
 
 
 </body>
+</html>

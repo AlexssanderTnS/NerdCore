@@ -176,13 +176,9 @@ function carregarSecao(secao) {
       <h3>${produto.nomeProduto}</h3>
       <p>R$ ${Number(produto.preco).toFixed(2)}</p>
 
-      <button onclick="alterarDisponibilidade(${produto.id}, ${
-            produto.disponivel
-          })">
-        ${produto.disponivel == 1 ? "Indisponibilizar" : "Disponibilizar"}
-      </button>
-
-      <button class="excluir" onclick="excluirProduto('${produto.id}')">Excluir</button>
+      <button class="excluir" onclick="excluirProduto('${
+        produto.id
+      }')">Excluir</button>
     </div>
   `;
         });
@@ -193,53 +189,121 @@ function carregarSecao(secao) {
   }
 }
 
-
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    // Remove classe 'active' de todos
     navLinks.forEach((l) => l.classList.remove("active"));
     // Adiciona no item clicado
     link.classList.add("active");
 
-    
     const secao = link.getAttribute("data-section");
     carregarSecao(secao);
   });
 });
 
 function excluirUsuario(id) {
-  if (confirm("Tem certeza que deseja excluir este usuário?")) {
-    fetch("../php/excluirUsuario.php", {
-      method: "POST",
-      body: new URLSearchParams({ id }),
-    })
-      .then((res) => res.json())
-      .then((retorno) => {
-        if (retorno.sucesso) {
-          alert("Usuário excluído com sucesso!");
-          document.querySelector('button[onclick*="team"]').click();
-        } else {
-          alert("Erro ao excluir: " + retorno.erro);
-        }
-      });
-  }
+  mostrarModal(
+    "Excluir Usuário",
+    "Tem certeza que deseja excluir este usuário?",
+    [
+      {
+        texto: "Cancelar",
+        classe: "modal-cancel",
+        acao: () => {},
+      },
+      {
+        texto: "Excluir",
+        classe: "modal-confirm",
+        acao: () => {
+          fetch("../php/excluirUsuario.php", {
+            method: "POST",
+            body: new URLSearchParams({ id }),
+          })
+            .then((res) => res.json())
+            .then((ret) => {
+              if (ret.sucesso) {
+                mostrarModal("Sucesso", "Usuário excluído com sucesso!", [
+                  {
+                    texto: "Ok",
+                    classe: "modal-ok",
+                    acao: () => {
+                      document.querySelector('button[onclick*="team"]').click();
+                    },
+                  },
+                ]);
+              } else {
+                mostrarModal("Erro", ret.erro, [
+                  { texto: "Ok", classe: "modal-ok", acao: () => {} },
+                ]);
+              }
+            });
+        },
+      },
+    ]
+  );
 }
 
 function excluirProduto(id) {
-  if (confirm("Tem certeza que deseja excluir este produto?")) {
-    fetch("../php/excluirProduto.php", {
-      method: "POST",
-      body: new URLSearchParams({ id })
-    })
-    .then(res => res.json())
-    .then(ret => {
-      if (ret.sucesso) {
-        alert("Produto removido");
-        document.querySelector('[data-section="stock"]').click();
-      } else {
-        alert("Erro ao excluir:" + ret.erro);
-      }
-    });
-  }
+  mostrarModal(
+    "Excluir Produto",
+    "Tem certeza que deseja excluir este produto?",
+    [
+      {
+        texto: "Cancelar",
+        classe: "modal-cancel",
+        acao: () => {},
+      },
+      {
+        texto: "Excluir",
+        classe: "modal-confirm",
+        acao: () => {
+          fetch("../php/excluirProduto.php", {
+            method: "POST",
+            body: new URLSearchParams({ id }),
+          })
+            .then((res) => res.json())
+            .then((ret) => {
+              if (ret.sucesso) {
+                mostrarModal("Sucesso", "Produto removido!", [
+                  {
+                    texto: "Ok",
+                    classe: "modal-ok",
+                    acao: () =>
+                      document.querySelector('[data-section="stock"]').click(),
+                  },
+                ]);
+              } else {
+                mostrarModal("Erro", ret.erro, [
+                  { texto: "Ok", classe: "modal-ok", acao: () => {} },
+                ]);
+              }
+            });
+        },
+      },
+    ]
+  );
 }
 
+function mostrarModal(titulo, mensagem, botoes = []) {
+  document.getElementById("modal-titulo").textContent = titulo;
+  document.getElementById("modal-msg").textContent = mensagem;
+
+  const box = document.getElementById("modal-botoes");
+  box.innerHTML = "";
+
+  botoes.forEach((btn) => {
+    const b = document.createElement("button");
+    b.textContent = btn.texto;
+    b.className = "modal-btn " + btn.classe;
+    b.onclick = () => {
+      btn.acao();
+      fecharModal();
+    };
+    box.appendChild(b);
+  });
+
+  document.getElementById("modal-overlay").style.display = "flex";
+}
+
+function fecharModal() {
+  document.getElementById("modal-overlay").style.display = "none";
+}

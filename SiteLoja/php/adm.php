@@ -1,6 +1,6 @@
 <?php
 require 'conexao.php';
-
+ob_end_clean();
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -16,4 +16,3 @@ try {
 ?>
 
 
- 

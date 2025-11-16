@@ -1,18 +1,23 @@
 <?php
 ob_start();
 session_start();
-  require '../php/login.php';
+require '../php/login.php'; 
+require '../php/conexao.php'; // o  erro estava aqui, faltando a conexão com o banco de dados
 ob_end_clean();
 exigeAcesso(1);
 
+// Pega ID
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-$produto = $produtos[$id] ?? null;
+// Buscar no banco de dados a informação correta
+$stmt = $pdo->prepare("SELECT * FROM produtos WHERE id = ?");
+$stmt->execute([$id]);
+$produto = $stmt->fetch(PDO::FETCH_ASSOC);
+
 if (!$produto) {
   echo "<p>Produto não encontrado.</p>";
   exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -57,7 +62,7 @@ if (!$produto) {
           if (isset($_SESSION['usuario_nome']) && nivelAcesso() == "2") {
             // usuário admin logado
             echo "<div class = 'dropdown'>
-                            '<a>{$_SESSION['usuario_nome']}</a>'
+                            <a>{$_SESSION['usuario_nome']} <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
                             <div class='dropdown-content'>
                             <a href='../pages/adm.php'>Painel Admin</a>
                             <a href='../php/logout.php'>Logout</a>
@@ -66,7 +71,7 @@ if (!$produto) {
           } else if (isset($_SESSION['usuario_nome'])) {
             // usuário normal logado
             echo "<div class ='dropdown'>
-                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']}</a>
+                                <a onclick='dropdownToggle()'>{$_SESSION['usuario_nome']} <img src='../assets/arrow.svg' alt='arrow_drop_down' /></a>
                                 <div class='dropdown-content'>
                                 <a href='editorinfo.php'> Perfil </a>
                                 <a href='../php/logout.php'>Logout</a>
@@ -89,7 +94,7 @@ if (!$produto) {
   <section>
 
     <div class="minaazul">
-      <img id="imagem-produto" src="<?php echo $produto['nomeProduto']; ?>" alt="<?php echo $produto['nomeProduto']; ?>">
+      <img id="imagem-produto" src="<?php echo $produto['camisaPreta']; ?>" alt="<?php echo $produto['camisaPreta']; ?>">
     </div>
     <div class="caixa">
       <h2 id="nome-produto"><?php echo $produto['nomeProduto']; ?></h2>

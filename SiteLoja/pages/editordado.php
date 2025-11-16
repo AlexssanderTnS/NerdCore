@@ -1,7 +1,8 @@
 <?php
+ob_start();
 session_start();
 require '../php/conexao.php'; // usa o mesmo conexao.php que cria o banco e o objeto $pdo
-
+ob_end_clean();
 // Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");

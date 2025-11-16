@@ -1,9 +1,9 @@
 <?php
 ob_start();
 session_start();
-require '../php/login.php'; 
+require '../php/login.php';
 ob_end_clean();
-exigeAcesso(2);  
+exigeAcesso(2);
 
 ?>
 <!DOCTYPE html>
@@ -35,29 +35,28 @@ exigeAcesso(2);
     </aside>
 
     <main class="content" id="conteudo">
-        <div id="dashboard" class="fade">
-            <h2>Bem-vindo, Administrador</h2>
-            <p>Movimentações recentes:</p>
-
-            <div class="cards-container">
-                <div class="card">
-                    <h4>Camisas Vendidas</h4>
-                    <h2>12</h2>
-                </div>
-                <div class="card">
-                    <h4>Funcionários Ativos</h4>
-                    <h2>22</h2>
-                </div>
-                <div class="card">
-                    <h4>Ultima Alteração</h4>
-                    <h2>14/10/2025</h2>
-                </div>
-            </div>
+        <div class="info">
+            <h2>Bem-vindo ao Painel Administrativo, <?php echo $_SESSION['usuario_nome']; ?>!</h2>
+            <p>Use o menu lateral para navegar entre as seções do painel.</p>
         </div>
         <div class="foto">
-            <img src="../LogoADM.png"/>
+            <img src="../LogoADM.png" />
         </div>
     </main>
+    <div id="modal-overlay" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <h3 id="modal-titulo"></h3>
+            <p id="modal-msg"></p>
+
+            <div id="modal-botoes" class="modal-buttons">
+        
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <script src="../js/adm.js"></script>
 </body>

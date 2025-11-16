@@ -500,6 +500,7 @@ option {
   visibility: hidden;
   position: absolute;
   top: 30px;
+  right: 12px;
   background-color: #302f2f;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);

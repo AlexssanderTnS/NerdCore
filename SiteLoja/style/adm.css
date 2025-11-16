@@ -171,14 +171,14 @@ div.foto img {
 .lista-produtos {
   display: flex;
   width: 100%;
-    gap: 20px;
-    padding: 39px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: 2000px;
-    /* align-content: center; */
-    justify-content: center;
-    align-items: baseline;
+  gap: 20px;
+  padding: 39px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2000px;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: baseline;
 }
 
 .produto-card {
@@ -212,4 +212,135 @@ div.foto img {
 .produto-card p {
   font-size: 14px;
   color: #777;
+}
+
+.produto-card button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.produto-card button:hover {
+  background-color: #b30000;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 25px;
+  width: 350px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.modal-confirm {
+  background: #ff4444;
+  color: #fff;
+}
+.modal-cancel {
+  background: #ccc;
+}
+.modal-ok {
+  background: #4caf50;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#tabelaUsuarios {
+  background-color: whitesmoke;
+}
+
+h2 {
+  color: #070705;
+  text-shadow: 0 0 8px #ffffff;
+  text-shadow: -2px -2px 0 #ffffff, 2px -2px 0 #ffffff, -2px 2px 0 #ffffff,
+    2px 2px 0 #ffffff;
+}
+
+a{
+  text-decoration: none;
+}
+
+#products form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    /* align-content: center; */
+    padding: 40px
+}
+
+#products form label{
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+}
+
+
+
+
+#products form input{
+  padding: 10px;
+    border: 4px solid #ffeb00;
+    border-radius: 40px;
+}
+
+#products form button{
+    padding: 15px 30px;
+    background-color: #e5ff00;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#products form button:hover{
+    background-color: #2cae25;
+    color: #0a0a2a;
+    transform: scale(1.05);
+}
+
+#upload-imagem1{
+    border: none;
+    padding: 0;
 }
