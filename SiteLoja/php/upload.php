@@ -1,17 +1,20 @@
 <?php
 ob_start();
-require('conexao.php'); // aqui o $conexao deve ser seu objeto PDO
+require('conexao.php'); // precisa ter $pdo aqui dentro
 ob_end_clean();
+
 $nome = $_POST['nomeProduto'];
 $descricao = $_POST['descricao'];
 $preco = $_POST['preco'];
+$categoria = $_POST['categoria'];
+
 $imagem1 = $_FILES['imagem1'];
 $imagem2 = $_FILES['imagem2'];
 
-// função que converte a imagem pra base64
-function convertIMG($arquivoTemporario) {
-    $tipo = mime_content_type($arquivoTemporario);
-    $dados = file_get_contents($arquivoTemporario);
+// função pra converter imagem pra Base64
+function convertIMG($tmp) {
+    $tipo = mime_content_type($tmp);
+    $dados = file_get_contents($tmp);
     return "data:" . $tipo . ";base64," . base64_encode($dados);
 }
 
@@ -22,29 +25,33 @@ $sql = "INSERT INTO produtos (
             nomeProduto,
             descricao,
             preco,
+            categoria,
             camisaPreta,
             camisaBranca
         ) VALUES (
-            :nomeProduto,
+            :nome,
             :descricao,
             :preco,
-            :camisaPreta,
-            :camisaBranca
+            :categoria,
+            :img1,
+            :img2
         )";
 
 $stmt = $pdo->prepare($sql);
 
 if ($stmt->execute([
-    ':nomeProduto' => $nome,
+    ':nome' => $nome,
     ':descricao' => $descricao,
     ':preco' => $preco,
-    ':camisaPreta' => $img1,
-    ':camisaBranca' => $img2
+    ':categoria' => $categoria,
+    ':img1' => $img1,
+    ':img2' => $img2
 ])) {
     echo "Produto cadastrado com sucesso!";
 } else {
     echo "Erro ao cadastrar produto!";
 }
 
-header("Location: ../pages/adm.php")
+header("Location: ../pages/adm.php");
+exit;
 ?>

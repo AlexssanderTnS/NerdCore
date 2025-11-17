@@ -48,13 +48,13 @@ function carregarSecao(secao) {
                         <input type="number" placeholder="Preço" class="np" name="preco" name="preco"required>
 
                         <img id="preview-imagem1" src="" alt="Pré-visualização da imagem 1" style="max-width: 100px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
-                        <input type="file" id="upload-imagem1" name="imagem1" accept="image/*" name="imagem1"required>
+                        <input type="file" id="upload-imagem1" accept="image/*" name="imagem1"required>
                         
                         <img id="preview-imagem2" src="" alt="Pré-visualização da imagem 2" style="max-width: 100px; display: none; margin-bottom: 10px; border: 1px solid #ccc; padding: 5px;">
-                        <input type="file" id="upload-imagem2" name="imagem2" accept="image/*" name="imagem2"required>
+                        <input type="file" id="upload-imagem2" accept="image/*" name="imagem2"required>
                         
                         <select name="categoria" required>
-                            <option value="camiseta">Camiseta</option>
+                            <option value="camisa">Camisa</option>
                             <option value="caneca">Caneca</option>
                         </select>
                         <button type="submit">Cadastrar</button>
@@ -65,7 +65,7 @@ function carregarSecao(secao) {
 
     case "dashboard":
       html = `
-                 <div id="dashboard" class="fade">
+                <div id="dashboard" class="fade">
                     <h2>Bem-vindo, Administrador</h2>
                     <p>Movimentações recentes:</p>
                     <div class="cards-container">
@@ -91,6 +91,7 @@ function carregarSecao(secao) {
             <th>Usuário</th>
             <th>Acesso</th>
             <th>Data do cadastro</th>
+            <th>Ações</th>
             
           </tr>
         </thead>
@@ -105,13 +106,12 @@ function carregarSecao(secao) {
 
     case "stock":
       html = `
-                <div id="stock" class="fade">
-                </div>
-                <div id="lista-produtos" class="lista-produtos">
-                    <p>Carregando produtos...</p>
-                </div>
-            </div>
+        <div id="stock" class="fade">
         </div>
+        <div id="lista-produtos" class="lista-produtos">
+            <p>Carregando produtos...</p>
+        </div>
+
     `;
       break;
 
@@ -170,17 +170,21 @@ function carregarSecao(secao) {
           const classeIndisponivel =
             produto.disponivel == 0 ? "indisponivel" : "";
 
-          container.innerHTML += `
-    <div class="produto-card ${classeIndisponivel}">
-      <img src="${produto.camisaPreta}" alt="${produto.nomeProduto}">
-      <h3>${produto.nomeProduto}</h3>
-      <p>R$ ${Number(produto.preco).toFixed(2)}</p>
+          const imagem = produto.camisaPreta;
 
-      <button class="excluir" onclick="excluirProduto('${
-        produto.id
-      }')">Excluir</button>
-    </div>
-  `;
+          // Verifica se é base64 ou caminho físico
+          const src = imagem.startsWith("data:") ? imagem : "../" + imagem; // coloca ../ antes, porque o painel está dentro de /SiteLoja/admin/
+
+          container.innerHTML += `
+        <div class="produto-card ${classeIndisponivel}">
+          <img src="${src}" alt="${produto.nomeProduto}">
+          <h3>${produto.nomeProduto}</h3>
+          <p>R$ ${Number(produto.preco).toFixed(2)}</p>
+          <button class="excluir" onclick="excluirProduto('${produto.id}')">
+            Excluir
+          </button>
+        </div>
+      `;
         });
       })
       .catch((err) => {

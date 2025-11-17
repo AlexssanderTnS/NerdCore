@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     
     // --- Validações ---
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        erro("E-mail inválido. Por favor, verifique o endereço e tente novamente.");
+        die("E-mail inválido. Por favor, verifique o endereço e tente novamente.");
     }
     
     if (!preg_match("/^[\w]+(\.[\w]+)?@(gmail|hotmail|outlook|email)\.com$/", $email)) {
