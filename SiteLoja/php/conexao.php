@@ -28,7 +28,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //tabela do banco de dados
     $usuTable = "CREATE TABLE IF NOT EXISTS usuarios(
-        id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        user_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
         acesso int(1) UNSIGNED NOT NULL DEFAULT 1,
         nome VARCHAR(50) NOT NULL,
         email VARCHAR(100) UNIQUE NOT NULL,
@@ -46,32 +46,37 @@ try {
         bairro VARCHAR(50) NOT NULL,
         numero INT(6) NOT NULL,
         complemento VARCHAR(50) DEFAULT NULL,
-        data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP);";
+        data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);"; $pdo->exec($usuTable);
 
         
-    //executa o para criar a tabela
-    $pdo->exec($usuTable);
-    
-    
-$event_log = "CREATE TABLE IF NOT EXISTS event_log (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    event_type VARCHAR(50) NOT NULL,
-    description TEXT,
-    metadata JSON,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES usuarios(id) ON DELETE CASCADE
+
+$compra = "CREATE TABLE IF NOT EXISTS compra (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (produto_id) REFERENCES produtos(id)
 );";
+$pdo->exec($compra);
+
+
+
+
+
 
 
 $produtos = "CREATE TABLE IF NOT EXISTS produtos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    produto_id INT AUTO_INCREMENT PRIMARY KEY,
     nomeProduto VARCHAR(100) NOT NULL,
     descricao TEXT,
     preco DECIMAL(10,2) NOT NULL,
-    camisaPreta LONGBLOB,
-    camisaBranca LONGBLOB,
+    camisaPreta LONGTEXT,
+    camisaBranca LONGTEXT,
     categoria ENUM('camisa', 'caneca') NOT NULL,
     estoque INT DEFAULT 0,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -84,7 +89,7 @@ $check->execute(['admin1']);
 if ($check->fetchColumn() == 0) {
     $senha = password_hash("nerdcore", PASSWORD_DEFAULT);
     $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, acesso)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100, 2]);
 }
 
