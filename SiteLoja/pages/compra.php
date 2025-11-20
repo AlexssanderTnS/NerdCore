@@ -92,42 +92,42 @@ if (!$produto) {
   <!--Caixa de Compra-->
 
   <section>
-
-    <div class="minaazul">
-      <img id="imagem-produto" src="<?php echo $produto['camisaPreta']; ?>" alt="<?php echo $produto['camisaPreta']; ?>">
-    </div>
-    <div class="caixa">
-      <h2 id="nome-produto"><?php echo $produto['nomeProduto']; ?></h2>
-      <p id="descricao-produto"><?php echo $produto['descricao']; ?></p>
-      <div class="preco" id="preco-produto">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></div>
-      <div class="parcelamento">em 12x R$16,99 "Sem Juros"</div>
-      <label for="tamanho">Tamanho:</label>
-      <select id="tamanho" name="tamanho">
-        <option value="P">P</option>
-        <option value="M">M</option>
-        <option value="G">G</option>
-        <option value="GG">GG</option>
-      </select>
-
-      <!-- Seletor de Cores -->
-      <div class="color-selector">
-        <label for="cor">Cor:</label>
-        <div class="color-options">
-          <div class="color-option active" data-color="branca" onclick="changeColor('branca')">
-            <div class="color-square white"></div>
-            <span>Branca</span>
-          </div>
-          <div class="color-option" data-color="preta" onclick="changeColor('preta')">
-            <div class="color-square black"></div>
-            <span>Preta</span>
+    <form  method="post"action="../php/compra.php">
+      
+      <div class="minaazul">
+        <img id="imagem-produto" src="<?php echo $produto['camisaPreta']; ?>" alt="<?php echo $produto['camisaPreta']; ?>">
+      </div>
+      <div class="caixa">
+        <h2 id="nome-produto"><?php echo $produto['nomeProduto']; ?></h2>
+        <p id="descricao-produto"><?php echo $produto['descricao']; ?></p>
+        <div class="preco" id="preco-produto">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></div>
+        <div class="parcelamento">em 12x R$16,99 "Sem Juros"</div>
+        <label for="tamanho">Tamanho:</label>
+        <select id="tamanho" name="tamanho">
+          <option value="P">P</option>
+          <option value="M">M</option>
+          <option value="G">G</option>
+          <option value="GG">GG</option>
+        </select>
+        <!-- Seletor de Cores -->
+        <div class="color-selector">
+          <label for="cor">Cor:</label>
+          <div class="color-options">
+            <div class="color-option active" data-color="branca" onclick="changeColor('branca')">
+              <div class="color-square white"></div>
+              <span>Branca</span>
+            </div>
+            <div class="color-option" data-color="preta" onclick="changeColor('preta')">
+              <div class="color-square black"></div>
+              <span>Preta</span>
+            </div>
           </div>
         </div>
+      
+        <a href="../pages/carrinho.php?action=add&id=<?php echo $id; ?>" id="botaocompra">Comprar</a>
       </div>
-
-      <a href="../pages/carrinho.php?action=add&id=<?php echo $id; ?>" class="botao">Adicionar ao Carrinho</a>
-      <a href="../pages/carrinho.php?action=add&id=<?php echo $id; ?>" id="botaocompra">Comprar</a>
-    </div>
-  </section>
+        </section>
+    </form>
 
   <!-- Área de demonstração das camisas -->
   <section class="demo-section">
@@ -167,14 +167,6 @@ if (!$produto) {
   </footer>
 
   <!--Link com JS-->
-
-  <script>
-  const shirtImages = {
-    branca: "<?php echo $produto['camisaBranca']; ?>",
-    preta: "<?php echo $produto['camisaPreta']; ?>"
-  };
-</script>
-
 
   <script src="../js/produtos.js"></script>
 
