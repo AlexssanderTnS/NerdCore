@@ -42,33 +42,13 @@ try {
         fixo CHAR(11) UNIQUE NOT NULL,
         cep CHAR(8) NOT NULL,
         estado CHAR(20) NOT NULL,
+        rua VARCHAR(60) NOT NULL,
         cidade VARCHAR(50) NOT NULL,
         bairro VARCHAR(50) NOT NULL,
         numero INT(6) NOT NULL,
         complemento VARCHAR(50) DEFAULT NULL,
         data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );"; $pdo->exec($usuTable);
-
-        
-
-
-$compra = "CREATE TABLE IF NOT EXISTS compra (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    produto_id INT NOT NULL,
-    quantidade INT NOT NULL,
-    total DECIMAL(10,2) NOT NULL,
-    data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (produto_id) REFERENCES produtos(id)
-);";
-$pdo->exec($compra);
-
-
-
-
-
-
 
 $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     produto_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -81,16 +61,28 @@ $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     estoque INT DEFAULT 0,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );";
+
 $pdo->exec($produtos);
+$compra = "CREATE TABLE IF NOT EXISTS compra (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(user_id),
+    FOREIGN KEY (produto_id) REFERENCES produtos(produto_id)
+);";
+$pdo->exec($compra);
 
 //Cria o perfil do ADM
 $check = $pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario = ?");
 $check->execute(['admin1']);
 if ($check->fetchColumn() == 0) {
     $senha = password_hash("nerdcore", PASSWORD_DEFAULT);
-    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, acesso)
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100, 2]);
+    $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, rua, numero, acesso)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
+    $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro','adm', 100, 2]);
 }
 
 } catch (PDOException $e) {

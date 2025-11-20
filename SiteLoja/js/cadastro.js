@@ -15,7 +15,7 @@ const estado = document.getElementById("estado");
 const cidade = document.getElementById("cidade");
 const bairro = document.getElementById("bairro");
 const rua = document.getElementById("rua");
-const numero = document.getElementById("numero")
+const numero = document.getElementById("numero");
 
 //Botões
 const campos = document.querySelectorAll(".botao-campo input");

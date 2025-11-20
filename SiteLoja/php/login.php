@@ -22,7 +22,7 @@ if (!empty($usuario) && !empty($senha)){
  if ($dados_usuario){
 
     if(password_verify($senha,$dados_usuario["senha"])){
-        $_SESSION['usuario_id'] = $dados_usuario['id'];
+        $_SESSION['usuario_id'] = $dados_usuario['user_id'];
         $_SESSION['usuario_nome'] = $dados_usuario['usuario'];
         $_SESSION['usuario_acesso'] = $dados_usuario['acesso'];
 

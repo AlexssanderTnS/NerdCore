@@ -7,7 +7,7 @@ ob_end_clean();
 
 
 //conectar com o banco para buscar os produtos
-$stmt = $pdo->query("SELECT id, nomeProduto, camisaPreta FROM produtos WHERE categoria = 'camisa'");
+$stmt = $pdo->query("SELECT produto_id, nomeProduto, camisaPreta FROM produtos WHERE categoria = 'camisa'");
 $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>

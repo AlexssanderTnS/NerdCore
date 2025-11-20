@@ -57,7 +57,10 @@ form {
     margin-bottom: 40px;
     
 }
-
+.botao-campo{
+    display:flex;
+    flex-direction: column;
+}
 label {
     font-size: 0.6rem;
     color: #f9ff59;
@@ -469,21 +472,34 @@ option {
     background-color: red; /* Mostra erro ou atenção */
 }
 
-/* Mensagem de erro (ainda invisível) */
+/*erros*/
 .botao-campo p {
-    color: red; /* Cor vermelha padrão de erro */
-    font-size: 1em;
-    visibility: hidden; /* Só aparece se houver erro */
+    color: red;
+    font-family: 'Press Start 2P', monospace; /* Use a fonte principal para consistência */
+    font-size: 0.7em; /* Reduza para caber melhor */
+    text-align: left;
+    margin-top: 5px; /* Espaço entre o input e a mensagem */
+    
+    /* 🔑 A CHAVE: Use 'opacity' para esconder, mas reserve o espaço */
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Adiciona uma animação suave */
+    
+    /* Garante que o texto de erro não ocupe mais que o campo */
+    max-width: 100%;
+    /* Permite que o texto de erro quebre a linha se for muito longo */
+    word-wrap: break-word; 
+    white-space: normal;
 }
 
-/* Campo com erro: borda vermelha */
 .botao-campo.error input {
     border-color: red;
 }
 
-/* Exibe a mensagem de erro */
 .botao-campo.error p {
-    visibility: visible;
+    /* 🔑 A CHAVE: Torna o erro visível */
+    opacity: 1; 
+    /* Remove a visibilidade oculta, garantindo que o espaço seja ocupado */
+    /* Você pode remover 'visibility: visible;' se estiver usando 'opacity: 1;' */
 }
 
 

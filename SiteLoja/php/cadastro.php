@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $data_nascimento = $_POST['data_nascimento'] ?? ''; // Valor recebido: YYYY-MM-DD
     $mae = $_POST['mae'] ?? '';
     $genero = $_POST['genero'] ?? '';
+    $rua = $_POST['rua'] ?? '';
     
    
     $cpf = preg_replace('/\D/', '', $_POST['cpf'] ?? '');
@@ -131,6 +132,7 @@ echo "CPF válido!";
     fixo,
     cep,
     estado,
+    rua,
     cidade,
     bairro,
     numero,
@@ -147,6 +149,7 @@ echo "CPF válido!";
     :fixo,
     :cep,
     :estado,
+    :rua,
     :cidade,
     :bairro,
     :numero,
@@ -170,6 +173,7 @@ echo "CPF válido!";
             ':fixo' => $fixo,
             ':cep' => $cep,
             ':estado' => $estado,
+            ':rua' => $rua,
             ':cidade' => $cidade,
             ':bairro' => $bairro,
             ':numero' => $numero,

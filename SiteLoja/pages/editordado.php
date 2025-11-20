@@ -12,9 +12,9 @@ if (!isset($_SESSION['usuario_id'])) {
 $id_usuario = $_SESSION['usuario_id'];
 
 // Busca os dados do usuário logado
-$sql = "SELECT * FROM usuarios WHERE id = :id";
+$sql = "SELECT * FROM usuarios WHERE user_id = :user_id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(':id', $id_usuario, PDO::PARAM_INT);
+$stmt->bindValue(':user_id', $id_usuario, PDO::PARAM_INT);
 $stmt->execute();
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'fixo' => $_POST['fixo'],
         'cep' => $_POST['cep'],
         'estado' => $_POST['estado'],
+        'rua' => $_POST['rua'],
         'cidade' => $_POST['cidade'],
         'bairro' => $_POST['bairro'],
         'numero' => $_POST['numero'],
@@ -41,12 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE usuarios SET 
                 nome = :nome, 
+                senha =:senha,
                 email = :email, 
                 usuario = :usuario, 
                 cll = :cll, 
                 fixo = :fixo, 
                 cep = :cep, 
                 estado = :estado, 
+                rua = :rua,
                 cidade = :cidade, 
                 bairro = :bairro, 
                 numero = :numero, 
@@ -54,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             WHERE id = :id";
 
     $stmt = $pdo->prepare($sql);
-    $campos['id'] = $id_usuario;
+    $campos['user_id'] = $id_usuario;
 
     if ($stmt->execute($campos)) {
         $mensagem = "Dados atualizados com sucesso!";
@@ -135,74 +138,98 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Suas Informações</h2>
             <?php if (isset($mensagem)) echo "<p class='mensagem'>$mensagem</p>"; ?>
 
-            <form method="POST">
+            <form method="POST" id="form">
                 <div class="botao-campo">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['nome']) ?>" readonly>
-                <p></p>
                 <button type="button" onclick="habilitar('nome')">///</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" readonly>
                 <button type="button" onclick="habilitar('email')">Editar</button>
+                <p>erro</p>
                 </div>
                 
                 <div class="botao-campo">
                 <label for="usuario">Usuário</label>
                 <input type="text" id="usuario" name="usuario" value="<?= htmlspecialchars($usuario['usuario']) ?>" readonly>
                 <button type="button" onclick="habilitar('usuario')">Editar</button>
+                <p>erro</p>
+                </div>
+
+                <div class="botao-campo">
+                <label for="senha">Senha</label>
+                <input type="text" id="senha" name="senha" value="<?= htmlspecialchars($usuario['senha']) ?>" readonly>
+                <button type="button" onclick="habilitar('usuario')">Editar</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="cll">Celular</label>
                 <input type="text" id="cll" name="cll" value="<?= htmlspecialchars($usuario['cll']) ?>" readonly>
                 <button type="button" onclick="habilitar('cll')">Editar</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="fixo">Telefone Fixo</label>
                 <input type="text" id="fixo" name="fixo" value="<?= htmlspecialchars($usuario['fixo']) ?>" readonly>
                 <button type="button" onclick="habilitar('fixo')">Editar</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="cep">CEP</label>
                 <input type="text" id="cep" name="cep" value="<?= htmlspecialchars($usuario['cep']) ?>" readonly>
                 <button type="button" onclick="habilitar('cep')">///</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="estado">Estado</label>
                 <input type="text" id="estado" name="estado" value="<?= htmlspecialchars($usuario['estado']) ?>" readonly>
                 <button type="button" onclick="habilitar('estado')">///</button>
+                <p>erro</p>
+                </div>
+
+                <div class="botao-campo">
+                <label for="rua">Rua</label>
+                <input type="text" id="rua" name="rua" value="<?= htmlspecialchars($usuario['rua']) ?>" readonly>
+                <button type="button" onclick="habilitar('rua')">///</button>
+                <p>erro</p>
                 </div>
                 
                 <div class="botao-campo">
                 <label for="cidade">Cidade</label>
                 <input type="text" id="cidade" name="cidade" value="<?= htmlspecialchars($usuario['cidade']) ?>" readonly>
                 <button type="button" onclick="habilitar('cidade')">///</button>
+                <p>erro</p>
                 </div>
                 <div class="botao-campo">
                 <label for="bairro">Bairro</label>
                 <input type="text" id="bairro" name="bairro" value="<?= htmlspecialchars($usuario['bairro']) ?>" readonly>
                 <button type="button" onclick="habilitar('bairro')">///</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="numero">Número</label>
                 <input type="text" id="numero" name="numero" value="<?= htmlspecialchars($usuario['numero']) ?>" readonly>
                 <button type="button" onclick="habilitar('numero')">Editar</button>
+                <p>erro</p>
                 </div>
 
                 <div class="botao-campo">
                 <label for="complemento">Complemento</label>
                 <input type="text" id="complemento" name="complemento" value="<?= htmlspecialchars($usuario['complemento']) ?>" readonly>
                 <button type="button" onclick="habilitar('complemento')">Editar</button>
+                <p>erro</p>
                 </div>
                 <br><br>
-                <button type="submit">Salvar Alterações</button>
+                <button id="pronto"type="submit">Salvar Alterações</button>
             </form>
 
             <p><a href="../../index.php">Voltar ao Início</a></p>
