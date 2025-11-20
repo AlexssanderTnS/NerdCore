@@ -90,13 +90,13 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <main id="main">
         <?php foreach ($produtos as $p): ?>
             <div class="card">
-                <a href="SiteLoja/pages/compra.php?id=<?= $p['id'] ?>">
+                <a href="SiteLoja/pages/compra.php?id=<?= $p['produto_id'] ?>">
                     <img class="camisa"
                         src="<?= htmlspecialchars($p['camisaPreta']) ?>"
-                        data-id="<?= $p['id'] ?>"
+                        data-id="<?= $p['produto_id'] ?>"
                         alt="<?= htmlspecialchars($p['nomeProduto']) ?>">
                 </a>
-                <p><a href="SiteLoja/pages/compra.php?id=<?= $p['id'] ?>">Ver produto</a></p>
+                <p><a href="SiteLoja/pages/compra.php?id=<?= $p['produto_id'] ?>">Ver produto</a></p>
             </div>
         <?php endforeach; ?>
     </main>

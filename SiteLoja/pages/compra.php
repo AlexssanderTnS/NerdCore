@@ -10,7 +10,7 @@ exigeAcesso(1);
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Buscar no banco de dados a informação correta
-$stmt = $pdo->prepare("SELECT * FROM produtos WHERE id = ?");
+$stmt = $pdo->prepare("SELECT * FROM produtos WHERE produto_id = ?");
 $stmt->execute([$id]);
 $produto = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -126,8 +126,8 @@ if (!$produto) {
       
         <a href="../pages/carrinho.php?action=add&id=<?php echo $id; ?>" id="botaocompra">Comprar</a>
       </div>
-        </section>
     </form>
+  </section>
 
   <!-- Área de demonstração das camisas -->
   <section class="demo-section">
@@ -165,7 +165,12 @@ if (!$produto) {
 
 
   </footer>
-
+<script>
+    const shirtImages = {
+        branca: "<?php echo $produto['camisaBranca']; ?>",
+        preta: "<?php echo $produto['camisaPreta']; ?>"
+    };
+</script>
   <!--Link com JS-->
 
   <script src="../js/produtos.js"></script>
