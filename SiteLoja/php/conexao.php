@@ -62,8 +62,8 @@ $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     nomeProduto VARCHAR(100) NOT NULL,
     descricao TEXT,
     preco DECIMAL(10,2) NOT NULL,
-    camisaPreta LONGTEXT,
-    camisaBranca LONGTEXT,
+    camisaPreta LONGBLOB,
+    camisaBranca LONGBLOB,
     categoria ENUM('camisa', 'caneca') NOT NULL,
     estoque INT DEFAULT 0,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -76,7 +76,7 @@ $check->execute(['admin1']);
 if ($check->fetchColumn() == 0) {
     $senha = password_hash("nerdcore", PASSWORD_DEFAULT);
     $stmt = $pdo->prepare("INSERT INTO usuarios (nome, email, usuario, senha, data_nascimento, mae, genero, cpf, cll, fixo, cep, estado, cidade, bairro, numero, acesso)
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute(['Admin', 'admin@nerdcore.com', 'admin1', $senha, '2000-01-01', 'Mãe Admin', 'Outro', '12345678901', '21999999999', '2122223333', '20000000', 'RJ', 'Rio de Janeiro', 'Centro', 100, 2]);
 }
 

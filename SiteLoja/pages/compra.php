@@ -168,6 +168,14 @@ if (!$produto) {
 
   <!--Link com JS-->
 
+  <script>
+  const shirtImages = {
+    branca: "<?php echo $produto['camisaBranca']; ?>",
+    preta: "<?php echo $produto['camisaPreta']; ?>"
+  };
+</script>
+
+
   <script src="../js/produtos.js"></script>
 
 
