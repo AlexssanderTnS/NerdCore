@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 require 'SiteLoja/php/login.php';
+require'SiteLoja/php/conexao.php';
 ob_end_clean();
 
 
