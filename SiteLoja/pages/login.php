@@ -104,9 +104,14 @@ if (logado() && nivelAcesso() != 0) {
             </div>
             <div class="enviar">
                 <!-- Botão de enviar o login -->
-                <button type="submit" class="botao-funcao" id="enviar">Enviar</button>
                 <button type="button" id="limpar">Limpar</button>
-
+                <button type="submit" class="botao-funcao" id="enviar">Enviar</button>
+                <dialog id="modalSucesso">
+                    <div class="mensagem-sucesso">
+                 <p>Login realizado com sucessooooooooo<p/>
+                 <a href="../../index.php">Ir para a página principal</a>
+                </div>
+            </dialog>
             </div>
             <!-- Link para cadastro -->
             <div id="cadastro-link">
@@ -138,7 +143,7 @@ if (logado() && nivelAcesso() != 0) {
 
 
     </footer>
-
+    <script src="../js/global.js"></script>                   
     <script>
         function clickMenu() {
             const menuList = document.getElementById("menu-list");

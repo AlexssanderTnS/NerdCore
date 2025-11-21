@@ -22,6 +22,7 @@ const campos = document.querySelectorAll(".botao-campo input");
 const botao = document.getElementById("pronto");
 const form = document.getElementById("form");
 const limpar = document.getElementById("limpar")
+const dialogSucesso = document.getElementById("modalSucesso");
 //Padrões
 
 const emailPadrao = /^[\w]+(\.[\w]+)?@(gmail|hotmail|outlook|email)\.com$/;
@@ -56,6 +57,7 @@ form.addEventListener("submit", (evento) => {
   //condicional que impede do programa funcionar se tiver algum campo com erro
   if (erros.length === 0) {
     form.submit();
+    dialogSucesso.showModal();
 
     
   }

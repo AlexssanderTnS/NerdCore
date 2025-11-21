@@ -3,6 +3,7 @@ const usuario = document.getElementById("usuario");
 const senha = document.getElementById("senha");
 const limpar = document.getElementById("limpar");
 
+const dialogSucesso = document.getElementById("modalSucesso");
 // --- EVENTO DE ENVIO DO FORM ---
 form.addEventListener("submit", (evento) => {
   evento.preventDefault(); // impede reload
@@ -35,8 +36,7 @@ function validarLogin() {
       resposta = resposta.trim(); // remove espaços e quebras de linha
 
       if (resposta === "sucesso"){
-        window.location.href = "../../index.php";
-        alert("Teste de sucesso")
+        dialogSucesso.showModal();
         return;
       }else if (resposta === "erroSenha"){
         entradaErro(senha, "Senha incorreta!");

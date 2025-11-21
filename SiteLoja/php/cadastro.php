@@ -181,7 +181,9 @@ echo "CPF válido!";
         );
         
         $stmt->execute($params);
-        header("Location: ../pages/login.php");
+        session_start();
+        $_SESSION['cadastro_sucesso'] = true;
+        header("Location: ../pages/cadastro.php");
        exit();
         
         
