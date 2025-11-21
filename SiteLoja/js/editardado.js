@@ -11,7 +11,7 @@ const rua = document.getElementById("rua");
 const numero = document.getElementById("numero");
 
 const campos = document.querySelectorAll(".botao-campo input");
-const botao = document.getElementById("pronto");
+const botao = document.getElementById("sim");
 const form = document.getElementById("form");
 const limpar = document.getElementById("limpar")
 
@@ -26,7 +26,7 @@ form.addEventListener("submit", (evento) => {
   evento.preventDefault();
   checkNome();
   checkEmail();
-  checkSenha();
+  
   checkUsuario();
   
  
