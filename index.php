@@ -8,7 +8,11 @@ ob_end_clean();
 
 
 //conectar com o banco para buscar os produtos
+<<<<<<< HEAD
+$stmt = $pdo->query("SELECT produto_id,nomeProduto, camisaPreta FROM produtos WHERE categoria = 'camisa'");
+=======
 $stmt = $pdo->query("SELECT produto_id, nomeProduto, camisaPreta FROM produtos WHERE categoria = 'camisa'");
+>>>>>>> 5faca5412203c53f2fb776cdf06d70de536e9f36
 $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
