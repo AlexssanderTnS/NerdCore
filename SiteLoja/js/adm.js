@@ -31,7 +31,6 @@ function carregarSecao(secao) {
   let html = "";
 
   switch (secao) {
-    // -----------------------------------------------------------------------
     case "products":
       html = `
         <div id="products" class="fade">
@@ -58,7 +57,6 @@ function carregarSecao(secao) {
       `;
       break;
 
-    // -----------------------------------------------------------------------
     case "dashboard":
       html = `
         <div id="dashboard" class="fade">
@@ -74,7 +72,6 @@ function carregarSecao(secao) {
       `;
       break;
 
-    // -----------------------------------------------------------------------
     case "team":
       html = `
         <div id="team" class="fade">
@@ -98,7 +95,6 @@ function carregarSecao(secao) {
       `;
       break;
 
-    // -----------------------------------------------------------------------
     case "stock":
       html = `
         <div id="stock" class="fade"></div>
@@ -109,12 +105,12 @@ function carregarSecao(secao) {
       `;
       break;
 
-    // -----------------------------------------------------------------------
     case "sells":
       html = `
         <div id="sells" class="fade">
             <h2>Registro de Vendas</h2>
-            <input type="text" id="searchUser" placeholder="Buscar por nome, email ...">
+            <input type="text" id="searchSell" placeholder="Buscar venda...">
+
             <table border="1" cellpadding="10" id="tabelaVendas">
               <thead>
                 <tr>
@@ -130,7 +126,6 @@ function carregarSecao(secao) {
       `;
       break;
 
-    // -----------------------------------------------------------------------
     default:
       html = `<p>Seção não encontrada</p>`;
   }
@@ -161,12 +156,12 @@ function carregarSecao(secao) {
           `;
         });
 
-        // FILTRO
         const input = document.getElementById("searchUser");
         input.addEventListener("input", () => {
           const filtro = input.value.toLowerCase();
           document.querySelectorAll(".usuario-linha").forEach((tr) => {
-            const texto = tr.innerText.toLowerCase();
+            const tdArray = Array.from(tr.children).map(td => td.textContent.toLowerCase());
+            const texto = tdArray.join(" ");
             tr.style.display = texto.includes(filtro) ? "" : "none";
           });
         });
@@ -184,9 +179,7 @@ function carregarSecao(secao) {
         div.innerHTML = "";
 
         produtos.forEach((p) => {
-          const img = p.camisaPreta.startsWith("data:")
-            ? p.camisaPreta
-            : "../" + p.camisaPreta;
+          const img = p.camisaPreta.startsWith("data:") ? p.camisaPreta : "../" + p.camisaPreta;
 
           div.innerHTML += `
             <div class="produto-card ${p.disponivel == 0 ? "indisponivel" : ""}">
@@ -212,7 +205,7 @@ function carregarSecao(secao) {
 
         vendas.forEach((v) => {
           tbody.innerHTML += `
-            <tr style="background:#fff;padding:20px;border-radius:10px;">
+            <tr class="venda-linha">
               <td>${v.id}</td>
               <td>${v.usuario_nome}</td>
               <td>${v.produto_nome}</td>
@@ -221,6 +214,16 @@ function carregarSecao(secao) {
               <td>${v.data_compra}</td>
             </tr>
           `;
+        });
+
+        const inputSell = document.getElementById("searchSell");
+        inputSell.addEventListener("input", () => {
+          const filtro = inputSell.value.toLowerCase();
+          document.querySelectorAll(".venda-linha").forEach((tr) => {
+            const tdArray = Array.from(tr.children).map(td => td.textContent.toLowerCase());
+            const texto = tdArray.join(" ");
+            tr.style.display = texto.includes(filtro) ? "" : "none";
+          });
         });
       });
   }
@@ -260,7 +263,7 @@ function excluirUsuario(user_id) {
             body: new URLSearchParams({ user_id }),
           })
             .then((r) => r.json())
-            .then((ret) => {
+            .then(() => {
               mostrarModal("Sucesso", "Usuário excluído", [
                 {
                   texto: "Ok",

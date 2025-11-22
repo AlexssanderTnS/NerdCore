@@ -95,6 +95,7 @@ if (!$produto) {
     <div class="minaazul">
       
     <form  method="POST"action="../php/compra.php">
+      <input type="hidden" name="produto_id" value="<?php echo $produto['produto_id']; ?>">
         <img id="imagem-produto" src="<?php echo $produto['camisaPreta']; ?>" alt="<?php echo $produto['camisaPreta']; ?>">
       </div>
       <div class="caixa">
