@@ -25,10 +25,10 @@ exigeAcesso(2);
             </div>
             <ul class="nav-links">
                 <li class="active" data-section="dashboard">Painel Principal</li>
-                <li data-section="team">Equipe</li>
+                <li data-section="team">Usuários</li>
                 <li data-section="stock">Estoque</li>
                 <li data-section="products">Cadastrar Produtos</li>
-                <li data-section="sells">Registro de vendas</li>
+                <li data-section="sells">Histórico</li>
             </ul>
         </div>
         <a class="logout" href="../../index.php">Sair</a>

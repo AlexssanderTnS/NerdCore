@@ -18,7 +18,7 @@ try {
     $sql_banco = "CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci";
 
     $con_server->exec($sql_banco);
-     echo "Banco de dados $dbname criado com sucesso!";
+     
 } catch (PDOException $e) {
     die("Erro com banco de dados: " . $e->getMessage());
 };

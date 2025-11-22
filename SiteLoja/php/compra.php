@@ -1,33 +1,38 @@
 <?php
 session_start();
-require 'conexao.php'; // sua conexão PDO ou MySQL
+require 'conexao.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuarioId   = $_SESSION['usuario_id'] ?? null;
-    $produtoId   = $_POST['nomeProduto'] ?? null;
-    $quantidade  = $_POST['quantidade'] ?? 1;
-    $dataCompra  = date('Y-m-d H:i:s');
-
-    if (!$usuarioId) {
-        // Se não tiver ID de usuário na sessão, não faz a compra
-        die("Usuário não identificado.");
-    }
-
-    $sql = "INSERT INTO compras (user_id, nomeProduto, quantidade, data_compra)
-            VALUES (:user_id, :produto_id, :quantidade, :data_compra)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':user_id'     => $usuarioId,
-        ':produto_id'  => $produtoId,
-        ':quantidade'  => $quantidade,
-        ':data_compra' => $dataCompra,
-    ]);
-
-    if ($stmt->rowCount() > 0) {
-        echo "Compra registrada com sucesso!";
-    } else {
-        echo "Erro ao registrar a compra.";
-    }
+// GARANTE LOGIN
+if (!isset($_SESSION['usuario_id'])) {
+    die("Usuário não logado.");
 }
 
+$usuario_id = $_SESSION['usuario_id'];
+
+// RECEBE DADOS DO FORMULÁRIO
+$produto_id = isset($_POST['produto_id']) ? intval($_POST['produto_id']) : 0;
+$quantidade = isset($_POST['quantidade']) ? intval($_POST['quantidade']) : 1;
+
+// PEGA DADOS DO PRODUTO
+$sqlProd = $pdo->prepare("SELECT nome, preco FROM produtos WHERE produto_id = ?");
+$sqlProd->execute([$produto_id]);
+$produto = $sqlProd->fetch(PDO::FETCH_ASSOC);
+
+if (!$produto) {
+    die("Produto não encontrado.");
+}
+
+$produto_nome = $produto['nome'];
+$preco = $produto['preco'];
+$total = $preco * $quantidade;
+
+// INSERE COMPRA
+$stmt = $pdo->prepare("
+    INSERT INTO compra (usuario_id, produto_id, quantidade, total)
+    VALUES (?, ?, ?, ?)
+");
+
+$stmt->execute([$usuario_id, $produto_id, $quantidade, $total]);
+
+echo "Compra registrada com sucesso!";
 ?>
