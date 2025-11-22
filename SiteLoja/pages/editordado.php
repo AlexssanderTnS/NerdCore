@@ -29,20 +29,39 @@ $mensagem = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $campos = [
-        'nome' => $_POST['nome'] ?? '',
-        'email' => $_POST['email'] ?? '',
-        'usuario' => $_POST['usuario'] ?? '',
-        'cll' => $_POST['cll'] ?? '',
-        'fixo' => $_POST['fixo'] ?? '',
-        'cep' => $_POST['cep'] ?? '',
-        'estado' => $_POST['estado'] ?? '',
-        'rua' => $_POST['rua'] ?? '',
-        'cidade' => $_POST['cidade'] ?? '',
-        'bairro' => $_POST['bairro'] ?? '',
-        'numero' => $_POST['numero'] ?? '',
-        'complemento' => $_POST['complemento'] ?? ''
-    ];
+    'nome' => $_POST['nome'] ?? '',
+    'email' => $_POST['email'] ?? '',
+    'usuario' => $_POST['usuario'] ?? '',
+    'cll' => $_POST['cll'] ?? '',
+    'fixo' => $_POST['fixo'] ?? '',
+    'cep' => $_POST['cep'] ?? '',
+    'estado' => $_POST['estado'] ?? '',
+    'rua' => $_POST['rua'] ?? '',
+    'cidade' => $_POST['cidade'] ?? '',
+    'bairro' => $_POST['bairro'] ?? '',
+    'numero' => $_POST['numero'] ?? '',
+    'complemento' => $_POST['complemento'] ?? ''
+];
 
+$nova_senha = $_POST['senha'] ?? '';
+if (!empty($nova_senha)) {
+    $campos['senha'] = password_hash($nova_senha, PASSWORD_DEFAULT);
+    $sql = "UPDATE usuarios SET 
+                nome = :nome,
+                email = :email,
+                usuario = :usuario,
+                senha = :senha,
+                cll = :cll,
+                fixo = :fixo,
+                cep = :cep,
+                estado = :estado,
+                rua = :rua,
+                cidade = :cidade,
+                bairro = :bairro,
+                numero = :numero,
+                complemento = :complemento
+            WHERE user_id = :user_id";
+} else {
     $sql = "UPDATE usuarios SET 
                 nome = :nome,
                 email = :email,
@@ -57,10 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 numero = :numero,
                 complemento = :complemento
             WHERE user_id = :user_id";
+}
 
-    $stmt = $pdo->prepare($sql);
-    $campos['user_id'] = $id_usuario;
-
+$campos['user_id'] = $id_usuario;
+$stmt = $pdo->prepare($sql);
     if ($stmt->execute($campos)) {
 
         // guarda o modal para imprimir DENTRO do <body>
@@ -177,12 +196,15 @@ if ($modalFeedback) echo $modalFeedback;
                 <p>erro</p>
             </div>
 
-            <div class="botao-campo">
-                <label for="senha">Senha</label>
-                <input type="text" id="senha" name="senha" value="<?= htmlspecialchars($usuario['senha'] ?? '') ?>" readonly>
-                <button type="button" onclick="habilitar('senha')">Editar</button>
-                <p>erro</p>
-            </div>
+ <div class="botao-campo">
+    <label for="senha">Senha</label>
+    <!-- input apenas visual, não envia nada -->
+    <input type="password" id="senha" value="12345678" readonly style="text-security: disc;">
+    <button type="button" onclick="habilitar('senha')">Editar</button>
+    <p>erro</p>
+</div>
+
+
 
             <div class="botao-campo">
                 <label for="cll">Celular</label>
@@ -291,6 +313,8 @@ function habilitar(id) {
     const campo = document.getElementById(id);
     if (campo) {
         campo.removeAttribute('readonly');
+        campo.setAttribute('name', 'senha'); // agora sim será enviado
+        campo.value = ''; // limpa para digitar nova senha
         campo.focus();
     }
 }

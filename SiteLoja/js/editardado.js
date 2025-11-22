@@ -1,6 +1,7 @@
 const nome = document.getElementById("nome");
 const email = document.getElementById("email");
 const usuario = document.getElementById("usuario");
+const senha = document.getElementById('senha');
 const cel = document.getElementById("cll");
 const tel = document.getElementById("fixo");
 const cep = document.getElementById("cep");
@@ -24,19 +25,25 @@ const cepPadrao = /^[0-9]{8}$/;
 
 form.addEventListener("submit", (evento) => {
   evento.preventDefault();
+
   checkNome();
   checkEmail();
-  
+  checkSenha();
   checkUsuario();
-  
- 
-  const erros = document.querySelectorAll(".botao-campo.error");
-  //condicional que impede do programa funcionar se tiver algum campo com erro
-  if (erros.length === 0) {
-    form.submit();
 
-    
+  const erros = document.querySelectorAll(".botao-campo.error");
+
+  // Se houver erro, fecha o modal de confirmação
+  if (erros.length > 0) {
+    const modal = document.getElementById('modalSucesso');
+    if (modal) {
+      if (typeof modal.close === 'function') modal.close();
+      else modal.style.display = 'none';
+    }
+    return; // impede submit
   }
+
+  form.submit();
 });
 
 function checkNome() {
@@ -49,7 +56,15 @@ function checkNome() {
   }
 }
 
+function checkSenha() {
+  // Só valida se o input realmente tiver name="senha", ou seja, o usuário clicou em editar
+  if (!senha.hasAttribute('name')) return;
 
+  const senhaValue = senha.value.trim();
+  if (!senhaPadrao.test(senhaValue)) {
+    entradaErro(senha, "Sua senha deve conter exatamente 8 caracteres alfabéticos");
+  }
+}
 
 
 function entradaErro(entrada, mensagem) {
@@ -81,13 +96,7 @@ function checkUsuario() {
     );
   }
 }
-function checkSenha() {
-  const senhaValue = senha.value;
 
-  if (!senhaPadrao.test(senhaValue)) {
-    entradaErro(senha, "Sua senha deve conter exatamente 8 caracteres alfabéticos");
-  }
-}
 
 
 cep.addEventListener("blur", (evento) => {

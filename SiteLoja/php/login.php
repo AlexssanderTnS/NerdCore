@@ -50,7 +50,7 @@ function nivelAcesso() {
 function exigeAcesso($nivelMinimo) {
     if (!logado()) {
         echo'<script type="text/javascript">
-            alert("Você precisa estar logado para acessar.");
+            
             window.location.href = "login.php";
           </script>';
         

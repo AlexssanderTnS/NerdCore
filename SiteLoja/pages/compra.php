@@ -125,14 +125,14 @@ if (!$produto) {
             </div>
           </div>
         </div>     
-        <a href="../pages/carrinho.php?action=add&id=<?php echo $id; ?>" id="botaocompra">Comprar</a>
+         <button type="submit">Comprar</button>
       </div>
     </form>
-<<<<<<< HEAD
+
 </section>
-=======
+
   </section>
->>>>>>> 5faca5412203c53f2fb776cdf06d70de536e9f36
+
 
   <!-- Área de demonstração das camisas -->
   <section class="demo-section">
