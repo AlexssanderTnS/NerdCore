@@ -135,13 +135,13 @@ function carregarSecao(secao) {
         data.forEach((usuario) => {
           tbody.innerHTML += `
           <tr>
-            <td>${usuario.id}</td>
+            <td>${usuario.user_id}</td>
             <td>${usuario.nome}</td>
             <td>${usuario.email}</td>
             <td>${usuario.usuario}</td>
             <td>${usuario.acesso}</td>
             <td>${usuario.data_cadastro}</td>
-            <td><button onclick="excluirUsuario(${usuario.id})">Excluir</button></td>
+            <td><button onclick="excluirUsuario(${usuario.user_id})">Excluir</button></td>
           </tr>
         `;
         });
@@ -204,7 +204,7 @@ navLinks.forEach((link) => {
   });
 });
 
-function excluirUsuario(id) {
+function excluirUsuario(user_id) {
   mostrarModal(
     "Excluir Usuário",
     "Tem certeza que deseja excluir este usuário?",
@@ -220,7 +220,7 @@ function excluirUsuario(id) {
         acao: () => {
           fetch("../php/excluirUsuario.php", {
             method: "POST",
-            body: new URLSearchParams({ id }),
+            body: new URLSearchParams({ user_id }),
           })
             .then((res) => res.json())
             .then((ret) => {

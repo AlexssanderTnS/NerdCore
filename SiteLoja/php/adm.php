@@ -5,7 +5,7 @@ ob_end_clean();
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    $sql = "SELECT id, nome, email, usuario, acesso, data_cadastro FROM usuarios";
+    $sql = "SELECT user_id, nome, email, usuario, acesso, data_cadastro FROM usuarios";
     $stmt = $pdo->query($sql);
     $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($usuarios);

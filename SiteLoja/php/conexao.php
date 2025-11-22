@@ -50,10 +50,8 @@ try {
         data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );"; $pdo->exec($usuTable);
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 5faca5412203c53f2fb776cdf06d70de536e9f36
+
 $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     produto_id INT AUTO_INCREMENT PRIMARY KEY,
     nomeProduto VARCHAR(100) NOT NULL,
@@ -67,10 +65,10 @@ $produtos = "CREATE TABLE IF NOT EXISTS produtos (
 );";
 
 $pdo->exec($produtos);
-<<<<<<< HEAD
+
         
-=======
->>>>>>> 5faca5412203c53f2fb776cdf06d70de536e9f36
+
+
 $compra = "CREATE TABLE IF NOT EXISTS compra (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT NOT NULL,
@@ -80,15 +78,11 @@ $compra = "CREATE TABLE IF NOT EXISTS compra (
     data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(user_id),
     FOREIGN KEY (produto_id) REFERENCES produtos(produto_id)
-<<<<<<< HEAD
+
 );";$pdo->exec($compra);
 
-
-  
-=======
-);";
 $pdo->exec($compra);
->>>>>>> 5faca5412203c53f2fb776cdf06d70de536e9f36
+
 
 //Cria o perfil do ADM
 $check = $pdo->prepare("SELECT COUNT(*) FROM usuarios WHERE usuario = ?");
