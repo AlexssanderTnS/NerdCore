@@ -249,8 +249,8 @@ option {
     box-shadow: 0 0 15px #ffff00;
 }
 
-#pronto { float: left; }
-#limpar { float: right; }
+#pronto { float: right; }
+#limpar { float: left; }
 
 .pacman-button:hover {
     transform: scale(1.1);

@@ -40,7 +40,7 @@ if (!$produto) {
   <header class="nerdbar">
     <div class="logo">
 
-      <a href="../../index.html"><img src="../assets/logoroxa.png" alt="logo"></a>
+      <a href="../../index.php"><img src="../assets/logoroxa.png" alt="logo"></a>
 
       <h1><a href="../../index.php">NerdCore</a></h1>
     </div>
@@ -113,13 +113,13 @@ if (!$produto) {
         <div class="color-selector">
           <label for="cor">Cor:</label>
           <div class="color-options">
-            <div class="color-option active" data-color="branca" onclick="changeColor('branca')">
-              <div class="color-square white"></div>
-              <span>Branca</span>
-            </div>
-            <div class="color-option" data-color="preta" onclick="changeColor('preta')">
+             <div class="color-option active" data-color="preta" onclick="changeColor('preta')">
               <div class="color-square black"></div>
               <span>Preta</span>
+            </div>
+            <div class="color-option" data-color="branca" onclick="changeColor('branca')">
+              <div class="color-square white"></div>
+              <span>Branca</span>
             </div>
           </div>
         </div>
@@ -135,11 +135,11 @@ if (!$produto) {
       <h3>cores disponiveis</h3>
       <div class="shirt-demo">
         <div class="shirt-position" id="position-1">
-          <img src="2anyacamisabrancasemfundo.png" alt="Camisa Branca" class="demo-shirt">
+          <img id="imagem-produto" src="<?php echo $produto['camisaBranca']; ?>" alt="<?php echo $produto['camisaBranca']; ?>">
           <span>Camisa 01 - Branca</span>
         </div>
         <div class="shirt-position" id="position-2">
-          <img src="1anyacamisapretasemfundo.png" alt="Camisa Preta" class="demo-shirt">
+         <img id="imagem-produto" src="<?php echo $produto['camisaPreta']; ?>" alt="<?php echo $produto['camisaPreta']; ?>">
           <span>Camisa 02 - Preta</span>
         </div>
       </div>

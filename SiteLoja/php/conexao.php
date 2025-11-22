@@ -55,8 +55,8 @@ $produtos = "CREATE TABLE IF NOT EXISTS produtos (
     nomeProduto VARCHAR(100) NOT NULL,
     descricao TEXT,
     preco DECIMAL(10,2) NOT NULL,
-    camisaPreta LONGTEXT,
-    camisaBranca LONGTEXT,
+    camisaPreta LONGBLOB,
+    camisaBranca LONGBLOB,
     categoria ENUM('camisa', 'caneca') NOT NULL,
     estoque INT DEFAULT 0,
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP

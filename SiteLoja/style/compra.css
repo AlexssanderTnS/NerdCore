@@ -766,3 +766,12 @@ footer {
         transform: translateY(-50px) scale(1.1);
     }
 }
+
+.shirt-position #imagem-produto{
+    width: 170px;
+}
+
+form{
+    display: flex;
+    gap: 60px;
+}
