@@ -79,10 +79,18 @@ function carregarSecao(secao) {
       break;
 
     case "team":
-      html = `
+  html = `
     <div id="team" class="fade">
       <h2>Usuários Cadastrados</h2>
-      <table border="1" cellpadding="10">
+
+      <input
+        type="text"
+        id="searchUser"
+        placeholder="Buscar por nome, email ..."
+        style="margin-bottom: 10px; padding: 5px;"
+      />
+
+      <table border="1" cellpadding="10" id="tabelaUsuarios">
         <thead>
           <tr>
             <th>ID</th>
@@ -92,15 +100,16 @@ function carregarSecao(secao) {
             <th>Acesso</th>
             <th>Data do cadastro</th>
             <th>Ações</th>
-            
           </tr>
         </thead>
-        <tbody id="tabelaUsuarios">
-          <tr><td colspan="6">Carregando...</td></tr>
+        <tbody id="tabelaUsuariosBody">
+          <tr><td colspan="7">Carregando...</td></tr>
         </tbody>
       </table>
     </div>
   `;
+  break;
+
 
       break;
 
@@ -127,14 +136,14 @@ function carregarSecao(secao) {
 
   conteudo.innerHTML = html;
   if (secao === "team") {
-    fetch("../php/adm.php")
-      .then((res) => res.json())
-      .then((data) => {
-        const tbody = document.getElementById("tabelaUsuarios");
-        tbody.innerHTML = "";
-        data.forEach((usuario) => {
-          tbody.innerHTML += `
-          <tr>
+  fetch("../php/adm.php")
+    .then((res) => res.json())
+    .then((data) => {
+      const tbody = document.getElementById("tabelaUsuariosBody");
+      tbody.innerHTML = "";
+      data.forEach((usuario) => {
+        tbody.innerHTML += `
+          <tr class="usuario-linha">
             <td>${usuario.user_id}</td>
             <td>${usuario.nome}</td>
             <td>${usuario.email}</td>
@@ -144,12 +153,37 @@ function carregarSecao(secao) {
             <td><button onclick="excluirUsuario(${usuario.user_id})">Excluir</button></td>
           </tr>
         `;
-        });
-      })
-      .catch((err) => {
-        console.error("Erro ao carregar usuários:", err);
       });
-  }
+
+      // ** Aqui: liga o filtro **
+      const inputBusca = document.getElementById("searchUser");
+      inputBusca.addEventListener("input", function () {
+        const filtro = inputBusca.value.toLowerCase();
+        const linhas = tbody.querySelectorAll(".usuario-linha");
+        linhas.forEach((tr) => {
+          // pega o texto de cada célula relevante (você pode filtrar por várias colunas)
+          const nome = tr.cells[1].textContent.toLowerCase();
+          const email = tr.cells[2].textContent.toLowerCase();
+          const usuarioCampo = tr.cells[3].textContent.toLowerCase();
+
+          // se corresponder a pelo menos uma coluna, mostra, senão esconde
+          if (
+            nome.includes(filtro) ||
+            email.includes(filtro) ||
+            usuarioCampo.includes(filtro)
+          ) {
+            tr.style.display = "";
+          } else {
+            tr.style.display = "none";
+          }
+        });
+      });
+    })
+    .catch((err) => {
+      console.error("Erro ao carregar usuários:", err);
+    });
+}
+
 
   // Chama a função de configuração para CADA PAR de input/preview
   if (secao === "products") {
