@@ -92,9 +92,9 @@ if (!$produto) {
   <!--Caixa de Compra-->
 
   <section>
-    <form  method="post"action="../php/compra.php">
+    <div class="minaazul">
       
-      <div class="minaazul">
+    <form  method="POST"action="../php/compra.php">
         <img id="imagem-produto" src="<?php echo $produto['camisaPreta']; ?>" alt="<?php echo $produto['camisaPreta']; ?>">
       </div>
       <div class="caixa">
@@ -102,6 +102,8 @@ if (!$produto) {
         <p id="descricao-produto"><?php echo $produto['descricao']; ?></p>
         <div class="preco" id="preco-produto">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></div>
         <div class="parcelamento">em 12x R$16,99 "Sem Juros"</div>
+        <label for="">Quantidade</label>
+        <input type="number" name="quantidade" min="1" max="999" oninput="this.value=this.value.slice(0,3)">
         <label for="tamanho">Tamanho:</label>
         <select id="tamanho" name="tamanho">
           <option value="P">P</option>
@@ -122,12 +124,15 @@ if (!$produto) {
               <span>Preta</span>
             </div>
           </div>
-        </div>
-      
+        </div>     
         <a href="../pages/carrinho.php?action=add&id=<?php echo $id; ?>" id="botaocompra">Comprar</a>
       </div>
     </form>
+<<<<<<< HEAD
+</section>
+=======
   </section>
+>>>>>>> 5faca5412203c53f2fb776cdf06d70de536e9f36
 
   <!-- Área de demonstração das camisas -->
   <section class="demo-section">
