@@ -162,14 +162,18 @@ function carregarSecao(secao) {
         const linhas = tbody.querySelectorAll(".usuario-linha");
         linhas.forEach((tr) => {
           // pega o texto de cada célula relevante (você pode filtrar por várias colunas)
+          const user_id = tr.cells[0].textContent.toLowerCase();
           const nome = tr.cells[1].textContent.toLowerCase();
           const email = tr.cells[2].textContent.toLowerCase();
           const usuarioCampo = tr.cells[3].textContent.toLowerCase();
+          const data_cadastro = tr.cells[5].textContent.toLowerCase();
 
           // se corresponder a pelo menos uma coluna, mostra, senão esconde
           if (
             nome.includes(filtro) ||
             email.includes(filtro) ||
+            user_id.includes(filtro) ||
+            data_cadastro.includes(filtro)||
             usuarioCampo.includes(filtro)
           ) {
             tr.style.display = "";
