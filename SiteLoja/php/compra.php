@@ -37,5 +37,5 @@ $stmt = $pdo->prepare("
 
 $stmt->execute([$usuario_id, $produto_id, $quantidade, $total, $tamanho, $cor]);
 
-header("Location ../../index");
+header("Location: ../../index.php");
 ?>
