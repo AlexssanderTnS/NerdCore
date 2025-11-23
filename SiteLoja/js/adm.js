@@ -135,7 +135,7 @@ function carregarSecao(secao) {
   }
 
   conteudo.innerHTML = html;
-
+  void conteudo.offsetHeight; 
   // ========================================================================
   // CARREGAR USUÁRIOS
   // ========================================================================

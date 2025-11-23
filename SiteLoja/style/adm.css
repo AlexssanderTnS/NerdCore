@@ -92,15 +92,16 @@ p {
 } */
 
 .content {
-  flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
-  transition: opacity 0.3s;
-  line-height: 60px;
   display: flex;
-  justify-content: space-around;
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto; /* permite rolagem vertical */
+  height: 100vh;    /* ou um valor que faça sentido no seu layout */
+  box-sizing: border-box;
   align-items: center;
+  justify-content: center;
 }
+
 
 .cards-container {
   padding: 10px;
