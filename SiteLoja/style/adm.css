@@ -9,8 +9,7 @@
 
 body {
   background-image: url(../assets/FundoAdm.png);
-  height: 100vh;
-  overflow: hidden;
+  
   display: flex;
 }
 
@@ -92,14 +91,13 @@ p {
 } */
 
 .content {
-  display: flex;
+  font-size:2vh;
+  display: block;
   flex: 1;
   padding: 1rem;
-  overflow-y: auto; /* permite rolagem vertical */
-  height: 100vh;    /* ou um valor que faça sentido no seu layout */
+  overflow-y: auto; 
+  height: 100%;
   box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
 }
 
 

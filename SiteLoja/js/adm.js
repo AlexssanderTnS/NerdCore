@@ -155,7 +155,11 @@ function carregarSecao(secao) {
               <td>${u.usuario}</td>
               <td>${u.cpf}</td>
               <td>${u.data_cadastro}</td>
-              <td><button onclick="excluirUsuario(${u.user_id})">Excluir</button></td>
+              <td>
+  <button onclick="excluirUsuario(${u.user_id})" style="font-size: 2vh;">
+    Excluir
+  </button>
+</td>
             </tr>
           `;
         });
