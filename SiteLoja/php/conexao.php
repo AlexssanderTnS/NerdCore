@@ -75,7 +75,10 @@ $compra = "CREATE TABLE IF NOT EXISTS compra (
     produto_id INT NOT NULL,
     quantidade INT NOT NULL,
     total DECIMAL(10,2) NOT NULL,
+    cor VARCHAR(20) NOT NULL,
     data_compra TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    tamanho VARCHAR(3) NOT NULL,
+
     FOREIGN KEY (usuario_id) REFERENCES usuarios(user_id),
     FOREIGN KEY (produto_id) REFERENCES produtos(produto_id)
 

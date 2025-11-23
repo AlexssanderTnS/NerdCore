@@ -7,7 +7,9 @@ $sql = $pdo->prepare("
         c.id,
         u.nome AS usuario_nome,
         p.nomeProduto AS produto_nome,
+        c.tamanho,
         c.quantidade,
+        c.cor,
         c.total,
         c.data_compra
     FROM compra c

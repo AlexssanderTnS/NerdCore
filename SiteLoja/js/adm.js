@@ -109,12 +109,16 @@ function carregarSecao(secao) {
       html = `
         <div id="sells" class="fade">
             <h2>Registro de Vendas</h2>
-            <input type="text" id="searchSell" placeholder="Buscar venda...">
-
+            
             <table border="1" cellpadding="10" id="tabelaVendas">
+            <input type="text" id="searchSell" placeholder="Buscar venda...">
               <thead>
                 <tr>
-                  <th>ID Compra</th><th>Usuário</th><th>Produto</th>
+                  <th>ID Compra</th>
+                  <th>Usuário</th>
+                  <th>Produto</th>
+                  <th>Tamanho</th>
+                  <th>Cor</th>
                   <th>Quantidade</th><th>Total</th><th>Data</th>
                 </tr>
               </thead>
@@ -144,7 +148,7 @@ function carregarSecao(secao) {
 
         usuarios.forEach((u) => {
           tbody.innerHTML += `
-            <tr class="usuario-linha">
+            <tr class="usuario-linha" >
               <td>${u.user_id}</td>
               <td>${u.nome}</td>
               <td>${u.email}</td>
@@ -205,10 +209,12 @@ function carregarSecao(secao) {
 
         vendas.forEach((v) => {
           tbody.innerHTML += `
-            <tr class="venda-linha">
+            <tr class="venda-linha" style="background-color:#FFFFFF">
               <td>${v.id}</td>
               <td>${v.usuario_nome}</td>
               <td>${v.produto_nome}</td>
+              <td>${v.tamanho}</td>
+              <td>${v.cor}</td>
               <td>${v.quantidade}</td>
               <td>R$ ${Number(v.total).toFixed(2)}</td>
               <td>${v.data_compra}</td>

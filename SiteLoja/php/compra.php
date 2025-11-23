@@ -12,6 +12,9 @@ $usuario_id = $_SESSION['usuario_id'];
 // RECEBE DADOS DO FORMULÁRIO
 $produto_id = isset($_POST['produto_id']) ? intval($_POST['produto_id']) : 0;
 $quantidade = isset($_POST['quantidade']) ? intval($_POST['quantidade']) : 1;
+$tamanho = $_POST['tamanho'];
+$cor = $_POST['cor'] ?? ''; 
+
 
 // PEGA DADOS DO PRODUTO
 $sqlProd = $pdo->prepare("SELECT nomeProduto, preco FROM produtos WHERE produto_id = ?");
@@ -28,11 +31,11 @@ $total = $preco * $quantidade;
 
 // INSERE COMPRA
 $stmt = $pdo->prepare("
-    INSERT INTO compra (usuario_id, produto_id, quantidade, total)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO compra (usuario_id, produto_id, quantidade, total, tamanho,cor )
+    VALUES (?, ?, ?, ?, ?, ?)
 ");
 
-$stmt->execute([$usuario_id, $produto_id, $quantidade, $total]);
+$stmt->execute([$usuario_id, $produto_id, $quantidade, $total, $tamanho, $cor]);
 
-echo "Compra registrada com sucesso!";
+header("Location ../../index");
 ?>

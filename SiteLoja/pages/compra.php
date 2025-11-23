@@ -104,7 +104,7 @@ if (!$produto) {
         <div class="preco" id="preco-produto">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></div>
         <div class="parcelamento">em 12x R$16,99 "Sem Juros"</div>
         <label for="">Quantidade</label>
-        <input type="number" name="quantidade" min="1" max="999" oninput="this.value=this.value.slice(0,3)">
+        <input type="number" name="quantidade" value="1" min="1" max="999" oninput="this.value=this.value.slice(0,3)">
         <label for="tamanho">Tamanho:</label>
         <select id="tamanho" name="tamanho">
           <option value="P">P</option>
@@ -118,13 +118,14 @@ if (!$produto) {
           <div class="color-options">
              <div class="color-option active" data-color="preta" onclick="changeColor('preta')">
               <div class="color-square black"></div>
-              <span>Preta</span>
+              <span name="cor">Preta</span>
             </div>
             <div class="color-option" data-color="branca" onclick="changeColor('branca')">
               <div class="color-square white"></div>
-              <span>Branca</span>
+              <span name="cor">Branca</span>
             </div>
           </div>
+       <input type="hidden" name="cor" id="corSelecionada" value="preta">
         </div>     
          <button type="submit">Comprar</button>
       </div>
