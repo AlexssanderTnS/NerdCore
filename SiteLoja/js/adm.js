@@ -84,7 +84,7 @@ function carregarSecao(secao) {
               <thead>
                 <tr>
                   <th>ID</th><th>Nome</th><th>Email</th><th>Usuário</th>
-                  <th>Acesso</th><th>Data Cadastro</th><th>Ações</th>
+                  <th>CPF</th><th>Data Cadastro</th><th>Ações</th>
                 </tr>
               </thead>
               <tbody id="tabelaUsuariosBody">
@@ -153,7 +153,7 @@ function carregarSecao(secao) {
               <td>${u.nome}</td>
               <td>${u.email}</td>
               <td>${u.usuario}</td>
-              <td>${u.acesso}</td>
+              <td>${u.cpf}</td>
               <td>${u.data_cadastro}</td>
               <td><button onclick="excluirUsuario(${u.user_id})">Excluir</button></td>
             </tr>
