@@ -139,3 +139,23 @@ cep.addEventListener("blur", (evento) => {
       console.error(err); // Mostra o erro no console do navegador
     });
 };
+
+function limparErro(entrada) {
+  const formItem = entrada.parentElement;
+  const mensagemTexto = formItem.querySelector("p");
+
+  mensagemTexto.innerText = ""; //vai limpar a mensagem
+  formItem.className = "botao-campo"; // vai remover a classe erro
+};
+//Loop que limpa todos os inputs
+campos.forEach((campo) => {
+  campo.addEventListener("input", () => {
+    limparErro(campo);
+  });
+});
+
+function limparTudo(){
+    form.reset();
+    campos.forEach((campo) => limparErro(campo));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};

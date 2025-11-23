@@ -28,10 +28,10 @@ $mensagem = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $campos = [
+$campos = [
     'nome' => $_POST['nome'] ?? '',
     'email' => $_POST['email'] ?? '',
-    'usuario' => $_POST['usuario'] ?? '',
+    'usuario' => $_POST['usuario'] ?? '',  
     'cll' => $_POST['cll'] ?? '',
     'fixo' => $_POST['fixo'] ?? '',
     'cep' => $_POST['cep'] ?? '',
@@ -92,7 +92,7 @@ $stmt = $pdo->prepare($sql);
         </dialog>
         ";
 
-        $_SESSION['usuario_nome'] = $_POST['usuario'];
+        $_SESSION['usuario'] = $_POST['usuario'];
         $usuario = array_merge($usuario, $campos);
 
     } else {
@@ -310,13 +310,11 @@ if ($modalFeedback) echo $modalFeedback;
 
 <script>
 function habilitar(id) {
-    const campo = document.getElementById(id);
-    if (campo) {
-        campo.removeAttribute('readonly');
-        campo.setAttribute('name', 'senha'); // agora sim será enviado
-        campo.value = ''; // limpa para digitar nova senha
-        campo.focus();
-    }
+  const campo = document.getElementById(id);
+  if (!campo) return;
+
+  campo.removeAttribute('readonly');
+  campo.focus();
 }
 function clickMenu() {
     const menu = document.getElementById('menu-list');
