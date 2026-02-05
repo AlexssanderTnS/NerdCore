@@ -11,7 +11,7 @@ Bem-vindo à **NerdCore**, uma loja online fictícia de camisetas com temática 
 - 🛍️ Exibição de camisetas temáticas (cards com imagem, nome e preço).
 - 🔍 Sistema dinâmico de detalhes por produto com `data-id`.
 - 💾 Organização dos dados via `produtos.json`, facilitando manutenção e expansão.
-- 🌐 Deploy via [Vercel](https://pac-man-no.vercel.app/)
+
 
 ---
 
@@ -21,7 +21,7 @@ Bem-vindo à **NerdCore**, uma loja online fictícia de camisetas com temática 
 - **CSS3** – Estilo visual com toque retrô.
 - **JavaScript Vanilla** – Interatividade e lógica de produto.
 - **JSON** – Armazenamento e carregamento de dados dos produtos.
-- **Vercel** – Hospedagem gratuita e ágil para projetos front-end.
+- **PHP** – Criação do banco de dados dos produtos e validações.
 
 ---
 
